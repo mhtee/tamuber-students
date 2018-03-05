@@ -19,15 +19,17 @@ When (/^I select route number (\d+)$/) do |routeNum|
 end
 
 Then (/^I see all routes displayed on a map$/) do
-    #at least one path is displayed on the map
-    page.has_selector?("way")
+    #at least one path is displayed on the map--will need to be refactored later
+    page.should have_selector 'way'
 end
 
 Then(/^I should see the go to pickup point page for that route$/) do
     @route = CartRoute.find(@routeNum)
-    expect(page).to_have_content @route[:pickup_name]
+    #page.has_content?(@route[:pickup_name])
+    page.should have_content @route[:pickup_name]
 end
 
 Then (/^I should see a message telling me no TAMUbers are available$/) do
-   expect(page).to_have_content("No TAMUbers available") 
+   #page.has_content?("No TAMUbers available") 
+   page.should have_content 'No TAMUbers available'
 end

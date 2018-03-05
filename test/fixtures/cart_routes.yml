@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  length: 9.99
+  startPoint: MyString
+  endPoint: MyString
+
+two:
+  length: 9.99
+  startPoint: MyString
+  endPoint: MyString

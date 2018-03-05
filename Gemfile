@@ -40,8 +40,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'cucumber-rails'
-  gem 'cucumber'
+  #gem 'cucumber'
   gem 'database_cleaner'
+  gem 'rspec-expectations'
 end
 
 group :development do
