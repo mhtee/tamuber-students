@@ -14,9 +14,9 @@ When (/^I click (\w+)$/) do |clicked|
     click_link(clicked)
 end
 
-When (/^I select route number (\d+)$/) do |routeNum|
-    @routeNum = routeNum
-end
+# When (/^I select route number (\d+)$/) do |routeNum|
+#     @routeNum = routeNum
+# end
 
 Then(/^I see a map$/) do
     expect(page).to have_selector("div", id: "mapid");
