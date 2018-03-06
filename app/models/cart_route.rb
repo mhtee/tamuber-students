@@ -1,0 +1,2 @@
+class CartRoute < ApplicationRecord
+end
