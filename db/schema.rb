@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20180305190521) do
 
   create_table "carts", force: :cascade do |t|
     t.string "IP"
-    t.boolean "inUse"
+    t.boolean "isAvailable"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_carts_on_trip_id"
   end
 
   create_table "coordinates", force: :cascade do |t|
@@ -40,4 +42,5 @@ ActiveRecord::Schema.define(version: 20180305190521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
