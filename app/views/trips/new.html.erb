@@ -1,4 +1,10 @@
 <h1> Select Route </h1>
 
+<ul>
+   <% @cart_routes.each do |cart_route| %>
+      <li><%=  @cart_route.endPoint %></li>
+   <% end %>
+</ul>
+
 <%= javascript_include_tag "map" %>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4&callback=initMap"></script>
