@@ -35,7 +35,7 @@ function initMap() {
     destination: new google.maps.LatLng(30.6189722, -96.3387678),
     waypoints: waypts,
     optimizeWaypoints: true,
-    travelMode: 'DRIVING'}, 
+    travelMode: 'BICYCLING'}, 
     function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
