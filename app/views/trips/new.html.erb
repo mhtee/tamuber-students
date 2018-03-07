@@ -1,15 +1,7 @@
-<head>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4"></script>
-</head>
-
 <h1> Select Route </h1>
 
 <div id="mapid"></div>
-<!--<ul>-->
-<!--   <%# @cartRoutes.each do |cartRoute| %>-->
-<!--      <li><%#=  @cartRoute.endPoint %></li>-->
-<!--   <%# end %>-->
-<!--</ul>-->
+
 
 <%= javascript_include_tag "map" %>
 <script type="text/javascript">
@@ -20,11 +12,10 @@
   <tr>
     <th>Starting point </th>
     <th>Ending point</th>
-    <th>Lat</th>
-    <th>Lng</th>
   </tr>
  
   <% @cartRoutes.each do |cart_route| %>
+
     <% cart_route.coordinates.each do |coordinate| %>
       <tr>
         <td><%= cart_route.startPoint %></td>
@@ -38,6 +29,7 @@
       // console.log(coordinates);
       calculateAndDisplayRoute(coordinates); // this is your function in .js file
     </script>
+
   <% end %>
 </table>
 
@@ -57,12 +49,4 @@
   </div>
 </div>
 
-<!--<script>-->
-<!--function attachInstructionText(marker, text) {-->
-<!--  google.maps.event.addListener(marker, 'click', function() {-->
-<!--    stepDisplay.setContent(text);-->
-<!--    stepDisplay.open(map, marker);-->
-<!--  });-->
-  
-<!--</script>-->
 
