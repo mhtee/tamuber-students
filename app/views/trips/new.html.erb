@@ -26,17 +26,16 @@
  
   <% @cartRoutes.each do |cart_route| %>
     <% cart_route.coordinates.each do |coordinate| %>
-    <td><%= cart_route.startPoint %></td>
-    <td><%= cart_route.endPoint %></td>
-    <%= cart_route.coordinates %>
       <tr>
+        <td><%= cart_route.startPoint %></td>
+        <td><%= cart_route.endPoint %></td>
         <td><%= coordinate.lat%></td>
         <td><%= coordinate.lng%></td>
       </tr>
     <% end %>
     <script type="text/javascript">
       var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
-      console.log(coordinates);
+      // console.log(coordinates);
       calculateAndDisplayRoute(coordinates); // this is your function in .js file
     </script>
   <% end %>
