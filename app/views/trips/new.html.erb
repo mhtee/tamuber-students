@@ -1,6 +1,24 @@
 <h1> Select Route </h1>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="crossorigin="">
+    </script>
 
-<%= render 'map' %>
+<div id="mapid"></div>
+
+<div id="mapid"></div>
+<!--<ul>-->
+<!--   <%# @cartRoutes.each do |cartRoute| %>-->
+<!--      <li><%#=  @cartRoute.endPoint %></li>-->
+<!--   <%# end %>-->
+<!--</ul>-->
+
+<%= javascript_include_tag "map" %>
+<script type="text/javascript">
+  initMap(); // this is your function in .js file
+</script>
 
 <table>
   <tr>
@@ -9,16 +27,21 @@
   </tr>
  
   <% @cartRoutes.each do |cart_route| %>
-    <tr>
-      <td><%= cart_route.startPoint %></td>
-      <td><%= cart_route.endPoint %></td>
-      <% cart_route.coordinates.each do |coordinate| %>
-          <td>(<%= coordinate.lat %>, </td>
-          <td><%= coordinate.lng %>)</td>
-      <% end %>
-      
-      
-    </tr>
+
+    <% cart_route.coordinates.each do |coordinate| %>
+      <tr>
+        <td><%= cart_route.startPoint %></td>
+        <td><%= cart_route.endPoint %></td>
+        <td><%= coordinate.lat%></td>
+        <td><%= coordinate.lng%></td>
+      </tr>
+    <% end %>
+    <script type="text/javascript">
+      var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
+      // console.log(coordinates);
+      calculateAndDisplayRoute(coordinates); // this is your function in .js file
+    </script>
+
   <% end %>
 </table>
 
@@ -30,4 +53,4 @@
 <!--  });-->
   
 <!--</script>-->
-        
+

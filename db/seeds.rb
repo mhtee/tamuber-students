@@ -13,11 +13,7 @@ cart_routes.each do |cart_route|
 end
 
 coordinates = [{:lat => 30.621284, :lng => -96.340388, :cart_route => CartRoute.find(1)},
-                {:lat => 30.620071, :lng => -96.340747, :cart_route => CartRoute.find(1)},
-                {:lat => 30.61998, :lng => -96.340193, :cart_route => CartRoute.find(1)},
-                {:lat => 30.61998, :lng => -96.340193, :cart_route => CartRoute.find(1)},
-                {:lat => 30.61998, :lng => -96.340193, :cart_route => CartRoute.find(1)}
-]
+                {:lat => 30.61998, :lng => -96.340193, :cart_route => CartRoute.find(1)}]
 
 coordinates.each do |coordinate|
   Coordinate.create!(coordinate)
