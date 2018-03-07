@@ -42,18 +42,19 @@
 </table>
 
 <div class="dropdown">
-  <ul>
+  <button class="dropbtn">Routes</button>
+    <div class="dropdown-content">
   <% @cartRoutes.each do |cart_route| %>
-  <li>
     <% cart_route.coordinates.each do |coordinate| %>
+      <a>
         <%= cart_route.startPoint %>
         <%= cart_route.endPoint %>
         <%= coordinate.lat %>
         <%= coordinate.lng %>
+        </a>
     <% end %>
-  </li>
   <% end %>
-  </ul>
+  </div>
 </div>
 
 <!--<script>-->

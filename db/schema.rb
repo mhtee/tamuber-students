@@ -16,13 +16,15 @@ ActiveRecord::Schema.define(version: 20180305190521) do
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "IP"
-    t.boolean "isAvailable"
+    t.integer "IP"
+    t.boolean "inUse"
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   end
 
   create_table "trips", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "cart_route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
