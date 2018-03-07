@@ -6,18 +6,17 @@
   <tr>
     <th>Starting point </th>
     <th>Ending point</th>
-    <th>Lat</th>
-    <th>Lng</th>
   </tr>
  
   <% @cartRoutes.each do |cart_route| %>
     <tr>
       <td><%= cart_route.startPoint %></td>
       <td><%= cart_route.endPoint %></td>
-      <% @cartRoutes.coordinates.each do |coordinate|
-          <td><%= coordinate.lat %></td>
-          <td><%= coordinate.lng %></td>
+      <% cart_route.coordinates.each do |coordinate| %>
+          <td>(<%= coordinate.lat %>, </td>
+          <td><%= coordinate.lng %>)</td>
       <% end %>
+      
       
     </tr>
   <% end %>
