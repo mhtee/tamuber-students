@@ -12,6 +12,8 @@
   <tr>
     <th>Starting point </th>
     <th>Ending point</th>
+    <th>Lat</th>
+    <th>Lng</th>
   </tr>
  
   <% @cartRoutes.each do |cart_route| %>
@@ -37,14 +39,9 @@
   <button class="dropbtn">Routes</button>
     <div class="dropdown-content">
   <% @cartRoutes.each do |cart_route| %>
-    <% cart_route.coordinates.each do |coordinate| %>
-      <a>
-        <%= cart_route.startPoint %>
-        <%= cart_route.endPoint %>
-        <%= coordinate.lat %>
-        <%= coordinate.lng %>
-        </a>
-    <% end %>
+    <a>
+      <%= cart_route.endPoint %>
+    </a>
   <% end %>
   </div>
 </div>
