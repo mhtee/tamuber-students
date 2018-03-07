@@ -1,38 +1,46 @@
+
+var directionsService;
+var map;
+
 function initMap() {
   // Initialize Direction Services  
-  var directionsService = new google.maps.DirectionsService;
-  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsService = new google.maps.DirectionsService;
 
   // Create a map.
-  var map = new google.maps.Map(document.getElementById('mapid'), {
+  map = new google.maps.Map(document.getElementById('mapid'), {
     zoom: 15,
     center: {lat: 30.6185, lng: -96.3365},
     mapTypeControl: false
   });
+
+}
+function calculateAndDisplayRoute(request) {
+  
+  var directionsDisplay = new google.maps.DirectionsRenderer;
   directionsDisplay.setMap(map);
-
-  // Add some markers to the map.
-  map.data.setStyle(function(feature) {
-    return {
-      title: feature.getProperty('name'),
-      optimized: false
-    };
-  });
-    
   var waypts = [];
-  waypts.push({
-    location: new google.maps.LatLng(30.620071,-96.340747),
-    stopover: false
-  });
-
-  waypts.push({
-    location: new google.maps.LatLng(30.61998,-96.340193),
-    stopover: false
-  });
-
-  directionsService.route({
-    origin: new google.maps.LatLng(30.621284, -96.340388),
-    destination: new google.maps.LatLng(30.6189722, -96.3387678),
+  var startPoint;
+  var endPoint;
+  //var jsonData = JSON.parse(request);
+  for (var i = 0; i < request.length; i++) {
+    var counter = request[i];
+    if (i === 0) {
+      startPoint = new google.maps.LatLng(counter.lat, counter.lng);
+      continue;
+    }
+    if (i === request.length - 1) {
+      endPoint = new google.maps.LatLng(counter.lat, counter.lng);
+      continue;
+    }
+    waypts.push({
+      location: new google.maps.LatLng(counter.lat, counter.lng),
+      stopover: false
+    });
+  }
+  if (startPoint != null && endPoint != null) {
+    directionsService.route({
+    origin: startPoint,
+    destination: endPoint,
     waypoints: waypts,
     optimizeWaypoints: true,
     travelMode: 'BICYCLING'}, 
@@ -42,7 +50,6 @@ function initMap() {
       } else {
         window.alert('Directions request failed due to ' + status);
       }
-  });
+    });
+  }
 }
-// function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-// }
