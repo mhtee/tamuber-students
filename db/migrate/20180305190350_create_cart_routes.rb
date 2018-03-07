@@ -4,6 +4,8 @@ class CreateCartRoutes < ActiveRecord::Migration[5.1]
       t.decimal :length
       t.string :startPoint
       t.string :endPoint
+      
+      t.references :trip, foreign_key: true
 
       t.timestamps
     end

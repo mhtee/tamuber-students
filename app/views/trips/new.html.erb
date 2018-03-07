@@ -1,5 +1,4 @@
 <h1> Select Route </h1>
-
 <ul>
    <% @cart_routes.each do |cart_route| %>
       <li><%=  @cart_route.endPoint %></li>
@@ -8,3 +7,36 @@
 
 <%= javascript_include_tag "map" %>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4&callback=initMap"></script>
+
+<!--<%#= render 'map' %>-->
+
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>Starting point </th>-->
+<!--    <th>Ending point</th>-->
+<!--    <th>Lat</th>-->
+<!--    <th>Lng</th>-->
+<!--  </tr>-->
+ 
+<!--  <%# @cartRoutes.each do |cart_route| %>-->
+<!--    <tr>-->
+<!--      <td><%#= cart_route.startPoint %></td>-->
+<!--      <td><%#= cart_route.endPoint %></td>-->
+<!--      <%# @cartRoutes.coordinates.each do |coordinate|-->
+<!--          <td><%= coordinate.lat %></td>-->
+<!--          <td><%#= coordinate.lng %></td>-->
+<!--      <%# end %>-->
+      
+<!--    </tr>-->
+<!--  <%# end %>-->
+<!--</table>-->
+
+<!--<script>-->
+<!--function attachInstructionText(marker, text) {-->
+<!--  google.maps.event.addListener(marker, 'click', function() {-->
+<!--    stepDisplay.setContent(text);-->
+<!--    stepDisplay.open(map, marker);-->
+<!--  });-->
+  
+<!--</script>-->
+
