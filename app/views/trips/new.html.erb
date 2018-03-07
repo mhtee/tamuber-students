@@ -29,8 +29,8 @@
       <tr>
         <td><%= cart_route.startPoint %></td>
         <td><%= cart_route.endPoint %></td>
-        <td><%= coordinate.lat%></td>
-        <td><%= coordinate.lng%></td>
+        <td><%= coordinate.lat %></td>
+        <td><%= coordinate.lng %></td>
       </tr>
     <% end %>
     <script type="text/javascript">
@@ -40,6 +40,21 @@
     </script>
   <% end %>
 </table>
+
+<div class="dropdown">
+  <ul>
+  <% @cartRoutes.each do |cart_route| %>
+  <li>
+    <% cart_route.coordinates.each do |coordinate| %>
+        <%= cart_route.startPoint %>
+        <%= cart_route.endPoint %>
+        <%= coordinate.lat %>
+        <%= coordinate.lng %>
+    <% end %>
+  </li>
+  <% end %>
+  </ul>
+</div>
 
 <!--<script>-->
 <!--function attachInstructionText(marker, text) {-->
