@@ -1,35 +1,46 @@
+<head>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4"></script>
+</head>
+
 <h1> Select Route </h1>
-<ul>
-   <% @cart_routes.each do |cart_route| %>
-      <li><%=  @cart_route.endPoint %></li>
-   <% end %>
-</ul>
+
+<div id="mapid"></div>
+<!--<ul>-->
+<!--   <%# @cartRoutes.each do |cartRoute| %>-->
+<!--      <li><%#=  @cartRoute.endPoint %></li>-->
+<!--   <%# end %>-->
+<!--</ul>-->
 
 <%= javascript_include_tag "map" %>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4&callback=initMap"></script>
+<script type="text/javascript">
+  initMap(); // this is your function in .js file
+</script>
 
-<!--<%#= render 'map' %>-->
-
-<!--<table>-->
-<!--  <tr>-->
-<!--    <th>Starting point </th>-->
-<!--    <th>Ending point</th>-->
-<!--    <th>Lat</th>-->
-<!--    <th>Lng</th>-->
-<!--  </tr>-->
+<table>
+  <tr>
+    <th>Starting point </th>
+    <th>Ending point</th>
+    <th>Lat</th>
+    <th>Lng</th>
+  </tr>
  
-<!--  <%# @cartRoutes.each do |cart_route| %>-->
-<!--    <tr>-->
-<!--      <td><%#= cart_route.startPoint %></td>-->
-<!--      <td><%#= cart_route.endPoint %></td>-->
-<!--      <%# @cartRoutes.coordinates.each do |coordinate|-->
-<!--          <td><%= coordinate.lat %></td>-->
-<!--          <td><%#= coordinate.lng %></td>-->
-<!--      <%# end %>-->
-      
-<!--    </tr>-->
-<!--  <%# end %>-->
-<!--</table>-->
+  <% @cartRoutes.each do |cart_route| %>
+    <% cart_route.coordinates.each do |coordinate| %>
+    <td><%= cart_route.startPoint %></td>
+    <td><%= cart_route.endPoint %></td>
+    <%= cart_route.coordinates %>
+      <tr>
+        <td><%= coordinate.lat%></td>
+        <td><%= coordinate.lng%></td>
+      </tr>
+    <% end %>
+    <script type="text/javascript">
+      var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
+      console.log(coordinates);
+      calculateAndDisplayRoute(coordinates); // this is your function in .js file
+    </script>
+  <% end %>
+</table>
 
 <!--<script>-->
 <!--function attachInstructionText(marker, text) {-->
