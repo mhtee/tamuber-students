@@ -9,16 +9,16 @@ Feature: Select route on a map
     Then I see a map
       And I see all routes displayed on the map
     
-  @ignore
-  Scenario: User selects a route and a TAMUber is available
-    Given I am at the select destination page
-      And a TAMUber is available
-    When I select route number 5
-    Then I should see the go to pickup point page for that route
+#   @ignore
+#   Scenario: User selects a route and a TAMUber is available
+#     Given I am at the select destination page
+#       And a TAMUber is available
+#     When I select route number 5
+#     Then I should see the go to pickup point page for that route
     
- @ignore
-  Scenario: User selects a route and a TAMUber is not available
-    Given I am at the select destination page
-      And a TAMUber is not available
-    When I select route number 4
-    Then I should see a message telling me no TAMUbers are available
+# @ignore
+#   Scenario: User selects a route and a TAMUber is not available
+#     Given I am at the select destination page
+#       And a TAMUber is not available
+#     When I select route number 4
+#     Then I should see a message telling me no TAMUbers are available

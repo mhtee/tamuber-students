@@ -12,11 +12,10 @@
   <tr>
     <th>Starting point </th>
     <th>Ending point</th>
-    <th>Lat</th>
-    <th>Lng</th>
   </tr>
  
   <% @cartRoutes.each do |cart_route| %>
+
     <% cart_route.coordinates.each do |coordinate| %>
       <tr>
         <td><%= cart_route.startPoint %></td>
@@ -30,6 +29,7 @@
       // console.log(coordinates);
       calculateAndDisplayRoute(coordinates); // this is your function in .js file
     </script>
+
   <% end %>
 </table>
 
