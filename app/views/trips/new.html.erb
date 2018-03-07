@@ -1,0 +1,36 @@
+<h1> Select Route </h1>
+
+<div id="mapid"></div>
+
+
+<%= javascript_include_tag "map" %>
+<script type="text/javascript">
+  initMap(); // this is your function in .js file
+</script>
+
+<table>
+  <tr>
+    <th>Starting point </th>
+    <th>Ending point</th>
+  </tr>
+ 
+  <% @cartRoutes.each do |cart_route| %>
+
+    <% cart_route.coordinates.each do |coordinate| %>
+      <tr>
+        <td><%= cart_route.startPoint %></td>
+        <td><%= cart_route.endPoint %></td>
+        <td><%= coordinate.lat%></td>
+        <td><%= coordinate.lng%></td>
+      </tr>
+    <% end %>
+    <script type="text/javascript">
+      var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
+      // console.log(coordinates);
+      calculateAndDisplayRoute(coordinates); // this is your function in .js file
+    </script>
+
+  <% end %>
+</table>
+
+
