@@ -7,3 +7,24 @@ one:
 two:
   lat: 9.99
   lng: 9.99
+  
+route1-1:
+  lat: 30.621284
+  lng: -96.340388
+  cart_route_id: 1
+  
+route1-2:
+  lat: 30.620071
+  lng: -96.340747
+  cart_route_id: 1
+  
+route1-3:
+  lat: 30.61998
+  lng: -96.340193
+  cart_route_id: 1
+  
+route1-4:
+  lat: 30.6189722
+  lng: -96.3387678
+  cart_route_id: 1
+  

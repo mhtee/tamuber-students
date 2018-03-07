@@ -23,6 +23,7 @@ Then(/^I see a map$/) do
 end
 
 Then (/^I see all routes displayed on the map$/) do
+    #self.set_fixture_class cart_routes: CartRoute
     #the correct number of routes are displayed on the map
     expect(page).to have_selector("way", count: CartRoute.count)
 end
