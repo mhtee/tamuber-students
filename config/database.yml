@@ -16,6 +16,8 @@ development:
   <<: *default
   #database: db/development.sqlite3
   database: db/dev-database-pg
+  username: postgres
+  password: testpassword
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,11 +26,15 @@ test: &test
   <<: *default
   #database: db/test.sqlite3
   database: db/test-database-pg
+  username: postgres
+  password: testpassword
 
 production:
   <<: *default
   #database: db/production.sqlite3
   database: db/production-database-pg
+  username: postgres
+  password: testpassword
 
 cucumber:
   <<: *test

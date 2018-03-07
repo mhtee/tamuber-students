@@ -19,19 +19,19 @@ ActiveRecord::Schema.define(version: 20180305190521) do
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
-    t.integer "trip_id"
+    t.integer "current_trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
+    t.index ["current_trip_id"], name: "index_cart_routes_on_trip_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.integer "IP"
     t.boolean "inUse"
-    t.integer "trip_id"
+    t.integer "current_trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_carts_on_trip_id"
+    t.index ["current_trip_id"], name: "index_carts_on_trip_id"
   end
 
   create_table "coordinates", force: :cascade do |t|
