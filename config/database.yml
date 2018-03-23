@@ -14,8 +14,8 @@ default: &default
 
 development:
   <<: *default
-  #database: db/development.sqlite3
-  database: db/dev-database-pg
+  database: db/development.sqlite3
+  #database: db/dev-database-pg
   username: postgres
   password: testpassword
 
@@ -24,17 +24,17 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  #database: db/test.sqlite3
-  database: db/test-database-pg
-  username: postgres
-  password: testpassword
+  database: db/test.sqlite3
+  #database: db/test-database-pg
+  #username: postgres
+  #password: testpassword
 
 production:
   <<: *default
-  #database: db/production.sqlite3
-  database: db/production-database-pg
-  username: postgres
-  password: testpassword
+  database: db/production.sqlite3
+  #database: db/production-database-pg
+  #username: postgres
+  #password: testpassword
 
 cucumber:
   <<: *test
