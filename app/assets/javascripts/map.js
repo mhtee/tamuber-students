@@ -14,6 +14,24 @@ function initMap() {
   });
 
 }
+
+function initMapWithMarker(lat, lng) {
+  var myLatLng = {lat: lat, lng: lng};
+  
+  map = new google.maps.Map(document.getElementById('mapid'), {
+    zoom: 15,
+    center: {lat: lat, lng: lng},
+    mapTypeControl: false
+  });
+  
+   var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Pickup point'
+    });
+
+}
+
 function calculateAndDisplayRoute(request) {
   
   var directionsDisplay = new google.maps.DirectionsRenderer;
