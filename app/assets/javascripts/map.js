@@ -16,28 +16,38 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
-  var myLatLng = {lat: lat, lng: lng};
-  map = new google.maps.Map(document.getElementById('mapid'), {
-    zoom: 16,
-    center: {lat: lat, lng: lng},
-    mapTypeControl: false
-  });
   
-  var contentString = '<h3>' + startPoint + "</h3>"
-
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
+  var address = ""
+  //get human-readable address from given coordinates
+  $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyAD5o_wun4okt9SRxSFULafNoDBGGoq4Ac", function(data, status){
+      var contentString = '<h3>'+startPoint+"</h3>"
+      if(data.status == "OK") {
+        address = data.results[0].formatted_address
+        contentString = contentString + "<p>Closest address: "+address+"</p>"
+      }
+      alert(address)
+      var myLatLng = {lat: lat, lng: lng};
+      map = new google.maps.Map(document.getElementById('mapid'), {
+        zoom: 16,
+        center: {lat: lat, lng: lng},
+        mapTypeControl: false
+      });
+      
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+        
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: startPoint
+      });
+      
+      marker.addListener('mouseover', function() {
+        infowindow.open(map, marker);
+      });
   });
-  
-   var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: startPoint
-    });
     
-    marker.addListener('mouseover', function() {
-      infowindow.open(map, marker);
-    });
 
 }
 

@@ -1,8 +1,29 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 <h1> Go to pickup location </h1>
 
 <div id="mapid"></div>
 
-<p>Pickup location: <%= @route.startPoint %></p>
+<table>
+    <tr>
+        <td><strong> Pickup location </strong></td>
+        <td><%= @route.startPoint %></td>
+    </tr>
+    <tr>
+        <td><strong> Destination </strong></td>
+        <td><%= @route.endPoint %></td>
+    </tr>
+    <tr>
+        <td><strong> Cart Number </strong></td>
+        <td>TBD</td>
+    </tr>
+    <tr>
+        <td><strong>ETA</strong></td>
+        <td>TBD</td>
+    </tr>
+</table>
+
 <button type="button" onclick="alert('starting')">Start</button>
 
 <%= javascript_include_tag "map" %>
