@@ -37,7 +37,8 @@ function initMapWithMarker(lat, lng, startPoint) {
       }
       
       var infowindow = new google.maps.InfoWindow({
-        content: contentString
+        content: contentString,
+        maxWidth: 250
       });
         
       var marker = new google.maps.Marker({
@@ -49,7 +50,12 @@ function initMapWithMarker(lat, lng, startPoint) {
       marker.addListener('mouseover', function() {
         infowindow.open(map, marker);
       });
-      
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      google.maps.event.trigger(marker, 'click', {
+        latLng: new google.maps.LatLng(0, 0)
+      });
   });
     
   directionsService = new google.maps.DirectionsService;
@@ -75,6 +81,7 @@ function calcRoute(lat, lng) {
             lat: lat,
             lng: lng
         };
+
         var request = {
           origin: start,
           destination: end,
