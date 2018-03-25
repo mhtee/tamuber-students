@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   
   resources :trips
   
-  get 'trips/pickup'
-  get 'trips/transit'
-  get 'trips/arrived'
+  get '/pickup', to: 'trips#pickup'
+  get '/transit', to: 'trips#transit'
+  get '/arrived', to: 'trips#arrived'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
