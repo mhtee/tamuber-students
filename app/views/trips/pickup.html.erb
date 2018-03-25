@@ -2,10 +2,10 @@
 
 <div id="mapid"></div>
 
-
-
+<p>Pickup location: <%= @route.startPoint %></p>
+<button type="button" onclick="alert('starting')">Start</button>
 
 <%= javascript_include_tag "map" %>
 <script type="text/javascript">
-  initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>); // this is your function in .js file
+  initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
 </script>

@@ -15,19 +15,28 @@ function initMap() {
 
 }
 
-function initMapWithMarker(lat, lng) {
+function initMapWithMarker(lat, lng, startPoint) {
   var myLatLng = {lat: lat, lng: lng};
-  
   map = new google.maps.Map(document.getElementById('mapid'), {
-    zoom: 15,
+    zoom: 16,
     center: {lat: lat, lng: lng},
     mapTypeControl: false
+  });
+  
+  var contentString = '<h3>' + startPoint + "</h3>"
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
   });
   
    var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      title: 'Pickup point'
+      title: startPoint
+    });
+    
+    marker.addListener('mouseover', function() {
+      infowindow.open(map, marker);
     });
 
 }
