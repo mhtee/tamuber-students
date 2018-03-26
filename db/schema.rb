@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   end
 
   create_table "trips", force: :cascade do |t|
+    t.integer "trip_id"
     t.integer "cart_id"
     t.integer "cart_route_id"
     t.datetime "created_at", null: false
