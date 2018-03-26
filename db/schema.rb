@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   enable_extension "plpgsql"
 
   create_table "cart_routes", force: :cascade do |t|
+    t.integer "cart_route_id"
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   end
 
   create_table "carts", force: :cascade do |t|
+    t.integer "cart_id"
     t.integer "IP"
     t.boolean "inUse"
     t.integer "trip_id"
