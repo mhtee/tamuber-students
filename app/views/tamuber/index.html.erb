@@ -20,6 +20,35 @@
     ros.on('close', function() {
         console.log('Connection to websocket server closed.');
     });
+    
+    // Publishing a Topic
+  // ------------------
+
+  var cartCommands = new ROSLIB.Topic({
+    ros : ros,
+    name : '/cart_commands',
+    messageType : 'std_msgs/String'
+  });
+
+  var command = new ROSLIB.Message({
+    command : "test_command"
+  });
+  cartCommands.publish(command);
+
+  // Subscribing to a Topic
+  // ----------------------
+
+  var listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/listener',
+    messageType : 'std_msgs/String'
+  });
+
+  listener.subscribe(function(message) {
+    console.log('Received message on ' + listener.name + ': ' + message.data);
+    listener.unsubscribe();
+  });
+
 </script>
 
 <a href='/trips/new' id='enter'>Enter site</a>
