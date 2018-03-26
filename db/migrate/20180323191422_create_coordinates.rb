@@ -4,7 +4,7 @@ class CreateCoordinates < ActiveRecord::Migration[5.1]
       t.decimal :lat
       t.decimal :lng
       
-      t.references :cart_route, foreign_key: true
+      t.references :cart_route #, foreign_key: true
 
       t.timestamps
     end

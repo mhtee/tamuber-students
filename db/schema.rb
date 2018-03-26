@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305190521) do
+ActiveRecord::Schema.define(version: 20180323191505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
-    t.integer "trip_id"
+    t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   create_table "carts", force: :cascade do |t|
     t.integer "IP"
     t.boolean "inUse"
-    t.integer "trip_id"
+    t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_carts_on_trip_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180305190521) do
   create_table "coordinates", force: :cascade do |t|
     t.decimal "lat"
     t.decimal "lng"
-    t.integer "cart_route_id"
+    t.bigint "cart_route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_route_id"], name: "index_coordinates_on_cart_route_id"

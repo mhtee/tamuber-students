@@ -2,4 +2,53 @@
 
 <h1> Welcome to TAMUber </h1>
 
+<script type="text/javascript" type="text/javascript">
+    // Connecting to ROS
+    // -----------------
+    var ros = new ROSLIB.Ros({
+        url : 'ws://166.155.203.130:9090'
+    });
+    
+    ros.on('connection', function() {
+        console.log('Connected to websocket server.');
+    });
+   
+    ros.on('error', function(error) {
+        console.log('Error connecting to websocket server: ', error);
+    });
+   
+    ros.on('close', function() {
+        console.log('Connection to websocket server closed.');
+    });
+    
+    // Publishing a Topic
+  // ------------------
+
+  var cartCommands = new ROSLIB.Topic({
+    ros : ros,
+    name : '/cart_commands',
+    messageType : 'std_msgs/String'
+  });
+
+  var command = new ROSLIB.Message({
+    command : "test_command"
+  });
+  cartCommands.publish(command);
+
+  // Subscribing to a Topic
+  // ----------------------
+
+  var listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/listener',
+    messageType : 'std_msgs/String'
+  });
+
+  listener.subscribe(function(message) {
+    console.log('Received message on ' + listener.name + ': ' + message.data);
+    listener.unsubscribe();
+  });
+
+</script>
+
 <a href='/trips/new' id='enter'>Enter site</a>

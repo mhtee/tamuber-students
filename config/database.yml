@@ -9,28 +9,30 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: 127.0.0.1
-  username: <%= ENV.fetch("USER") %>
-  template: template0
+  username: postgres
   timeout: 5000
 
 development:
   <<: *default
-  #database: db/development.sqlite3
-  database: db/dev-database-pg
-  template: template0
+  database: development
+  username: postgres
+  password: testpassword
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  #database: db/test.sqlite3
-  database: db/test-database-pg
+  database: test
+  username: postgres
+  password: testpassword
 
 production:
   <<: *default
-  #database: db/production.sqlite3
-  database: db/production-database-pg
+  database: production
+  username: postgres
+  password: testpassword
 
 cucumber:
   <<: *test

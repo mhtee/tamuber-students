@@ -4,7 +4,7 @@ class CreateCarts < ActiveRecord::Migration[5.1]
       t.integer :IP
       t.boolean :inUse
       
-      t.references :trip, foreign_key: true
+      t.references :trip #, foreign_key: true
 
       t.timestamps
     end
