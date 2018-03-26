@@ -1,6 +1,8 @@
 
 var directionsService;
 var map;
+var infowindow;
+var marker;
 
 function initMap() {
   // Initialize Direction Services  
@@ -36,12 +38,12 @@ function initMapWithMarker(lat, lng, startPoint) {
         contentString = contentString + "<p>Closest address: "+address+"</p>"
       }
       
-      var infowindow = new google.maps.InfoWindow({
+      infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 250
       });
         
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         title: startPoint
@@ -53,17 +55,22 @@ function initMapWithMarker(lat, lng, startPoint) {
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });
+     
       google.maps.event.trigger(marker, 'click', {
         latLng: new google.maps.LatLng(0, 0)
       });
   });
     
   directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(map);
 
 }
+function removeDirections() {
+  directionsDisplay.setMap(null);
+}
 function calcRoute(lat, lng) {
+  directionsDisplay.setMap(map)
   var start = {
     lat: 0,
     lng: 0
@@ -90,8 +97,10 @@ function calcRoute(lat, lng) {
         directionsService.route(request, function(result, status) {
           if (status == 'OK') {
             directionsDisplay.setDirections(result);
+            infowindow.close()
           }
         });
+        
       }, function() {
             alert('Directions to pickup point not available');
           });

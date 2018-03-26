@@ -1,7 +1,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body onload="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">
+<body>
     <h1> Go to pickup location </h1>
     
     <div id="mapid"></div>
@@ -25,6 +25,8 @@
         </tr>
     </table>
     
+    <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Show directions to start point</button>
+    <button type="button" onclick="removeDirections()">Remove directions to start point</button>
     <button type="button" onclick="alert('starting')">Start</button>
     
     <%= javascript_include_tag "map" %>
