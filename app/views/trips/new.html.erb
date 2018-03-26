@@ -2,8 +2,10 @@
 
 <div id="mapid"></div>
 
-
+<%= javascript_include_tag "jquery-3.3.1" %>
+<%= javascript_include_tag "roslib" %>
 <%= javascript_include_tag "map" %>
+<%= javascript_include_tag "new" %>
 <script type="text/javascript">
   initMap(); // this is your function in .js file
 </script>
@@ -11,7 +13,7 @@
 <table>
   <tr>
     <th>Starting point </th>
-    <th>Ending point</th>
+		<th>Ending point</th>
     <th>Lat</th>
     <th>Lng</th>
   </tr>
