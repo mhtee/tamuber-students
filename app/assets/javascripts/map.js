@@ -3,6 +3,7 @@ var directionsService;
 var map;
 var infowindow;
 var marker;
+var showDirections = true;
 
 function initMap() {
   // Initialize Direction Services  
@@ -18,8 +19,9 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
-  
-  
+  // var mapEl = $('#map');
+  // var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
+  //alert(optimized);
   var myLatLng = {lat: lat, lng: lng};
   map = new google.maps.Map(document.getElementById('mapid'), {
     zoom: 16,
@@ -46,8 +48,20 @@ function initMapWithMarker(lat, lng, startPoint) {
       marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        title: startPoint
+        title: startPoint,
+        optimized: false
       });
+      alert(marker.optimized);
+      if (!marker.optimized) { //make markers show up as dom elements so we can test them with cucumber
+        var myoverlay = new google.maps.OverlayView();
+
+        myoverlay.draw = function () {
+          this.getPanes().markerLayer.id = 'markers';
+        };
+  
+        myoverlay.setMap(map);
+      }
+     // marker.MarkerOptions.optimized = false;
       
       marker.addListener('mouseover', function() {
         infowindow.open(map, marker);
@@ -70,14 +84,20 @@ function removeDirections() {
   directionsDisplay.setMap(null);
 }
 function calcRoute(lat, lng) {
-  directionsDisplay.setMap(map)
+  if (showDirections == false) {
+    showDirections = !showDirections;
+    directionsDisplay.setMap(null);
+    return;
+  }
+  
+ 
   var start = {
     lat: 0,
     lng: 0
   };
   
   if (navigator.geolocation) {
-    
+    directionsDisplay.setMap(map)
     navigator.geolocation.getCurrentPosition(function(position) {
       start = {
         lat: position.coords.latitude,
@@ -108,7 +128,7 @@ function calcRoute(lat, lng) {
   else {
     alert("Directions to pickup point not available")
   }
-  
+  showDirections = !showDirections;
   
 }
 

@@ -4,7 +4,7 @@
 <body>
     <h1> Go to pickup location </h1>
     
-    <div id="mapid"></div>
+    <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
     
     <table>
         <tr>
@@ -25,8 +25,7 @@
         </tr>
     </table>
     
-    <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Show directions to start point</button>
-    <button type="button" onclick="removeDirections()">Remove directions to start point</button>
+    <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button>
     <button type="button" onclick="alert('starting')">Start</button>
     
     <%= javascript_include_tag "map" %>
