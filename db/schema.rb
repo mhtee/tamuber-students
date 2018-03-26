@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180305190521) do
 
-  create_table "trips", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "cart_route_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
     t.string "startPoint"
@@ -45,6 +38,13 @@ ActiveRecord::Schema.define(version: 20180305190521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_route_id"], name: "index_coordinates_on_cart_route_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "cart_route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
