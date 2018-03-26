@@ -14,6 +14,96 @@ function initMap() {
   });
 
 }
+
+function initMapWithMarker(lat, lng, startPoint) {
+  
+  
+  var myLatLng = {lat: lat, lng: lng};
+  map = new google.maps.Map(document.getElementById('mapid'), {
+    zoom: 16,
+    center: {lat: lat, lng: lng},
+    mapTypeControl: false
+  });
+  
+  
+  
+  var address = ""
+  //get human-readable address from given coordinates
+  $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyAD5o_wun4okt9SRxSFULafNoDBGGoq4Ac", function(data, status){
+      var contentString = '<h3>'+startPoint+"</h3>"
+      if(data.status == "OK") {
+        address = data.results[0].formatted_address
+        contentString = contentString + "<p>Closest address: "+address+"</p>"
+      }
+      
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 250
+      });
+        
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: startPoint
+      });
+      
+      marker.addListener('mouseover', function() {
+        infowindow.open(map, marker);
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      google.maps.event.trigger(marker, 'click', {
+        latLng: new google.maps.LatLng(0, 0)
+      });
+  });
+    
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay.setMap(map);
+
+}
+function calcRoute(lat, lng) {
+  var start = {
+    lat: 0,
+    lng: 0
+  };
+  
+  if (navigator.geolocation) {
+    
+    navigator.geolocation.getCurrentPosition(function(position) {
+      start = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+        };
+        
+        var end = {
+            lat: lat,
+            lng: lng
+        };
+
+        var request = {
+          origin: start,
+          destination: end,
+          travelMode: 'WALKING'
+        };
+        directionsService.route(request, function(result, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(result);
+          }
+        });
+      }, function() {
+            alert('Directions to pickup point not available');
+          });
+  } 
+  else {
+    alert("Directions to pickup point not available")
+  }
+  
+  
+}
+
+
 function calculateAndDisplayRoute(request) {
   
   var directionsDisplay = new google.maps.DirectionsRenderer;

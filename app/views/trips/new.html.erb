@@ -35,15 +35,25 @@
   <% end %>
 </table>
 
-<div class="dropdown">
-  <button class="dropbtn">Routes</button>
-    <div class="dropdown-content">
-  <% @cartRoutes.each do |cart_route| %>
-    <a>
-      <%= cart_route.endPoint %>
-    </a>
-  <% end %>
+<%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
+  <div style="display:none">
+    <%= form.text_field :trip_id, :value => @trip.id %>
   </div>
-</div>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Routes</button>
+      <div class="dropdown-content">
+    <% @cartRoutes.each do |cart_route| %>
+      <a>
+        <%= form.submit cart_route.startPoint+" to "+cart_route.endPoint %>
+        <div style="display:none">
+          <%= form.text_field :cart_route_id, :value => cart_route.id %>
+        </div>
+      </a>
+    <% end %>
+    </div>
+  </div>
+
+<% end %>
 
 
