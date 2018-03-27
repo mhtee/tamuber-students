@@ -46,10 +46,10 @@
     <% @cartRoutes.each do |cart_route| %>
       <a>
         <%= form.submit cart_route.startPoint+" to "+cart_route.endPoint %>
-        <div style="display:none">
+      </a>
+      <div style="display:none">
           <%= form.text_field :cart_route_id, :value => cart_route.id %>
         </div>
-      </a>
     <% end %>
     </div>
   </div>
