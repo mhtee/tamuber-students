@@ -19,13 +19,27 @@ end
 # end
 
 Then(/^I see a map$/) do
-    expect(page).to have_selector("div", id: "mapid");
+    #expect(page).to have_selector("div", id: "mapid");
+    page.should have_xpath "//script[contains(.,'new google.maps.Map')]"
+end
+
+Then(/^ I should see the screen titled (\w+)/) do |title|
+    expect(page).to have_selector("h1", :innerHTML => title)
 end
 
 Then (/^I see all routes displayed on the map$/) do
     #self.set_fixture_class cart_routes: CartRoute
-    #the correct number of routes are displayed on the map
-    expect(page).to have_selector("way", count: CartRoute.count)
+    @pass = true
+    @exp = expect(page).to have_xpath("//script[contains(.,'new google.maps.Map')]", count: CartRoute.count)
+    #the correct routes are displayed on the map
+    CartRoute.all.each { |route|
+        if !expect(page).to have_selector("input",  :text => "complete nonsense")
+            @pass = false;
+            break;
+        end
+    }
+    #expect(page).to have_selector("input",  :text => "test")
+    expect(@exp).to be true
 end
 
 Then(/^I should see the go to pickup point page for that route$/) do
