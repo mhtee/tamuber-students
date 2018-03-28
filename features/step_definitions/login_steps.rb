@@ -7,5 +7,5 @@ When("I click {string}") do |page_name|
 end
 
 Then("I should see the screen titled {string}") do |title|
-  response.should have_selector('h1', text: title)
+  expect(page).to have_selector('h1', text: title)
 end
