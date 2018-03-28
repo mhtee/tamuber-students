@@ -37,6 +37,8 @@ Then (/^I see all routes displayed on the map$/) do
         end
     end
     expect(@pass).to be true
+    expect(page).to have_selector("//div[@id => 'markers']", ) #a marker is here
+    #expect(page).to have_selector("//img[@src => 'https://maps.gstatic.com/mapfiles/undo_poly.png']", ) #a route is here
 end
 
 Then(/^I should see the go to pickup point page for that route$/) do

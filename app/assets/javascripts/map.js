@@ -19,8 +19,8 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
-  // var mapEl = $('#map');
-  // var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
+  var mapEl = $('#map');
+  var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
   //alert(optimized);
   var myLatLng = {lat: lat, lng: lng};
   map = new google.maps.Map(document.getElementById('mapid'), {
@@ -49,7 +49,7 @@ function initMapWithMarker(lat, lng, startPoint) {
         position: myLatLng,
         map: map,
         title: startPoint,
-        optimized: false
+        optimized: optimized
       });
       //alert(marker.optimized);
       if (!marker.optimized) { //make markers show up as dom elements so we can test them with cucumber
