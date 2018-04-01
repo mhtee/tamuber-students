@@ -6,6 +6,6 @@ Feature: Display a login form on the index page
   
   Scenario: Logging in
     Given I am at the home page
-    When I click "Enter site"
+    When I click "Get a ride"
     Then I should see the screen titled "Select Route"
     

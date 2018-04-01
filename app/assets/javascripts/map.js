@@ -1,6 +1,9 @@
 
 var directionsService;
 var map;
+var infowindow;
+var marker;
+var showDirections = true;
 
 function initMap() {
   // Initialize Direction Services  
@@ -16,8 +19,9 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
-  
-  
+  // var mapEl = $('#map');
+  // var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
+  //alert(optimized);
   var myLatLng = {lat: lat, lng: lng};
   map = new google.maps.Map(document.getElementById('mapid'), {
     zoom: 16,
@@ -36,16 +40,28 @@ function initMapWithMarker(lat, lng, startPoint) {
         contentString = contentString + "<p>Closest address: "+address+"</p>"
       }
       
-      var infowindow = new google.maps.InfoWindow({
+      infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 250
       });
         
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        title: startPoint
+        title: startPoint,
+        optimized: false
       });
+      //alert(marker.optimized);
+      if (!marker.optimized) { //make markers show up as dom elements so we can test them with cucumber
+        var myoverlay = new google.maps.OverlayView();
+
+        myoverlay.draw = function () {
+          this.getPanes().markerLayer.id = 'markers';
+        };
+  
+        myoverlay.setMap(map);
+      }
+     // marker.MarkerOptions.optimized = false;
       
       marker.addListener('mouseover', function() {
         infowindow.open(map, marker);
@@ -53,24 +69,35 @@ function initMapWithMarker(lat, lng, startPoint) {
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });
+     
       google.maps.event.trigger(marker, 'click', {
         latLng: new google.maps.LatLng(0, 0)
       });
   });
     
   directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(map);
 
 }
+function removeDirections() {
+  directionsDisplay.setMap(null);
+}
 function calcRoute(lat, lng) {
+  if (showDirections == false) {
+    showDirections = !showDirections;
+    directionsDisplay.setMap(null);
+    return;
+  }
+  
+ 
   var start = {
     lat: 0,
     lng: 0
   };
   
   if (navigator.geolocation) {
-    
+    directionsDisplay.setMap(map)
     navigator.geolocation.getCurrentPosition(function(position) {
       start = {
         lat: position.coords.latitude,
@@ -90,8 +117,10 @@ function calcRoute(lat, lng) {
         directionsService.route(request, function(result, status) {
           if (status == 'OK') {
             directionsDisplay.setDirections(result);
+            infowindow.close()
           }
         });
+        
       }, function() {
             alert('Directions to pickup point not available');
           });
@@ -99,7 +128,7 @@ function calcRoute(lat, lng) {
   else {
     alert("Directions to pickup point not available")
   }
-  
+  showDirections = !showDirections;
   
 }
 

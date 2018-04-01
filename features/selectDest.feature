@@ -6,8 +6,8 @@ Feature: Select route on a map
   Scenario: User enters the select destination page
     Given I am at the home page
     When I click enter
-    Then I see a map
-      And I see all routes displayed on the map
+    #Then I see a map
+    Then I see all routes displayed on the map
     
 #   @ignore
 #   Scenario: User selects a route and a TAMUber is available
