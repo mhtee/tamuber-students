@@ -7,55 +7,45 @@
 <%= javascript_include_tag "map" %>
 <%= javascript_include_tag "new" %>
 <script type="text/javascript">
-  initMap(); // this is your function in .js file
+	initMap(); // this is your function in .js file
 </script>
 
 <table>
-  <tr>
-    <th>Starting point </th>
+	<tr>
+		<th>Starting point </th>
 		<th>Ending point</th>
-    <th>Lat</th>
-    <th>Lng</th>
-  </tr>
+		<th>Lat</th>
+		<th>Lng</th>
+	</tr>
  
-  <% @cartRoutes.each do |cart_route| %>
+	<% @cartRoutes.each do |cart_route| %>
 
-    <% cart_route.coordinates.each do |coordinate| %>
-      <tr>
-        <td><%= cart_route.startPoint %></td>
-        <td><%= cart_route.endPoint %></td>
-        <td><%= coordinate.lat %></td>
-        <td><%= coordinate.lng %></td>
-      </tr>
-    <% end %>
-    <script type="text/javascript">
-      var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
-      // console.log(coordinates);
-      calculateAndDisplayRoute(coordinates); // this is your function in .js file
-    </script>
+		<% cart_route.coordinates.each do |coordinate| %>
+			<tr>
+				<td><%= cart_route.startPoint %></td>
+				<td><%= cart_route.endPoint %></td>
+				<td><%= coordinate.lat %></td>
+				<td><%= coordinate.lng %></td>
+			</tr>
+		<% end %>
+		<script type="text/javascript">
+			var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
+			// console.log(coordinates);
+			calculateAndDisplayRoute(coordinates); // this is your function in .js file
+		</script>
 
-  <% end %>
+	<% end %>
 </table>
 
 <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-  <div style="display:none">
-    <%= form.text_field :trip_id, :value => @trip.id %>
-  </div>
-  
-  <div class="dropdown">
-    <button class="dropbtn">Routes</button>
-      <div class="dropdown-content">
-    <% @cartRoutes.each do |cart_route| %>
-      <a>
-        <%= form.submit cart_route.startPoint+" to "+cart_route.endPoint %>
-      </a>
-      <div style="display:none">
-          <%= form.text_field :cart_route_id, :value => cart_route.id %>
-        </div>
-    <% end %>
-    </div>
-  </div>
-
+	<div style="display:none">
+		<%= form.text_field :trip_id, :value => @trip.id %>
+	</div>
+	<% routeOpts = [["Select a Trip" , nil]]; %>	
+	<% @cartRoutes.each do |cart_route| %>
+		<% routeOpts += [[cart_route.startPoint + " to " + cart_route.endPoint, cart_route.id]]; %> 
+	<% end %>
+	<%= form.select :cart_route_id , options_for_select(routeOpts) %>
+	<%= form.button "Start Trip", :type => "button", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
 <% end %>
-
 
