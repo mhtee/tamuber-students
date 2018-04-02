@@ -45,7 +45,7 @@
 	<% @cartRoutes.each do |cart_route| %>
 		<% routeOpts += [[cart_route.startPoint + " to " + cart_route.endPoint, cart_route.id]]; %> 
 	<% end %>
-	<%= form.select :cart_route_id , options_for_select(routeOpts) %>
+	<%= form.select :cart_route_id , options_for_select(routeOpts, selected: ["Select a Trip", nil])%>
 	<%= form.button "Start Trip", :type => "button", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
 <% end %>
 
