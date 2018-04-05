@@ -23,3 +23,7 @@ Rails.application.config.assets.precompile += %w( map.js )
 
 # Javascript for "new" view
 Rails.application.config.assets.precompile += %w( new.js )
+
+#Javascript for "pickup" view
+Rails.application.config.assets.precompile += %w( pickup.js )
+

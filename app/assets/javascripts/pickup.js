@@ -17,6 +17,9 @@ window.onload = function() {
 	ros.on('error', function(error) {
 		console.log("Error connecting to ROS: ", error);
 	});
-
+	ros.on('close', function() {
+		console.log("Connection to ROS closed");
+	});
+	
 }
 
