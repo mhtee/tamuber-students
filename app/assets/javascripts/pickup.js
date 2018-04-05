@@ -1,4 +1,4 @@
-indow.onload = function() {
+window.onload = function() {
 	var ros = new ROSLIB.Ros({
 		url : "ws://166.155.203.130:9090"
 	});
