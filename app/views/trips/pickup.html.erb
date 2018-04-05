@@ -1,6 +1,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+<%= javascript_include_tag("pickup") %>
 <body>
     <h1> Go to pickup location </h1>
     
@@ -28,7 +29,6 @@
     <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button>
     <button type="button" onclick="alert('starting')">Start</button>
     
-    <%= javascript_include_tag "map" %>
     <script type="text/javascript">
       initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
     </script>
