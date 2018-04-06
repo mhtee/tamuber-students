@@ -12,5 +12,14 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
+# JQuery
+Rails.application.config.assets.precompile += %w( jquery-3.3.1.js )
+
+# ROSLIB
+Rails.application.config.assets.precompile += %w( roslib.js )
+
 # Map display script for first page of site
 Rails.application.config.assets.precompile += %w( map.js )
+
+# Javascript for "new" view
+Rails.application.config.assets.precompile += %w( new.js )

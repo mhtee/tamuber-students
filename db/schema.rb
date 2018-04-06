@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20180305185607) do
 
   create_table "cart_routes", force: :cascade do |t|
+    t.integer "cart_route_id"
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
@@ -23,8 +24,11 @@ ActiveRecord::Schema.define(version: 20180305185607) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "IP", limit: 15, null: false
-    t.boolean "inUse", null: false
+
+    t.integer "cart_id"
+    t.integer "IP"
+    t.boolean "inUse"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
