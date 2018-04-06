@@ -10,7 +10,7 @@ Given (/^a TAMUber is\s?(not)? available$/) do |avail|
     end
 end
 
-When (/^I click (\w+)$/) do |clicked|
+When (/^I click (\D+)$/) do |clicked|
     click_link(clicked)
 end
 
@@ -27,16 +27,19 @@ Then(/^ I should see the screen titled (\w+)/) do |title|
     expect(page).to have_selector("h1", :innerHTML => title)
 end
 
-Then (/^I see all routes displayed on the map$/) do
-    @pass = true
+
+Then ('I see all routes displayed on the map') do 
+    pass = true
     #the correct routes are displayed on the map
     CartRoute.all.each do |route|
         if !(expect(page).to have_selector("//input", :text => route.startPoint + " to " + route.endPoint))
-            @pass = false
+            pass = false
             break
         end
     end
-    expect(@pass).to be true
+    expect(pass).to be true
+    #expect(page).to have_selector("//div[@id => 'markers']") #a marker is here
+    #expect(page).to have_selector("//img[@src => 'https://maps.gstatic.com/mapfiles/undo_poly.png']", ) #a route is here
 end
 
 Then(/^I should see the go to pickup point page for that route$/) do
