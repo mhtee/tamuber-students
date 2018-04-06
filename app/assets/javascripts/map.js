@@ -49,11 +49,7 @@ function initMapWithMarker(lat, lng, startPoint) {
         title: startPoint,
         optimized: false
       });
-<<<<<<< HEAD
-      
-=======
-      //alert(marker.optimized);
->>>>>>> d51095e7b7a1e7dd8ebb2a147ccc674f06163f82
+
       if (!marker.optimized) { //make markers show up as dom elements so we can test them with cucumber
         var myoverlay = new google.maps.OverlayView();
 

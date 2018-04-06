@@ -8,50 +8,39 @@
   initMap(); // this is your function in .js file
 </script>
 
-<table>
-  <tr>
-    <th>Starting point </th>
-    <th>Ending point</th>
-    <th>Lat</th>
-    <th>Lng</th>
-  </tr>
- 
-  <% @cartRoutes.each do |cart_route| %>
-
-    <% cart_route.coordinates.each do |coordinate| %>
-      <tr>
-        <td><%= cart_route.startPoint %></td>
-        <td><%= cart_route.endPoint %></td>
-        <td><%= coordinate.lat %></td>
-        <td><%= coordinate.lng %></td>
-      </tr>
-    <% end %>
-    <script type="text/javascript">
-      var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
-      // console.log(coordinates);
-      calculateAndDisplayRoute(coordinates); // this is your function in .js file
-    </script>
-
-  <% end %>
-</table>
 
 <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
   <div style="display:none">
     <%= form.text_field :trip_id, :value => @trip.id %>
   </div>
   
-  <div class="dropdown">
-    <button class="dropbtn">Routes</button>
-      <div class="dropdown-content">
-    <% @cartRoutes.each do |cart_route| %>
-      <a>
-        <%= form.submit cart_route.startPoint+" to "+cart_route.endPoint %>
-      </a>
-      <div style="display:none">
-          <%= form.text_field :cart_route_id, :value => cart_route.id %>
-        </div>
-    <% end %>
-    </div>
+  <div>
+    <h2>Routes</h2>
+    <table>
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+      <div>
+        <% @cartRoutes.each do |cart_route| %>
+          <tr>
+            <td><%= cart_route.startPoint %></td>
+            <td><%= cart_route.endPoint %></td>
+            <td><button type='button'>show</button></td>
+            <div style="display:none">
+              <%= form.text_field :cart_route_id, :value => cart_route.id %>
+              <script type="text/javascript">
+                var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
+                // console.log(coordinates);
+                calculateAndDisplayRoute(coordinates); // this is your function in .js file
+              </script>
+            </div>
+             
+          </tr>
+        <% end %>
+      </div>
+    </table>
+    <%= form.submit 'submit' %>
   </div>
 
 <% end %>
