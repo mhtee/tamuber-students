@@ -1,3 +1,99 @@
 // Place all the styles related to the Trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$accent: #500;
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  background: $accent;
+
+  h1 {
+    max-width: 40rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
+main > *:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+main {
+  h1 {
+    margin: 0.5rem;
+    font-size: 2em;
+    font-weight: bold;
+    color: $accent;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    color: #333;
+
+    tr:nth-child(odd) {
+      background: #eee;
+    }
+
+    th {
+      color: #fff;
+      background: $accent;
+    }
+
+    th, td {
+      padding: 0.375em 0.5em;
+    }
+  }
+
+  .no_headers {
+    th {
+      text-align: left;
+      color: #222;
+      background: none;
+    }
+  }
+
+  form {
+    text-align: center;
+  }
+
+  select, button {
+    padding: 0.25em;
+    border: 0.06em solid #aaa;
+    font-size: 1em;
+    line-height: 1;
+    color: #333;
+    background: #eee;
+  }
+
+  select:hover, button:hover {
+    cursor: pointer;
+  }
+
+  select:focus, button:focus {
+    border-color: #999;
+    outline: none;
+    background: #ddd;
+  }
+
+  option {
+    min-height: auto;
+  }
+}
+
+#mapid {
+  height: 20em;
+}
