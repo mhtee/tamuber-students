@@ -137,38 +137,54 @@ function calculateAndDisplayRoute(request) {
   
   var directionsDisplay = new google.maps.DirectionsRenderer;
   directionsDisplay.setMap(map);
-  var waypts = [];
   var startPoint;
   var endPoint;
+
+	var service_callback = function(response, status) {
+		if (status === 'OK') {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	}
+
   //var jsonData = JSON.parse(request);
-  for (var i = 0; i < request.length; i++) {
-    var counter = request[i];
-    if (i === 0) {
-      startPoint = new google.maps.LatLng(counter.lat, counter.lng);
-      continue;
-    }
-    if (i === request.length - 1) {
-      endPoint = new google.maps.LatLng(counter.lat, counter.lng);
-      continue;
-    }
-    waypts.push({
-      location: new google.maps.LatLng(counter.lat, counter.lng),
-      stopover: false
-    });
-  }
-  if (startPoint != null && endPoint != null) {
-    directionsService.route({
-    origin: startPoint,
-    destination: endPoint,
-    waypoints: waypts,
-    optimizeWaypoints: true,
-    travelMode: 'BICYCLING'}, 
-    function(response, status) {
-      if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
-  }
+	for (var i = 0, parts = [], max = 22; i < request.length; i = i+max) {
+		parts.push(request.slice(i, i + max + 1));
+		//console.log(parts);
+	}
+	
+  for (var i = 0; i < parts.length; i++) {
+		//	var counter = parts[i];
+		/*if (i === 0) {
+			startPoint = new google.maps.LatLng(counter.lat, counter.lng);
+			continue;
+		}
+		if (i === parts.length - 1) {
+			endPoint = new google.maps.LatLng(counter.lat, counter.lng);
+			continue;
+		}
+		waypts.push({
+			location: new google.maps.LatLng(counter.lat, counter.lng),
+			stopover: false
+		});*/
+		var waypts = [];
+		for (var j = 0; j < parts[i].length - 1; j++) {
+			waypts.push({
+				location : new google.maps.LatLng(parts[i][j].lat, parts[i][j].lng),
+				stopover : false
+			});
+			//console.log(parts[i][j].lng);
+		}
+		console.log(waypts);
+		var service_opts = {
+			origin: new google.maps.LatLng(parts[i][0].lat, parts[i][0].lng),
+			destination: new google.maps.LatLng(parts[i][parts[i].length-1].lat, parts[i][parts[i].length-1].lng),
+			waypoints: waypts,
+			optimizeWaypoints: true,
+			travelMode: 'BICYCLING'
+		};
+		directionsService.route(service_opts, service_callback);
+	}
 }
+

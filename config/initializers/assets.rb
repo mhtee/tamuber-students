@@ -27,3 +27,6 @@ Rails.application.config.assets.precompile += %w( new.js )
 #Javascript for "pickup" view
 Rails.application.config.assets.precompile += %w( pickup.js )
 
+#Javascript for "transit" view
+Rails.application.config.assets.precompile += %w( transit.js )
+

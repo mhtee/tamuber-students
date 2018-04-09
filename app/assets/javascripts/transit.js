@@ -21,13 +21,12 @@ function trackCart() {
 		messageType : 'visualization_msgs/Marker'
 	});
 	routeListener.subscribe(function(message) {
-		console.log(message);
+		console.log("Initial: " + message);
 		routeListener.unsubscribe();
+		var parsedWaypts = (message.points);
+		console.log(parsedWaypts);
+		calculateAndDisplayRoute(parsedWaypts);
 	});
-}
-
-function startTrip() {
-	window.location.href = "/transit";
 }
 
 window.onload = function() {

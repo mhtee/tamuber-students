@@ -19,4 +19,11 @@ class TripsController < ApplicationController
         @start = @route.coordinates[0]
         
     end
+
+    def transit
+        @route = Trip.find(session[:trip_id]).cart_route
+        #first coordinate is the start point
+        @start = @route.coordinates[0]
+        
+    end
 end

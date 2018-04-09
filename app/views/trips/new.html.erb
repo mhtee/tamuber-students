@@ -2,29 +2,23 @@
 
 <div id="mapid"></div>
 
-<%= javascript_include_tag "new" %>
 <script type="text/javascript">
 	initMap(); // this is your function in .js file
 </script>
 
+<br>
 <table>
 	<tr>
 		<th>Starting point </th>
 		<th>Ending point</th>
-		<th>Lat</th>
-		<th>Lng</th>
 	</tr>
  
 	<% @cartRoutes.each do |cart_route| %>
 
-		<% cart_route.coordinates.each do |coordinate| %>
 			<tr>
 				<td><%= cart_route.startPoint %></td>
 				<td><%= cart_route.endPoint %></td>
-				<td><%= coordinate.lat %></td>
-				<td><%= coordinate.lng %></td>
 			</tr>
-		<% end %>
 		<script type="text/javascript">
 			var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
 			// console.log(coordinates);
@@ -34,6 +28,7 @@
 	<% end %>
 </table>
 
+<br>
 <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
 	<div style="display:none">
 		<%= form.text_field :trip_id, :value => @trip.id %>
@@ -46,3 +41,4 @@
 	<%= form.button "Start Trip", :type => "button", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
 <% end %>
 
+<%= javascript_include_tag "new" %>
