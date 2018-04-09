@@ -43,7 +43,8 @@ main {
     border-collapse: collapse;
     margin: 0 auto;
     color: #333;
-
+    text-align: left;
+    
     tr:nth-child(odd) {
       background: #eee;
     }
@@ -51,11 +52,14 @@ main {
     th {
       color: #fff;
       background: $accent;
+      
     }
 
     th, td {
-      padding: 0.375em 0.5em;
+      padding: 0.375em 1em;
     }
+    
+    
   }
 
   .no_headers {
