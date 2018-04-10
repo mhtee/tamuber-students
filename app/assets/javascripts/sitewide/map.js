@@ -151,38 +151,22 @@ function calculateAndDisplayRoute(request) {
   //var jsonData = JSON.parse(request);
 	for (var i = 0, parts = [], max = 22; i < request.length; i = i+max) {
 		parts.push(request.slice(i, i + max + 1));
-		//console.log(parts);
 	}
-	
+	//console.log(parts)
   for (var i = 0; i < parts.length; i++) {
-		//	var counter = parts[i];
-		/*if (i === 0) {
-			startPoint = new google.maps.LatLng(counter.lat, counter.lng);
-			continue;
-		}
-		if (i === parts.length - 1) {
-			endPoint = new google.maps.LatLng(counter.lat, counter.lng);
-			continue;
-		}
-		waypts.push({
-			location: new google.maps.LatLng(counter.lat, counter.lng),
-			stopover: false
-		});*/
 		var waypts = [];
 		for (var j = 0; j < parts[i].length - 1; j++) {
 			waypts.push({
-				location : new google.maps.LatLng(parts[i][j].lat, parts[i][j].lng),
+				location : new google.maps.LatLng(parseFloat(parts[i][j].lat), parseFloat(parts[i][j].lng)),
 				stopover : false
 			});
-			//console.log(parts[i][j].lng);
 		}
-		console.log(waypts);
 		var service_opts = {
-			origin: new google.maps.LatLng(parts[i][0].lat, parts[i][0].lng),
-			destination: new google.maps.LatLng(parts[i][parts[i].length-1].lat, parts[i][parts[i].length-1].lng),
+			origin: new google.maps.LatLng(parseFloat(parts[i][0].lat), parseFloat(parts[i][0].lng)),
+			destination: new google.maps.LatLng(parseFloat(parts[i][parts[i].length-1].lat), parseFloat(parts[i][parts[i].length-1].lng)),
 			waypoints: waypts,
 			optimizeWaypoints: true,
-			travelMode: 'BICYCLING'
+			travelMode: 'WALKING'
 		};
 		directionsService.route(service_opts, service_callback);
 	}
