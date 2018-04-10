@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-cart_route = {:length => 9.99, :startPoint => 'Cyclotron Institute', :endPoint => 'HRBB', :cart_route_id => 1}
+cart_routes = {:length => 9.99, :startPoint => 'Cyclotron Institute', :endPoint => 'HRBB', :cart_route_id => 1}
 
 cart_routes.each do |cart_route|
   CartRoute.create!(cart_route)
