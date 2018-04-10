@@ -4,4 +4,32 @@
 You can select a destination on the Texas A&amp;M campus and a vehicle will be dispatched to take you from
 a pickup location to your destination.</p>
 
-<a href='/trips/new' id='enter'>Get a ride</a>
+<a href='/trips/cart_not_found' id='enter'>Get a ride</a>
+
+<script type="text/javascript" type="text/javascript">
+    // Connecting to ROS
+    // -----------------
+    var ros = new ROSLIB.Ros({
+        url : 'ws://166.155.203.131:9090'
+    });
+    
+    var link = "";
+    
+    ros.on('connection', function() {
+        console.log('Connected to websocket server.');
+        link = "/trips/new"
+        document.getElementById("enter").href = link;
+    });
+   
+    ros.on('error', function(error) {
+        console.log('Error connecting to websocket server: ', error);
+        link = "/trips/cart_not_found"
+        document.getElementById("enter").href = link;
+    });
+   
+    ros.on('close', function() {
+        console.log('Connection to websocket server closed.');
+        link = "/trips/cart_not_found"
+        document.getElementById("enter").href = link;
+    });
+</script>
