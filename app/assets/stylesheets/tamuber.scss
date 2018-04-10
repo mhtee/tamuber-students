@@ -1,3 +1,46 @@
 // Place all the styles related to the tamuber controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$fg: #fff;
+$bg: #500;
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: $fg;
+  background: $bg;
+}
+
+main > * {
+  text-align: center;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+a {
+  display: inline-block;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  color: $bg;
+  background: $fg;
+}

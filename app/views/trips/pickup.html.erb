@@ -1,29 +1,37 @@
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <h1> Go to pickup location </h1>
-    
+<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>')">
+  <header>
+    <h1>TAMUber Students</h1>
+  </header>
+  <main>
+    <h1>Go To Pickup Location</h1>
+
     <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
-    
-    <table>
-        <tr>
-            <td><strong> Pickup location </strong></td>
-            <td><%= @route.startPoint %></td>
-        </tr>
-        <tr>
-            <td><strong> Destination </strong></td>
-            <td><%= @route.endPoint %></td>
-        </tr>
-        <tr>
-            <td><strong> Cart Number </strong></td>
-            <td>TBD</td>
-        </tr>
-        <tr>
-            <td><strong>ETA</strong></td>
-            <td>TBD</td>
-        </tr>
+
+    <table class="no_headers">
+      <tr>
+        <th>Pickup location</th>
+        <td><%= @route.startPoint %></td>
+      </tr>
+      <tr>
+        <th>Destination</th>
+        <td><%= @route.endPoint %></td>
+      </tr>
+      <tr>
+        <th>Cart Number</th>
+        <td>TBD</td>
+      </tr>
+      <tr>
+        <th>ETA</th>
+        <td>TBD</td>
+      </tr>
     </table>
+  </main>
     
     <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button>
     <button type="button" onclick="startTrip()">Start</button>

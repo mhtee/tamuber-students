@@ -24,6 +24,11 @@ Rails.application.config.assets.precompile += %w( map.js )
 # Javascript for "new" view
 Rails.application.config.assets.precompile += %w( new.js )
 
+# Javascript for "cart_not_found" view
+Rails.application.config.assets.precompile += %w( cart_not_found.js )
+
+# CSS
+Rails.application.config.assets.precompile += %w( trips.css tamuber.css )
 #Javascript for "pickup" view
 Rails.application.config.assets.precompile += %w( pickup.js )
 
