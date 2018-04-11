@@ -1,49 +1,51 @@
-<h1> Select Route </h1>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body onload="initMap();rowColorChanger(<%= @cartRoutes.length %>);">
+  <header>
+    <h1>TAMUber Students</h1>
+  </header>
+  <main>
+    <h1>Select Route</h1>
+    <div id="mapid"></div>
 
-<div id="mapid"></div>
+    <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
+    <table>
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th></th>
+      </tr>
+      <div style='overflow-y:scroll;display:block'>
+        <% @cartRoutes.each do |cart_route| %>
+            <tr id='route_<%=cart_route.id%>' >
+              <td><%= cart_route.startPoint %></td>
+              <td><%= cart_route.endPoint %></td>
+              <td><button type='button' id='routebut_<%= cart_route.id %>' onclick='calculateAndDisplayRoute(<%= cart_route.coordinates.to_json.html_safe %>, "<%=cart_route.startPoint%>", "<%=cart_route.endPoint%>")'>Select</button></td>
+              
+            </tr>
+        <% end %>
+        <div style="display:none">
+          <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
+        </div>
+      </div>
+      
+    </table>
+    
 
-<%= javascript_include_tag "map" %>
-<%= javascript_include_tag "new" %>
-<script type="text/javascript">
-	initMap(); // this is your function in .js file
-</script>
-
-<table>
-	<tr>
-		<th>Starting point </th>
-		<th>Ending point</th>
-		<th>Lat</th>
-		<th>Lng</th>
-	</tr>
- 
-	<% @cartRoutes.each do |cart_route| %>
-
-		<% cart_route.coordinates.each do |coordinate| %>
-			<tr>
-				<td><%= cart_route.startPoint %></td>
-				<td><%= cart_route.endPoint %></td>
-				<td><%= coordinate.lat %></td>
-				<td><%= coordinate.lng %></td>
-			</tr>
-		<% end %>
-		<script type="text/javascript">
-			var coordinates = <%= cart_route.coordinates.to_json.html_safe %>; // for integer
-			// console.log(coordinates);
-			calculateAndDisplayRoute(coordinates); // this is your function in .js file
-		</script>
-
-	<% end %>
-</table>
-
-<%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-	<div style="display:none">
-		<%= form.text_field :trip_id, :value => @trip.id %>
-	</div>
-	<% routeOpts = [["Select a Trip" , nil]]; %>	
-	<% @cartRoutes.each do |cart_route| %>
-		<% routeOpts += [[cart_route.startPoint + " to " + cart_route.endPoint, cart_route.id]]; %> 
-	<% end %>
-	<%= form.select :cart_route_id , options_for_select(routeOpts, selected: ["Select a Trip", nil])%>
-	<%= form.button "Start Trip", :type => "button", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
-<% end %>
+    
+      <div style="display:none;">
+        <%= form.text_field :trip_id, :value => @trip.id %>
+      </div>
+      <% routeOpts = [["Select a Trip" , nil]]; %>	
+      <% @cartRoutes.each do |cart_route| %>
+        <% routeOpts += [[cart_route.startPoint + " to " + cart_route.endPoint, cart_route.id]]; %> 
+      <% end %>
+      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
+    <% end %>
+  </main>
+</body>
 

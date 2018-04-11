@@ -3,6 +3,7 @@ var directionsService;
 var map;
 var infowindow;
 var marker;
+var stmarker;
 var showDirections = true;
 
 function initMap() {
@@ -87,6 +88,7 @@ function calcRoute(lat, lng) {
   if (showDirections == false) {
     showDirections = !showDirections;
     directionsDisplay.setMap(null);
+    //stmarker= new google.maps.Marker({map: null});
     return;
   }
   
@@ -117,6 +119,12 @@ function calcRoute(lat, lng) {
         directionsService.route(request, function(result, status) {
           if (status == 'OK') {
             directionsDisplay.setDirections(result);
+              stmarker = new google.maps.Marker({
+              position: start,
+              map: map,
+              icon: '/if_Star_Gold_1398915.png',
+              optimized: false
+            });
             infowindow.close()
           }
         });
@@ -133,9 +141,10 @@ function calcRoute(lat, lng) {
 }
 
 
-function calculateAndDisplayRoute(request) {
-  
-  var directionsDisplay = new google.maps.DirectionsRenderer;
+function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
+  initMap();
+  selectRoute(startPointName + " to " + endPointName);
+  var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(map);
   var waypts = [];
   var startPoint;
@@ -145,10 +154,38 @@ function calculateAndDisplayRoute(request) {
     var counter = request[i];
     if (i === 0) {
       startPoint = new google.maps.LatLng(counter.lat, counter.lng);
+      var startMark = new google.maps.Marker({
+        position: startPoint,
+        map: map,
+        title: startPointName,
+        icon: '/if_Star_Gold_1398915.png'
+      });
+      
+      var startInfo = new google.maps.InfoWindow({
+        content: '<h4>' + startPointName + '</h4>',
+        maxWidth: 250
+      });
+      startMark.addListener('mouseover', function() {
+        startInfo.open(map, startMark);
+      });
       continue;
     }
     if (i === request.length - 1) {
       endPoint = new google.maps.LatLng(counter.lat, counter.lng);
+      
+      //add marker at end point
+      var endMark = new google.maps.Marker({
+        position: endPoint,
+        map: map,
+        title: endPointName,
+      });
+      var endInfo = new google.maps.InfoWindow({
+        content: '<h4>' + endPointName + '</h4>',
+        maxWidth: 250
+      });
+      endMark.addListener('mouseover', function() {
+        endInfo.open(map, endMark);
+      });
       continue;
     }
     waypts.push({
@@ -172,3 +209,4 @@ function calculateAndDisplayRoute(request) {
     });
   }
 }
+

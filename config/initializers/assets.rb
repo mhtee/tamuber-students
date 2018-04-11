@@ -23,3 +23,6 @@ Rails.application.config.assets.precompile += %w( map.js )
 
 # Javascript for "new" view
 Rails.application.config.assets.precompile += %w( new.js )
+
+# CSS
+Rails.application.config.assets.precompile += %w( trips.css tamuber.css )
