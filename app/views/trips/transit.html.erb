@@ -1,7 +1,42 @@
 <head>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<h1> In transit </h1>
+<body>
+  <header>
+    <h1>In transit</h1>
+  </header> 
+  <main>
+    <h1> Cart in transit </h1>
+    
+    <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
+    
+    <table>
+        <tr>
+            <td><strong> Pickup location </strong></td>
+            <td><%= @route.startPoint %></td>
+        </tr>
+        <tr>
+            <td><strong> Destination </strong></td>
+            <td><%= @route.endPoint %></td>
+        </tr>
+        <tr>
+            <td><strong> Cart Number </strong></td>
+            <td>TBD</td>
+        </tr>
+        <tr>
+            <td><strong>ETA</strong></td>
+            <td>TBD</td>
+        </tr>
+    </table>
+    <center>
+      <button type="button" onclick="alert('Trip ended')">End Trip</button>
+    </center>
+    
+    <%= javascript_include_tag("transit") %>
+  </main>
+</body>
+

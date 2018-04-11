@@ -8,3 +8,34 @@
     <p><a href='/trips/new' id='enter'>Get A Ride</a></p>
   </main>
 </body>
+
+
+<a href='/trips/cart_not_found' id='enter'>Cart not available</a>
+
+<script type="text/javascript" type="text/javascript">
+    // Connecting to ROS
+    // -----------------
+    var ros = new ROSLIB.Ros({
+        url : 'ws://166.155.203.131:9090'
+    });
+    
+    var link = "";
+    
+    ros.on('connection', function() {
+        console.log('Connected to websocket server.');
+        link = "/trips/new"
+        document.getElementById("enter").href = link;
+    });
+   
+    ros.on('error', function(error) {
+        console.log('Error connecting to websocket server: ', error);
+        link = "/trips/cart_not_found"
+        document.getElementById("enter").href = link;
+    });
+   
+    ros.on('close', function() {
+        console.log('Connection to websocket server closed.');
+        link = "/trips/cart_not_found"
+        document.getElementById("enter").href = link;
+    });
+</script>

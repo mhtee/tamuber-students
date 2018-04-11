@@ -3,14 +3,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag "new" %>
+  <script>
+    // initMap();
+    // rowColorChanger(<%= @cartRoutes.length %>);
+  </script>
+  
 </head>
-<body onload="initMap();rowColorChanger(<%= @cartRoutes.length %>);">
   <header>
     <h1>TAMUber Students</h1>
   </header>
+  <body onload='initMap();rowColorChanger(<%= @cartRoutes.length %>);'>
   <main>
     <h1>Select Route</h1>
-    <div id="mapid"></div>
+    <div id="mapid" name='mapid'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
     <table>
@@ -19,7 +25,7 @@
         <th>End</th>
         <th></th>
       </tr>
-      <div style='overflow-y:scroll;display:block'>
+      <div style='overflow-y:auto;display:block'>
         <% @cartRoutes.each do |cart_route| %>
             <tr id='route_<%=cart_route.id%>' >
               <td><%= cart_route.startPoint %></td>
@@ -27,6 +33,7 @@
               <td><button type='button' id='routebut_<%= cart_route.id %>' onclick='calculateAndDisplayRoute(<%= cart_route.coordinates.to_json.html_safe %>, "<%=cart_route.startPoint%>", "<%=cart_route.endPoint%>")'>Select</button></td>
               
             </tr>
+            
         <% end %>
         <div style="display:none">
           <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
@@ -35,7 +42,6 @@
       
     </table>
     
-
     
       <div style="display:none;">
         <%= form.text_field :trip_id, :value => @trip.id %>
@@ -48,4 +54,5 @@
     <% end %>
   </main>
 </body>
+
 

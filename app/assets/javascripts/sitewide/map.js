@@ -1,22 +1,26 @@
 
 var directionsService;
-var map;
+var map = null;
 var infowindow;
 var marker;
 var stmarker;
 var showDirections = true;
 
 function initMap() {
+  //alert('init map'); //FIXME
   // Initialize Direction Services  
   directionsService = new google.maps.DirectionsService;
-
+  //alert('directions service created'); //FIXME
   // Create a map.
-  map = new google.maps.Map(document.getElementById('mapid'), {
-    zoom: 15,
-    center: {lat: 30.6185, lng: -96.3365},
-    mapTypeControl: false
-  });
-
+  //alert(document.getElementById('mapid')); //FIXME
+  //if (!map) {
+    map = new google.maps.Map(document.getElementById('mapid'), {
+      zoom: 15,
+      center: {lat: 30.6185, lng: -96.3365},
+      mapTypeControl: false
+    });
+  //}
+  //alert('map initialized'); //FIXME
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
@@ -38,7 +42,7 @@ function initMapWithMarker(lat, lng, startPoint) {
       var contentString = '<h3>'+startPoint+"</h3>"
       if(data.status == "OK") {
         address = data.results[0].formatted_address
-        contentString = contentString + "<p>Closest address: "+address+"</p>"
+        //contentString = contentString + "<p>Closest address: "+address+"</p>"
       }
       
       infowindow = new google.maps.InfoWindow({
@@ -142,71 +146,86 @@ function calcRoute(lat, lng) {
 
 
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
+  //alert('reinit map');
   initMap();
+  //alert('done init map');
   selectRoute(startPointName + " to " + endPointName);
   var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(map);
-  var waypts = [];
   var startPoint;
   var endPoint;
+
+  //alert("starting service callback");
+	var service_callback = function(response, status) {
+		if (status === 'OK') {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	}
+  //alert("servece callback done"); //FIXME
   //var jsonData = JSON.parse(request);
-  for (var i = 0; i < request.length; i++) {
-    var counter = request[i];
-    if (i === 0) {
-      startPoint = new google.maps.LatLng(counter.lat, counter.lng);
-      var startMark = new google.maps.Marker({
-        position: startPoint,
-        map: map,
-        title: startPointName,
-        icon: '/if_Star_Gold_1398915.png'
-      });
-      
-      var startInfo = new google.maps.InfoWindow({
-        content: '<h4>' + startPointName + '</h4>',
-        maxWidth: 250
-      });
-      startMark.addListener('mouseover', function() {
-        startInfo.open(map, startMark);
-      });
-      continue;
-    }
-    if (i === request.length - 1) {
-      endPoint = new google.maps.LatLng(counter.lat, counter.lng);
-      
-      //add marker at end point
-      var endMark = new google.maps.Marker({
-        position: endPoint,
-        map: map,
-        title: endPointName,
-      });
-      var endInfo = new google.maps.InfoWindow({
-        content: '<h4>' + endPointName + '</h4>',
-        maxWidth: 250
-      });
-      endMark.addListener('mouseover', function() {
-        endInfo.open(map, endMark);
-      });
-      continue;
-    }
-    waypts.push({
-      location: new google.maps.LatLng(counter.lat, counter.lng),
-      stopover: false
+	for (var i = 0, parts = [], max = 22; i < request.length; i = i+max) {
+		parts.push(request.slice(i, i + max + 1));
+	}
+	//alert(parseFloat(parts[0][0].lat)); //FIXME
+	startPoint = new google.maps.LatLng(parseFloat(parts[0][0].lat), parseFloat(parts[0][0].lng));
+	//alert('created startPoint'); //FIXME
+    var startMark = new google.maps.Marker({
+      position: startPoint,
+      map: map,
+      title: startPointName,
+      icon: '/if_Star_Gold_1398915.png'
     });
-  }
-  if (startPoint != null && endPoint != null) {
-    directionsService.route({
-    origin: startPoint,
-    destination: endPoint,
-    waypoints: waypts,
-    optimizeWaypoints: true,
-    travelMode: 'BICYCLING'}, 
-    function(response, status) {
-      if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
+    
+    var startInfo = new google.maps.InfoWindow({
+      content: '<h4>' + startPointName + '</h4>',
+      maxWidth: 250
     });
-  }
+    startMark.addListener('mouseover', function() {
+      startInfo.open(map, startMark);
+    });
+    
+    endPoint = new google.maps.LatLng(parseFloat(parts[0][parts[0].length-1].lat), parseFloat(parts[0][parts[0].length-1].lng))
+    
+    //add marker at end point
+    var endMark = new google.maps.Marker({
+      position: endPoint,
+      map: map,
+      title: endPointName,
+    });
+    var endInfo = new google.maps.InfoWindow({
+      content: '<h4>' + endPointName + '</h4>',
+      maxWidth: 250
+    });
+    endMark.addListener('mouseover', function() {
+      endInfo.open(map, endMark);
+    });
+    
+    //alert("markers added"); //FIXME
+      
+	//console.log(parts)
+  for (var i = 0; i < parts.length; i++) {
+		var waypts = [];
+		for (var j = 0; j < parts[i].length - 1; j++) {
+			waypts.push({
+				location : new google.maps.LatLng(parseFloat(parts[i][j].lat), parseFloat(parts[i][j].lng)),
+				stopover : false
+			});
+		}
+		//alert(parts[i][parts[i].length-1].lat)
+		var service_opts = {
+			origin: new google.maps.LatLng(parseFloat(parts[i][0].lat), parseFloat(parts[i][0].lng)),
+			destination: new google.maps.LatLng(parseFloat(parts[i][parts[i].length-1].lat), parseFloat(parts[i][parts[i].length-1].lng)),
+			waypoints: waypts,
+			optimizeWaypoints: true,
+			travelMode: 'WALKING'
+		};
+		directionsService.route(service_opts, service_callback);
+	}
+}
+
+function selectRoute(route) {
+	$('#selectedRoute').text(route);
 }
 

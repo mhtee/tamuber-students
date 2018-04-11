@@ -3,6 +3,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag "pickup" %>
 </head>
 <body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>')">
   <header>
@@ -32,9 +33,15 @@
       </tr>
     </table>
 
+
     <form>
-      <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle Directions</button>
-      <button type="button" onclick="alert('starting')">Start</button>
+      <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button>
+      <button type="button" onclick="startTrip()">Start</button>
     </form>
   </main>
+    <script type="text/javascript">
+      initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
+    </script>
+
+
 </body>
