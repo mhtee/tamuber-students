@@ -10,6 +10,8 @@ class TripsController < ApplicationController
         @trip.save
     end
     
+    def specify
+    end
     
     
     def create
