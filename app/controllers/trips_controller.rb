@@ -9,6 +9,8 @@ class TripsController < ApplicationController
         @trip = Trip.new
         @trip.save
         @routeData = JSON.parse( params["routeData"], object_class: OpenStruct )
+        @seats = params[:seat_count]
+        @handicap = params[:handicap_access]
     end
     
     def specify
