@@ -5,10 +5,32 @@ class TripsController < ApplicationController
     end
     
     def new
-        #@cartRoutes = CartRoute.all
-        @routeData = JSON.parse(params[:routeData])
-        @seats = params[:seat_count]
-        @handicap = params[:handicap_access]
+        #filter routes by seat number and availability
+        seatcount = params[:seat_count].to_i
+        carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
+        
+        
+        #filter by handicap access
+        if (params[:handicap_access]) 
+            carts = carts.keep_if{ |h| h['handicap_access'] == true}
+        end
+        
+        routeDataHash = JSON.parse params[:routeData]
+        #abort routeDataHash.inspect
+        routesWithAvailCarts = routeDataHash.keep_if do |el|
+            cartAvail = false
+            carts.each do |cart|
+              #abort cart[:id].inspect
+              if el['cartID'].to_i == cart['id']
+                  cartAvail = true
+                  break
+              end 
+            end
+            cartAvail 
+        end
+         
+        @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
+        
         @trip = Trip.new
         @trip.save
        
