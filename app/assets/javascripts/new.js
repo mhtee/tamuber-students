@@ -1,10 +1,10 @@
 //set up handlers for selecting a route
 function rowColorChanger(numRoutes) {
-	for (var i = 0; i < numRoutes; i++) {
+	for (var i = -1; i < numRoutes; i++) {
 		$('#route_'+ (i + 1).toString()).click(function() {
 			
 			//reset all rows to normal color
-			for (var j = 0; j < numRoutes; j++) {
+			for (var j = -1; j < numRoutes; j++) {
 				$('#route_'+ (j + 1).toString()).css('background', '');
 			}
 			

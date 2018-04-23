@@ -5,17 +5,19 @@ class TripsController < ApplicationController
     end
     
     def new
-        @cartRoutes = CartRoute.all
-        @trip = Trip.new
-        @trip.save
-        @routeData = JSON.parse( params["routeData"], object_class: OpenStruct )
+        #@cartRoutes = CartRoute.all
+        @routeData = JSON.parse(params[:routeData])
         @seats = params[:seat_count]
         @handicap = params[:handicap_access]
+        @trip = Trip.new
+        @trip.save
+       
     end
     
     def specify
         #Dummy ips for testing the ros functions to get route data
-        @cartIPs = [ '192.168.1.1:9090', '10.265.43.62:9090', '165.193.43.23:9090' ]
+        #@cartIPs = [ '192.168.1.1:9090', '10.265.43.62:9090', '165.193.43.23:9090' ]
+        @cartIPs = Cart.all.select(:IP)
     end
     
     

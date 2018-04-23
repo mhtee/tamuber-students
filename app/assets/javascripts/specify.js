@@ -22,16 +22,43 @@ function rosGetInfo( url_ip, mock_id ){
 	var cartRouteInfo = [{ 
 		startPoint : "hrbb",
 		endPoint : "cyclo",
-		waypoints : [ "one", "two", "three", "four" ],
+		waypoints : [ 
+			{
+				lat: 30.6189722,
+				lng: -96.33876780000003
+			}, 
+			{
+				lat: 30.620338,
+				lng: -96.341335
+			}
+		],
 		cartID : mock_id
 	},{ 
 		startPoint : "zachry",
 		endPoint : "hrbb",
-		waypoints : [ "one", "two", "three", "four" ],
+		waypoints : [ 
+			{
+				lat: 30.621086,
+				lng: -96.340388
+			}, 
+			{ 
+				lat: 30.6189722,
+				lng: -96.33876780000003
+			}],
+			
 		cartID : mock_id
 	}];
 	if( mock_id == 1 ){
-		cartRouteInfo.push({ startPoint: "etb", endPoint: "msc", waypoints: ['o','t','h','f'], cartID: mock_id});
+		cartRouteInfo.push({ startPoint: "etb", endPoint: "msc", waypoints: [
+			{
+				lat: 30.622837,
+				lng: -96.339397
+			},
+			{
+				lat: 30.61228199999999,
+				lng: -96.34137599999997
+			}], 
+			cartID: mock_id});
 	}
 	if( mock_id == 0 ){
 		cartRouteInfo.pop();
