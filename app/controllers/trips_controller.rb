@@ -15,12 +15,11 @@ class TripsController < ApplicationController
             carts = carts.keep_if{ |h| h['handicap_access'] == true}
         end
         
+        #filter routes by available carts
         routeDataHash = JSON.parse params[:routeData]
-        #abort routeDataHash.inspect
         routesWithAvailCarts = routeDataHash.keep_if do |el|
             cartAvail = false
             carts.each do |cart|
-              #abort cart[:id].inspect
               if el['cartID'].to_i == cart['id']
                   cartAvail = true
                   break
@@ -29,6 +28,7 @@ class TripsController < ApplicationController
             cartAvail 
         end
          
+        #remove duplicate routes
         @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
         
         @trip = Trip.new
