@@ -7,19 +7,13 @@ class TripsController < ApplicationController
     def new
         routeDataStr = params[:routeData].to_s
         start = routeDataStr.split('startPoint')
-        #abort start.inspect
-        #detect if startPoint has letters in it-- if it doesn't, we don't have routeData from the last page and need to get it
-        # if ((start.length > 1) && (start[1].split(',')[0].at(3) === '\"\\"'))
-        #     redirect_to '/specify'
-        # end
+        
+        #redirect to specify if we don't have route data, otherwise act normally
         if (params[:routeData].class == 'string'.class)
-            # abort 'helllllooooooo??????'.inspect
-            # redirect_to '/specify'
             
-             #filter routes by seat number and availability
+            #filter routes by seat number and availability
             seatcount = params[:seat_count].to_i
             carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
-            
             
             #filter by handicap access
             if (params[:handicap_access]) 
@@ -27,7 +21,6 @@ class TripsController < ApplicationController
             end
             
             #filter routes by available carts
-            
             routeDataHash = JSON.parse params[:routeData]
             routesWithAvailCarts = routeDataHash.keep_if do |el|
                 cartAvail = false
@@ -48,8 +41,6 @@ class TripsController < ApplicationController
         else
             redirect_to '/specify'
         end
-        #abort params[:routeData].class.inspect
-        #abort (start[1].split(',')[0].at(7) == '\"').inspect
        
        
     end

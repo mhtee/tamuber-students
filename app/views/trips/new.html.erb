@@ -14,7 +14,7 @@
     <div id="mapid" name='mapid'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-      <table>
+      <table style='margin-bottom:10px'>
         <tr>
           <th>Start</th>
           <th>End</th>
@@ -44,7 +44,7 @@
         <%= text_field_tag 'startPoint'  %>
         <%= text_field_tag 'endPoint'  %>
       </div>
-      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
+      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :class => "btn btn-primary", :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
     <% end %>
   </main>
 </body>

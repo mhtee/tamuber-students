@@ -13,7 +13,7 @@
     <h1>Go To Pickup Location</h1>
 
     <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
-
+    <center><button type="button" class='btn btn-secondary btn-xs' onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button></center>
     <table class="no_headers">
       <tr>
         <th>Pickup location</th>
@@ -35,8 +35,8 @@
 
 
     <form>
-      <button type="button" onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button>
-      <button type="button" onclick="startTrip()">Start</button>
+     
+      <button type="button" class='btn btn-primary' onclick="startTrip()">Start</button>
     </form>
   </main>
     <script type="text/javascript">
