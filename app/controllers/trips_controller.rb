@@ -26,7 +26,18 @@ class TripsController < ApplicationController
             seats = [1..max_seats]
         end
         
-        @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats})
+        if params.has_key?(:handicap_access)
+            needs_assist = params[:handicap_access].to_s == "on"
+        else
+            needs_assist = false
+        end
+        
+        if needs_assist
+            @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats}).where(:carts => {:handicap_access => true})
+        else
+            @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats})
+        end
+        
         
         @trip = Trip.new
         @trip.save
