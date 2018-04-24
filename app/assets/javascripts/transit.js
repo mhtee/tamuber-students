@@ -88,7 +88,23 @@ function trackCart() {
 	});
 }
 
+function endTrip() {
+		//window.location.href = "/end";
+	var endTrip = new ROSLIB.Service({
+		ros : ros,
+		name : 'TBD',		// TODO: add ros service for ending trip
+		serviceType : 'TBD'
+	});
+	var request = new ROSLIB.ServiceRequest();
+	endTrip.callService(request, function(result) {
+		ros.close();
+		window.location.href = "/end";
+	});
+}
+
 window.onload = function() {
+	//document.getElementById("endbtn").style.display = "block";
+	//document.getElementById("endbtn").disabled = false;
 	ros.on('connection', function() {
 		console.log("ROS is connected");
 	});
@@ -108,6 +124,17 @@ window.onload = function() {
 		GPSListener.subscribe(function(message) {
 			GPSListener.unsubscribe();
 			addMarker(message);
+		});
+		var EndListener = new ROSLIB.Topic({
+			ros : ros,
+			name : 'TBD', // TODO: add ros topic
+			messageType : 'std_msgs/Bool'
+		});
+		EndListener.subscribe(function(message) {
+			if (message) {
+				document.getElementById("endbtn").style.display = "block";
+				document.getElementById("endbtn").disabled = false;
+			};
 		});
 	}, 5000);
 
