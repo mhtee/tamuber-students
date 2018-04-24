@@ -14,6 +14,10 @@ function rowColorChanger(numRoutes) {
 			//put this route's id into the form
 			$('#trip_cart_route_id').attr('value', $(this).attr('id')[$(this).attr('id').length - 1]);
 			
+			//put the associated route into the form.
+			//TODO get the actual cart ID.
+			$('#trip_cart_id').attr('value', "1");
+			
 			//display the "start trip" button
 			$('#startTrip').slideDown("slow");
 		});
