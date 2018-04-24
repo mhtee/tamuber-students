@@ -31,7 +31,7 @@ function formCheck(form_id) {
 
 window.onload = function() {
 	var ros = new ROSLIB.Ros({
-		url : "ws://166.155.203.130:9090"
+		url : "ws://166.155.203.130:9090" //this shouldn't be hardcoded, would be good to get it from tripscontroller @cartIPs
 	});
 	console.log(ros);
 	ros.on('connection', function() {

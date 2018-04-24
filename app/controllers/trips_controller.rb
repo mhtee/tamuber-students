@@ -13,7 +13,7 @@ class TripsController < ApplicationController
     
     def specify
         #Dummy ips for testing the ros functions to get route data
-        @cartIPs = [ '192.168.1.1:9090', '10.265.43.62:9090', '165.193.43.23:9090' ]
+        @cartIPs = [ "166.155.203.130:9090" ]
     end
     
     

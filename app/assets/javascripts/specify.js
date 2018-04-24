@@ -18,27 +18,24 @@ function formCheck( cartIPs, form_id) {
 // and get route data from that url with ROS channel "routes_info"
 // Returns [ {startPoint, endPoint, [waypoints], cartId} ]
 function rosGetInfo( url_ip, mock_id ){
-	// Dummy testing code
-	var cartRouteInfo = [{ 
-		startPoint : "hrbb",
-		endPoint : "cyclo",
-		waypoints : [ "one", "two", "three", "four" ],
-		cartID : mock_id
-	},{ 
-		startPoint : "zachry",
-		endPoint : "hrbb",
-		waypoints : [ "one", "two", "three", "four" ],
-		cartID : mock_id
-	}];
-	if( mock_id == 1 ){
-		cartRouteInfo.push({ startPoint: "etb", endPoint: "msc", waypoints: ['o','t','h','f'], cartID: mock_id});
-	}
-	if( mock_id == 0 ){
-		cartRouteInfo.pop();
-	}
-	// End testing code
-	// Prospective ROS code 
-	/* 
+	var cartRouteInfo;
+	return [
+		{start : "Cyclotron", end : "HRBB",
+        waypoints : [{lat : "30.620407", lng : "-96.341469"},
+        {lat : "30.6192385", lng : "-96.33849499999999"}]},
+        {start : "HRBB", end : "ETB",
+        waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
+        {lat : "30.620428", lng : "-96.337775"}, {lat : "30.622837", lng : "-96.33939699999999"}]},
+        {start : "HRBB", end : "EIC",
+        waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
+        {lat : "30.61856569999999", lng : "-96.34146819999999"}]},
+        {start : "RDMC", end : "SBISA",
+        waypoints : [{lat : "30.618236", lng : "-96.341011"},
+        {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]},
+        {start : "EIC", end : "SBISA",
+        waypoints : [{lat : "30.61856569999999", lng : "-96.34146819999999"},
+        {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]}];
+        
 	var ros = new ROSLIB.Ros({
 		url : url_ip
 	})
@@ -51,15 +48,76 @@ function rosGetInfo( url_ip, mock_id ){
 	var routeInfoListener = new ROSLIB.Topic({
 		ros : ros,
 		name : '/routes_info',
-		messageType : 'visualization_msgs/Marker'
+		messageType : 'std_msgs/String'
 	});
 	routeInfoListener.subscribe( function(message) {
 		cartRouteInfo = message
 		routeInfoListener.unsubscribe();
 		console.log("Got: " + cartRouteInfo);
 	});
-	*/
 	return cartRouteInfo; 
+}
+
+function publish_routes() {
+	
+	var routes = [
+		{start : "Cyclotron", end : "HRBB",
+        waypoints : [{lat : "30.620407", lng : "-96.341469"},
+        {lat : "30.6192385", lng : "-96.33849499999999"}]},
+        {start : "HRBB", end : "ETB",
+        waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
+        {lat : "30.620428", lng : "-96.337775"}, {lat : "30.622837", lng : "-96.33939699999999"}]},
+        {start : "HRBB", end : "EIC",
+        waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
+        {lat : "30.61856569999999", lng : "-96.34146819999999"}]},
+        {start : "RDMC", end : "SBISA",
+        waypoints : [{lat : "30.618236", lng : "-96.341011"},
+        {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]},
+        {start : "EIC", end : "SBISA",
+        waypoints : [{lat : "30.61856569999999", lng : "-96.34146819999999"},
+        {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]}];
+        
+    var num_of_routes = Math.floor(Math.random() * 4);
+        
+    var routes_to_return = [];
+        
+    if (num_of_routes == 0) {
+	    routes_to_return = [];
+	} else if (num_of_routes == 1) {
+	    routes_to_return.push(routes[Math.floor(Math.random() * 5)]);
+	} else if (num_of_routes == 2) {
+	    routes_to_return.push(routes[Math.floor(Math.random() * 2)]);
+	    routes_to_return.push(routes[Math.floor(Math.random() * 3) + 2]);
+	} else {
+	    routes_to_return.push(routes[Math.floor(Math.random() * 2)]);
+	    routes_to_return.push(routes[Math.floor(Math.random() * 3) + 1]);
+	    routes_to_return.push(routes[4]);
+	}
+	
+	var ros = new ROSLIB.Ros({
+		url : "ws://166.155.203.130:9090"
+	});
+	console.log(ros);
+	ros.on('connection', function() {
+		console.log("ROS is connected");
+	});
+	ros.on('error', function(error) {
+		console.log("Error connecting to ROS: ", error);
+	});
+	
+	var routesTopic = new ROSLIB.Topic({
+		ros: ros,
+		name: '/routes_info', // use a sensible namespace
+		messageType: 'std_msgs/String'
+	});
+	
+	var msg = new ROSLIB.Message({
+    	data: JSON.stringify(routes_to_return)
+	});
+	
+	console.log("MSG: ", JSON.stringify(routes_to_return));
+	
+	routesTopic.publish(msg);
 }
 
 function getRoutes( ipList ) {
@@ -71,4 +129,8 @@ function getRoutes( ipList ) {
 		routesData = routesData.concat( rosGetInfo(url_ip, ip) );
 	}
 	return routesData;
+}
+
+window.onload = function() {
+	publish_routes();
 }
