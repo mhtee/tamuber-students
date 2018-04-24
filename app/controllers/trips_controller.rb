@@ -5,34 +5,52 @@ class TripsController < ApplicationController
     end
     
     def new
-        #filter routes by seat number and availability
-        seatcount = params[:seat_count].to_i
-        carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
-        
-        
-        #filter by handicap access
-        if (params[:handicap_access]) 
-            carts = carts.keep_if{ |h| h['handicap_access'] == true}
-        end
-        
-        #filter routes by available carts
-        routeDataHash = JSON.parse params[:routeData]
-        routesWithAvailCarts = routeDataHash.keep_if do |el|
-            cartAvail = false
-            carts.each do |cart|
-              if el['cartID'].to_i == cart['id']
-                  cartAvail = true
-                  break
-              end 
+        routeDataStr = params[:routeData].to_s
+        start = routeDataStr.split('startPoint')
+        #abort start.inspect
+        #detect if startPoint has letters in it-- if it doesn't, we don't have routeData from the last page and need to get it
+        # if ((start.length > 1) && (start[1].split(',')[0].at(3) === '\"\\"'))
+        #     redirect_to '/specify'
+        # end
+        if (params[:routeData].class == 'string'.class)
+            # abort 'helllllooooooo??????'.inspect
+            # redirect_to '/specify'
+            
+             #filter routes by seat number and availability
+            seatcount = params[:seat_count].to_i
+            carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
+            
+            
+            #filter by handicap access
+            if (params[:handicap_access]) 
+                carts = carts.keep_if{ |h| h['handicap_access'] == true}
             end
-            cartAvail 
+            
+            #filter routes by available carts
+            
+            routeDataHash = JSON.parse params[:routeData]
+            routesWithAvailCarts = routeDataHash.keep_if do |el|
+                cartAvail = false
+                carts.each do |cart|
+                  if el['cartID'].to_i == cart['id']
+                      cartAvail = true
+                      break
+                  end 
+                end
+                cartAvail 
+            end
+             
+            #remove duplicate routes
+            @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
+            
+            @trip = Trip.new
+            @trip.save
+        else
+            redirect_to '/specify'
         end
-         
-        #remove duplicate routes
-        @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
-        
-        @trip = Trip.new
-        @trip.save
+        #abort params[:routeData].class.inspect
+        #abort (start[1].split(',')[0].at(7) == '\"').inspect
+       
        
     end
     
