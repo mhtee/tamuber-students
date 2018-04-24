@@ -15,10 +15,18 @@ class TripsController < ApplicationController
             end
         end
         
-        #@carts = Cart.where(inUse: false)
-        @carts = Cart.all
+        max_seats = 10
+        if params.has_key?(:seat_count)
+            min = params[:seat_count].to_i
+            if (min < 1)
+                min = 1
+            end
+           seats = [min .. max_seats] 
+        else
+            seats = [1..max_seats]
+        end
         
-        @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false})
+        @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats})
         
         @trip = Trip.new
         @trip.save
