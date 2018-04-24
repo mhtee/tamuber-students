@@ -5,24 +5,23 @@ class TripsController < ApplicationController
     end
     
     def new
-        @cartRoutes = CartRoute.all
-        @trip = Trip.new
-        @trip.save
-        
         cutoff = DateTime.current - 5.minutes
         Cart.all.each do |cart|
             if (cart.inUse)
                 if (cart.last_busy_check < cutoff)
                     cart.inUse = false
                     cart.save
-                else
-                    #@cartRoutes.reject(|r| cart.)
-                    #//TODO dont show routes for carts that are busy
                 end
             end
         end
-        @carts = Cart.where(inUse: false)
         
+        #@carts = Cart.where(inUse: false)
+        @carts = Cart.all
+        
+        @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false})
+        
+        @trip = Trip.new
+        @trip.save
         
     end
     

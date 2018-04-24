@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424061123) do
+ActiveRecord::Schema.define(version: 20180424080304) do
 
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180424061123) do
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_id"
     t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
   end
 
@@ -31,8 +32,8 @@ ActiveRecord::Schema.define(version: 20180424061123) do
     t.datetime "updated_at", null: false
     t.integer "seat_count"
     t.boolean "handicap_access"
-    t.datetime "last_busy_check"
     t.integer "cart_id"
+    t.datetime "last_busy_check"
     t.index ["trip_id"], name: "index_carts_on_trip_id"
   end
 
