@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20180420043758) do
     t.datetime "updated_at", null: false
     t.integer "seat_count"
     t.boolean "handicap_access"
+    t.index ["trip_id"], name: "index_carts_on_trip_id"
+
   end
 
   create_table "coordinates", force: :cascade do |t|
