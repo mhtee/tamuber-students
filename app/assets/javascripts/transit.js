@@ -30,7 +30,7 @@ function trackCart() {
 }
 
 function endTrip() {
-		window.location.href = "/end";
+		//window.location.href = "/end";
 	var endTrip = new ROSLIB.Service({
 		ros : ros,
 		name : 'TBD',		// TODO: add ros service for ending trip
@@ -39,7 +39,7 @@ function endTrip() {
 	var request = new ROSLIB.ServiceRequest();
 	endTrip.callService(request, function(result) {
 		ros.close();
-		window.href = "/end";
+		window.location.href = "/end";
 	});
 }
 
