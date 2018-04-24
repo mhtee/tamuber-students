@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305185607) do
+ActiveRecord::Schema.define(version: 20180424061123) do
 
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
+    t.integer "cart_route_id"
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,6 +29,10 @@ ActiveRecord::Schema.define(version: 20180305185607) do
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seat_count"
+    t.boolean "handicap_access"
+    t.datetime "last_busy_check"
+    t.integer "cart_id"
     t.index ["trip_id"], name: "index_carts_on_trip_id"
   end
 
