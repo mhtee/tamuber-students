@@ -15,9 +15,14 @@ class TripsController < ApplicationController
                 if (cart.last_busy_check < cutoff)
                     cart.inUse = false
                     cart.save
+                else
+                    #@cartRoutes.reject(|r| cart.)
+                    #//TODO dont show routes for carts that are busy
                 end
             end
         end
+        @carts = Cart.where(inUse: false)
+        
         
     end
     
