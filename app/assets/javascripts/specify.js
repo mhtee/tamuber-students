@@ -52,6 +52,7 @@ function rosGetInfo( url_ip, mock_id ){
 	});
 	routeInfoListener.subscribe( function(message) {
 		cartRouteInfo = message
+    publish_routes();
 		routeInfoListener.unsubscribe();
 		console.log("Got: " + cartRouteInfo);
 	});

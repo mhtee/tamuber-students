@@ -7,7 +7,7 @@
 </head>
 <body>
   <header>
-    <h1>In transit</h1>
+    <h1>TAMUber Students</h1>
   </header> 
   <main>
     <h1> Cart in transit </h1>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td><strong> Cart Number </strong></td>
-            <td>TBD</td>
+            <td><%= @cartNum %></td>
         </tr>
         <tr>
             <td><strong>ETA</strong></td>
@@ -33,7 +33,7 @@
         </tr>
     </table>
     <center>
-      <button type="button" onclick="alert('Trip ended')">End Trip</button>
+      <button type="button" class="btn btn-primary" onclick="alert('Trip ended')">End Trip</button>
     </center>
     
     <%= javascript_include_tag("transit") %>
