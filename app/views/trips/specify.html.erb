@@ -3,7 +3,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag "specify" %>
 </head>
+<body onload="getRoutes(<%= @cartIPs.to_json %>);">
   <header>
     <h1>TAMUber Students</h1>
   </header>
@@ -11,21 +13,16 @@
     <h1>Cart Requirements</h1>
     
     <p>Before we start, please specify your requirements for the cart.</p>
-
-    <form action="/trips/new" id="route_specs" method="get">
+  
+    <%= form_tag("/trips/new", method: "get", id: "route_specs") do |form| %>
+    <!--<form action="/trips/new" id="route_specs" method="get">-->
+      <%= hidden_field_tag "routeData" %>
       <div class="form-group">
         <label for="seat_count">Seats required</label>:
         <select id="seat_count" class="form-control" name="seat_count">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
+          <% (1..10).each do |num| %>
+            <option><%= num %></option>
+          <% end %>
         </select>
       </div>
       <div class="form-group">
@@ -36,8 +33,8 @@
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Find a ride</button>
-    </form>
+      <button type="button" class="btn btn-primary" id="findRide" onclick="formCheck(<%=@cartIPs.to_json%>,'route_specs');">Find a ride</button>
+    <% end %>
   </main>
 </body>
 

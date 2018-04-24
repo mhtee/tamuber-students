@@ -27,6 +27,9 @@ Rails.application.config.assets.precompile += %w( new.js )
 # CSS
 Rails.application.config.assets.precompile += %w( trips.css tamuber.css )
 
+#Javascript for "specify" view
+Rails.application.config.assets.precompile += %w( specify.js )
+
 #Javascript for "pickup" view
 Rails.application.config.assets.precompile += %w( pickup.js )
 
@@ -35,4 +38,3 @@ Rails.application.config.assets.precompile += %w( transit.js )
 
 #Javascript for "end" view
 Rails.application.config.assets.precompile += %w( end.js )
-
