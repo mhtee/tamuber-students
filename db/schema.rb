@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20180424080304) do
-
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
     t.string "startPoint"

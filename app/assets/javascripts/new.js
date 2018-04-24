@@ -25,9 +25,6 @@ function rowColorChanger(numRoutes) {
 
 }
 
-
-
-
 function formCheck(form_id) {
  if (document.getElementById("trip_cart_route_id").value == '') {
 		alert("Please select a route");
@@ -35,7 +32,6 @@ function formCheck(form_id) {
 		document.getElementById(form_id).submit();
 	}
 }
-
 
 window.onload = function() {
 	var ros = new ROSLIB.Ros({
@@ -48,7 +44,4 @@ window.onload = function() {
 	ros.on('error', function(error) {
 		console.log("Error connecting to ROS: ", error);
 	});
-
 }
-
-

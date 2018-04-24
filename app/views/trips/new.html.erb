@@ -26,8 +26,8 @@
         <th></th>
       </tr>
       <div style='overflow-y:auto;display:block'>
-        <% @cartRoutes.each do |cart_route| %>
-            <tr id='route_<%=cart_route.id%>' >
+        <% @routeData.each do |cart_route| %>
+            <tr id='route_<%=cart_route.cartID%>' >
               <td><%= cart_route.startPoint %></td>
               <td><%= cart_route.endPoint %></td>
               <td><button type='button' id='routebut_<%= cart_route.id %>' onclick='calculateAndDisplayRoute(<%= cart_route.coordinates.to_json.html_safe %>, "<%=cart_route.startPoint%>", "<%=cart_route.endPoint%>")'>Select</button></td>
