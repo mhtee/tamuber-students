@@ -26,9 +26,7 @@
                 <td id='row1_<%=i%>'><%= cart_route['startPoint'] %></td>
                 <td id='row2_<%=i%>'><%= cart_route['endPoint'] %></td>
                 <td><button type='button' id='routebut_<%= i %>' onclick='calculateAndDisplayRoute(<%= cart_route["waypoints"].to_json.html_safe %>, document.getElementById("row1_<%=i%>").innerHTML, document.getElementById("row2_<%=i%>").innerHTML), <%=i%>'>View</button></td>
-                
               </tr>
-              
           <% end %>
           <div style="display:none">
             <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
