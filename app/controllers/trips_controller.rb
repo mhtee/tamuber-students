@@ -44,10 +44,27 @@ class TripsController < ApplicationController
     
     
     def create
+        #load in trip info
         @trip = Trip.find(params[:trip][:trip_id])
-        @trip.cart_route = CartRoute.find(params[:trip][:cart_route_id])
+        @trip.cart = Cart.find(params[:trip][:cart_id])
+        @route = CartRoute.new
+        @route.startPoint = params[:startPoint]
+        @route.endPoint = params[:endPoint]
+        
+        #put waypoints into the route
+        coordArray = params[:wayPoints].split(';')
+        coordArray.each do |coord| 
+            latlng = coord.split(',')
+            @route.coordinates << Coordinate.create({:lat => latlng[0], :lng => latlng[1]})
+        end
+        @route.save
+        @trip.cart_route = @route
+       
+        @trip.cart.inUse = true;
+        @trip.save
         #put trip id in session in case user accidently closes tab
         session[:trip_id] = @trip.id
+        
         redirect_to '/pickup'
     end
     
@@ -55,6 +72,7 @@ class TripsController < ApplicationController
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
         @start = @route.coordinates[0]
+        @cartNum = Trip.find(session[:trip_id]).cart.id
         
     end
 
@@ -62,6 +80,7 @@ class TripsController < ApplicationController
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
         @start = @route.coordinates[0]
+        @cartNum = Trip.find(session[:trip_id]).cart.id
         
     end
     
