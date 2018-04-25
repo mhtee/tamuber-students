@@ -5,6 +5,7 @@ class TripsController < ApplicationController
     end
     
     def new
+        #abort params[:routeData].inspect
         routeDataStr = params[:routeData].to_s
         start = routeDataStr.split('startPoint')
         
@@ -14,6 +15,8 @@ class TripsController < ApplicationController
             #filter routes by seat number and availability
             seatcount = params[:seat_count].to_i
             carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
+            
+            #abort carts.inspect
             
             #filter by handicap access
             if (params[:handicap_access]) 
@@ -34,8 +37,9 @@ class TripsController < ApplicationController
             end
              
             #remove duplicate routes
+            #abort routesWithAvailCarts.inspect
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
-            puts( @routeData )
+            #puts( @routeData )
             
             @trip = Trip.new
             @trip.save

@@ -64,19 +64,19 @@ function rosGetInfo( url_ip, mock_id ){
 	var cartRouteInfo;
 	console.log( url_ip );
 	return [
-		{start : "Cyclotron", end : "HRBB",
+		{startPoint : "Cyclotron", endPoint : "HRBB",
         waypoints : [{lat : "30.620407", lng : "-96.341469"},
         {lat : "30.6192385", lng : "-96.33849499999999"}]},
-        {start : "HRBB", end : "ETB",
+        {startPoint : "HRBB", endPoint : "ETB",
         waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
         {lat : "30.620428", lng : "-96.337775"}, {lat : "30.622837", lng : "-96.33939699999999"}]},
-        {start : "HRBB", end : "EIC",
+        {startPoint : "HRBB", endPoint : "EIC",
         waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
         {lat : "30.61856569999999", lng : "-96.34146819999999"}]},
-        {start : "RDMC", end : "SBISA",
+        {startPoint : "RDMC", endPoint : "SBISA",
         waypoints : [{lat : "30.618236", lng : "-96.341011"},
         {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]},
-        {start : "EIC", end : "SBISA",
+        {startPoint : "EIC", endPoint : "SBISA",
         waypoints : [{lat : "30.61856569999999", lng : "-96.34146819999999"},
         {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]}];
         
@@ -106,19 +106,19 @@ function rosGetInfo( url_ip, mock_id ){
 function publish_routes() {
 	
 	var routes = [
-		{start : "Cyclotron", end : "HRBB",
+		{startPoint : "Cyclotron", startPoint : "HRBB",
         waypoints : [{lat : "30.620407", lng : "-96.341469"},
         {lat : "30.6192385", lng : "-96.33849499999999"}]},
-        {start : "HRBB", end : "ETB",
+        {startPoint : "HRBB", endPoint : "ETB",
         waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
         {lat : "30.620428", lng : "-96.337775"}, {lat : "30.622837", lng : "-96.33939699999999"}]},
-        {start : "HRBB", end : "EIC",
+        {startPoint : "HRBB", endPoint : "EIC",
         waypoints : [{lat : "30.6192385", lng : "-96.33849499999999"},
         {lat : "30.61856569999999", lng : "-96.34146819999999"}]},
-        {start : "RDMC", end : "SBISA",
+        {startPoint : "RDMC", endPoint : "SBISA",
         waypoints : [{lat : "30.618236", lng : "-96.341011"},
         {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]},
-        {start : "EIC", end : "SBISA",
+        {startPoint : "EIC", endPoint : "SBISA",
         waypoints : [{lat : "30.61856569999999", lng : "-96.34146819999999"},
         {lat : "30.616504", lng : "-96.342961"}, {lat : "30.6172110", lng : "-96.3437860"}]}];
         
@@ -174,7 +174,7 @@ function getRoutes( ipList ) {
 	// Query each cart in the provided ip list for their routes
 	for( var ip in ipList ) {
 		var url_ip = "ws://" + ipList[ip];
-		console.log('calling getting data with ' + JSON.stringify(url_ip) + JSON.stringify(ip));
+		//console.log('calling getting data with ' + JSON.stringify(url_ip) + JSON.stringify(ip));
 		routesData = routesData.concat( rosGetInfo(url_ip, ip) );
 	}
 	return routesData;

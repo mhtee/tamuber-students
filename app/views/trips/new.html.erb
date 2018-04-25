@@ -23,8 +23,8 @@
         <div style='overflow-y:auto;display:block'>
           <% @routeData.each_with_index do |cart_route, i| %>
               <tr id='route_<%= i %>' >
-                <td id='row1_<%=i%>'><%= cart_route['start'] %></td>
-                <td id='row2_<%=i%>'><%= cart_route['end'] %></td>
+                <td id='row1_<%=i%>'><%= cart_route['startPoint'] %></td>
+                <td id='row2_<%=i%>'><%= cart_route['endPoint'] %></td>
                 <td><button type='button' id='routebut_<%= i %>' onclick='calculateAndDisplayRoute(<%= cart_route["waypoints"].to_json.html_safe %>, document.getElementById("row1_<%=i%>").innerHTML, document.getElementById("row2_<%=i%>").innerHTML), <%=i%>'>View</button></td>
               </tr>
           <% end %>
