@@ -2,55 +2,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <%= javascript_include_tag "new" %>
-  <script>
-    // initMap();
-    // rowColorChanger(<%= @cartRoutes.length %>);
-  </script>
   
 </head>
   <header>
     <h1>TAMUber Students</h1>
   </header>
-  <body onload='initMap();rowColorChanger(<%= @cartRoutes.length %>);'>
+  <body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>
   <main>
     <h1>Select Route</h1>
     <div id="mapid" name='mapid'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-    <table>
-      <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th></th>
-      </tr>
-      <div style='overflow-y:auto;display:block'>
-        <% @routeData.each do |cart_route| %>
-            <tr id='route_<%=cart_route.cartID%>' >
-              <td><%= cart_route.startPoint %></td>
-              <td><%= cart_route.endPoint %></td>
-              <td><button type='button' id='routebut_<%= cart_route.id %>' onclick='calculateAndDisplayRoute(<%= cart_route.coordinates.to_json.html_safe %>, "<%=cart_route.startPoint%>", "<%=cart_route.endPoint%>")'>Select</button></td>
-              
-            </tr>
-            
-        <% end %>
+      <table style='margin-bottom:10px'>
+        <tr>
+          <th>Start</th>
+          <th>End</th>
+          <th></th>
+        </tr>
+        <div style='overflow-y:auto;display:block'>
+          <% @routeData.each_with_index do |cart_route, i| %>
+              <tr id='route_<%= i %>' >
+                <td id='row1_<%=i%>'><%= cart_route['startPoint'] %></td>
+                <td id='row2_<%=i%>'><%= cart_route['endPoint'] %></td>
+                <td><button type='button' id='routebut_<%= i %>' onclick='calculateAndDisplayRoute(<%= cart_route["waypoints"].to_json.html_safe %>, document.getElementById("row1_<%=i%>").innerHTML, document.getElementById("row2_<%=i%>").innerHTML), <%=i%>'>View</button></td>
+              </tr>
+          <% end %>
+          <div style="display:none">
+            <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
+          </div>
+        </div>
         <div style="display:none">
-          <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
+          <%= form.text_field :cart_id, :id => 'trip_cart_id' %>
         </div>
       </div>
-      
     </table>
     
     
       <div style="display:none;">
         <%= form.text_field :trip_id, :value => @trip.id %>
+        <%= form.text_field :cart_id, :id => 'routeCartID'  %>
+        <%= text_field_tag 'wayPoints' %>
+        <%= text_field_tag 'startPoint'  %>
+        <%= text_field_tag 'endPoint'  %>
       </div>
-      <% routeOpts = [["Select a Trip" , nil]]; %>	
-      <% @cartRoutes.each do |cart_route| %>
-        <% routeOpts += [[cart_route.startPoint + " to " + cart_route.endPoint, cart_route.id]]; %> 
-      <% end %>
-      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
+      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :class => "btn btn-primary", :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
     <% end %>
   </main>
 </body>

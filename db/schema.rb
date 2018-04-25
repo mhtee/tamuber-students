@@ -10,23 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420043758) do
+ActiveRecord::Schema.define(version: 20180425010649) do
 
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
+    t.integer "cart_route_id"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_id"
+    t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
+>>>>>>> d0e8b63d1c95ad39e0f5e0d5268bdb2f86de1b7b
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "IP"
+    t.string "IP"
     t.boolean "inUse"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seat_count"
     t.boolean "handicap_access"
+    t.integer "cart_id"
+    t.datetime "last_busy_check"
     t.index ["trip_id"], name: "index_carts_on_trip_id"
 
   end
