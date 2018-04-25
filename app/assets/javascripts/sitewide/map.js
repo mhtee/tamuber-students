@@ -136,7 +136,6 @@ function calcRoute(lat, lng) {
 
 
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
-  console.log("Reqeust" + request);
   initMap();
   selectRoute(startPointName + " to " + endPointName);
   var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
@@ -157,7 +156,7 @@ function calculateAndDisplayRoute(request, startPointName, endPointName, routeId
 		parts.push(request.slice(i, i + max + 1));
 	}
 	
-	startPoint = new google.maps.LatLng(parseFloat(parts[0][0].y), parseFloat(parts[0][0].x));
+	startPoint = new google.maps.LatLng(parseFloat(parts[0][0].lat), parseFloat(parts[0][0].lng));
 	
     var startMark = new google.maps.Marker({
       position: startPoint,
@@ -174,7 +173,7 @@ function calculateAndDisplayRoute(request, startPointName, endPointName, routeId
       startInfo.open(map, startMark);
     });
     
-    endPoint = new google.maps.LatLng(parseFloat(parts[0][parts[0].length-1].y), parseFloat(parts[0][parts[0].length-1].x))
+    endPoint = new google.maps.LatLng(parseFloat(parts[0][parts[0].length-1].lat), parseFloat(parts[0][parts[0].length-1].lng))
     
     //add marker at end point
     var endMark = new google.maps.Marker({
@@ -194,14 +193,14 @@ function calculateAndDisplayRoute(request, startPointName, endPointName, routeId
 		var waypts = [];
 		for (var j = 0; j < parts[i].length - 1; j++) {
 			waypts.push({
-				location : new google.maps.LatLng(parseFloat(parts[i][j].y), parseFloat(parts[i][j].x)),
+				location : new google.maps.LatLng(parseFloat(parts[i][j].lat), parseFloat(parts[i][j].lng)),
 				stopover : false
 			});
 		}
 		//alert(parts[i][parts[i].length-1].lat)
 		var service_opts = {
-			origin: new google.maps.LatLng(parseFloat(parts[i][0].y), parseFloat(parts[i][0].x)),
-			destination: new google.maps.LatLng(parseFloat(parts[i][parts[i].length-1].y), parseFloat(parts[i][parts[i].length-1].x)),
+			origin: new google.maps.LatLng(parseFloat(parts[i][0].lat), parseFloat(parts[i][0].lng)),
+			destination: new google.maps.LatLng(parseFloat(parts[i][parts[i].length-1].lat), parseFloat(parts[i][parts[i].length-1].lng)),
 			waypoints: waypts,
 			optimizeWaypoints: true,
 			travelMode: 'WALKING'
