@@ -35,6 +35,7 @@ class TripsController < ApplicationController
              
             #remove duplicate routes
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
+            puts( @routeData )
             
             @trip = Trip.new
             @trip.save

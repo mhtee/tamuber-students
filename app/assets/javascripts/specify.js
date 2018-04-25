@@ -19,6 +19,7 @@ function formCheck( cartIPs, form_id) {
 // Returns [ {startPoint, endPoint, [waypoints], cartId} ]
 function rosGetInfo( url_ip, mock_id ){
 	var cartRouteInfo;
+	console.log( url_ip );
 	return [
 		{start : "Cyclotron", end : "HRBB",
         waypoints : [{y : "30.620407", x : "-96.341469"},
@@ -36,27 +37,27 @@ function rosGetInfo( url_ip, mock_id ){
         waypoints : [{y : "30.61856569999999", x : "-96.34146819999999"},
         {y : "30.616504", x : "-96.342961"}, {y : "30.6172110", x : "-96.3437860"}]}];
         
-	var ros = new ROSLIB.Ros({
-		url : url_ip
-	})
-	ros.on('connection', function(){
-		console.log("ROS is connected");
-	});
-	ros.on('error', function(error) {
-		console.log("Error connecting to ROS: ", error);
-	});
-	var routeInfoListener = new ROSLIB.Topic({
-		ros : ros,
-		name : '/routes_info',
-		messageType : 'std_msgs/String'
-	});
-	routeInfoListener.subscribe( function(message) {
-		cartRouteInfo = message
-    publish_routes();
-		routeInfoListener.unsubscribe();
-		console.log("Got: " + cartRouteInfo);
-	});
-	return cartRouteInfo; 
+	// var ros = new ROSLIB.Ros({
+	// 	url : url_ip
+	// })
+	// ros.on('connection', function(){
+	// 	console.log("ROS is connected");
+	// });
+	// ros.on('error', function(error) {
+	// 	console.log("Error connecting to ROS: ", error);
+	// });
+	// var routeInfoListener = new ROSLIB.Topic({
+	// 	ros : ros,
+	// 	name : '/routes_info',
+	// 	messageType : 'std_msgs/String'
+	// });
+	// routeInfoListener.subscribe( function(message) {
+	// 	cartRouteInfo = message
+ //   publish_routes();
+	// 	routeInfoListener.unsubscribe();
+	// 	console.log("Got: " + cartRouteInfo);
+	// });
+	// return cartRouteInfo; 
 }
 
 function publish_routes() {
@@ -126,7 +127,7 @@ function getRoutes( ipList ) {
 	
 	// Query each cart in the provided ip list for their routes
 	for( var ip in ipList ) {
-		var url_ip = "ws://" + ipList[ip];
+		var url_ip = "ws://" + ipList[ip].IP;
 		routesData = routesData.concat( rosGetInfo(url_ip, ip) );
 	}
 	return routesData;
