@@ -18,7 +18,6 @@ function formCheck( cartIPs, cartIDs, form_id) {
 // and get route data from that url with ROS channel "routes_info"
 // Returns [ {startPoint, endPoint, [waypoints], cartId} ]
 function rosGetInfo( url_ip, mock_id ){
-
 	var cartRouteInfo;
 	var rosdata = publish_routes();
 	for( var a in rosdata ){
@@ -122,9 +121,6 @@ function getRoutes( ipList, idList ) {
 	
 	// Query each cart in the provided ip list for their routes
 	for( var idx in ipList ) {
-		console.log( "IP: " + ipList[idx].IP );
-		console.log( "id: " + idList[idx].id );
-		console.log('\n');
 		var url_ip = "ws://" + ipList[idx].IP;
 		routesData = routesData.concat( rosGetInfo(url_ip, idList[idx].id) );
 	}
