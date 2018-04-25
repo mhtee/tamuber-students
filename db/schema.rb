@@ -16,9 +16,11 @@ ActiveRecord::Schema.define(version: 20180425010649) do
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
+    t.integer "cart_route_id"
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_id"
     t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
   end
 
@@ -30,6 +32,8 @@ ActiveRecord::Schema.define(version: 20180425010649) do
     t.datetime "updated_at", null: false
     t.integer "seat_count"
     t.boolean "handicap_access"
+    t.integer "cart_id"
+    t.datetime "last_busy_check"
     t.index ["trip_id"], name: "index_carts_on_trip_id"
   end
 

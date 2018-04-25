@@ -20,6 +20,10 @@ function updateSelectedRoute(routes) {
 			var coordsString = coordsToString(routes[$(this).attr('id')[$(this).attr('id').length - 1]].waypoints);
 			$('#wayPoints').attr('value', coordsString);
 			
+			//put the associated route into the form.
+			//TODO get the actual cart ID.
+			$('#trip_cart_id').attr('value', "1");
+			
 			//display the "start trip" button
 			$('#startTrip').slideDown("slow");
 		});

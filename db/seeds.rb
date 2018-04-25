@@ -31,3 +31,9 @@ carts = [ {:IP => "202\.168\.1\.1\:9090", :inUse => false, :seat_count => 2, :ha
 carts.each do |cart|
   Cart.create!(cart)
 end
+
+carts = [{:IP => 0, :inUse => false, :trip_id => -1, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :cart_id => 1}]
+
+carts.each do |cart|
+  Cart.create!(cart)
+end
