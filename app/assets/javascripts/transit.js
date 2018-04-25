@@ -32,7 +32,7 @@ function calculate_eta(current, points) {
     points[i].distance = points_distance(current, points[i]);
   }
   let sorted_points = points.slice();
-  sorted_points.sort((a, b) => a.distance-b.distance);
+  //sorted_points.sort((a, b) => a.distance-b.distance);
   let shortest = sorted_points[0];
   let second = sorted_points[1];
   let remaining = 0.0;
