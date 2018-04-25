@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20180425010649) do
     t.datetime "updated_at", null: false
     t.integer "cart_id"
     t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
->>>>>>> d0e8b63d1c95ad39e0f5e0d5268bdb2f86de1b7b
   end
 
   create_table "carts", force: :cascade do |t|
