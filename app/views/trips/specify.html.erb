@@ -5,7 +5,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <%= javascript_include_tag "specify" %>
 </head>
-<body onload="getRoutes(<%= @cartIPs.to_json %>);">
+<body>
   <header>
     <h1>TAMUber Students</h1>
   </header>
@@ -14,13 +14,13 @@
     
     <p>Before we start, please specify your requirements for the cart.</p>
   
-    <%= form_tag("/trips/new", method: "get", id: "route_specs") do |form| %>
+    <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
     <!--<form action="/trips/new" id="route_specs" method="get">-->
       <%= hidden_field_tag "routeData" %>
       <div class="form-group">
         <label for="seat_count">Seats required</label>:
         <select id="seat_count" class="form-control" name="seat_count">
-          <% (1..10).each do |num| %>
+          <% (1..6).each do |num| %>
             <option><%= num %></option>
           <% end %>
         </select>
@@ -33,7 +33,7 @@
           </label>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" id="findRide" onclick="formCheck(<%=@cartIPs.to_json%>,'route_specs');">Find a ride</button>
+      <button type="button" class="btn btn-primary" id="findRide" onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'>Find a ride</button>
     <% end %>
   </main>
 </body>
