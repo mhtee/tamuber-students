@@ -35,6 +35,7 @@ class TripsController < ApplicationController
              
             #remove duplicate routes
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
+            puts( "THE ROUTE DATA" )
             puts( @routeData )
             
             @trip = Trip.new
@@ -49,6 +50,7 @@ class TripsController < ApplicationController
     def specify
         #Dummy ips for testing the ros functions to get route data
         @cartIPs = Cart.all.select(:IP)
+        @cartIDs = Cart.all.select(:id)
     end
     
     
