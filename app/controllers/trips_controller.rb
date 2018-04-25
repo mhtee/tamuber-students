@@ -103,6 +103,8 @@ class TripsController < ApplicationController
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
         @start = @route.coordinates[0]
+        Trip.find(session[:trip_id]).cart.inUse = false
+        Trip.find(session[:trip_id]).cart.save
     end
 
 end
