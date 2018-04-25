@@ -88,7 +88,6 @@ class TripsController < ApplicationController
         @start = @route.coordinates[0]
         @cartNum = Trip.find(session[:trip_id]).cart.id
         
-        abort Trip.find(session[:trip_id]).cart.inspect
         
     end
 
