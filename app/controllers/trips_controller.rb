@@ -72,6 +72,10 @@ class TripsController < ApplicationController
              
             #remove duplicate routes
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
+            if @routeData.length == 0
+                flash[:alert] = 'No carts available with those specifications'
+                redirect_to '/specify'
+            end
             @trip = Trip.new
             @trip.save
         else
@@ -83,6 +87,7 @@ class TripsController < ApplicationController
         #Dummy ips for testing the ros functions to get route data
         @cartIPs = Cart.all.select(:IP)
         @cartIDs = Cart.all.select(:id)
+        @message = flash[:alert]
     end
     
     def create
@@ -111,13 +116,14 @@ class TripsController < ApplicationController
         
         currentCart = @trip.cart
         #abort currentCart.inspect
-        if currentCart
+        if currentCart.inUse == false
             currentCart.inUse = true
             currentCart.last_busy_check = DateTime.current
             currentCart.save
             redirect_to '/pickup'
         else
-            redirect_to '/trips/new'
+            flash[:alert] = 'Route is no longer available'
+            redirect_to '/specify'
         end
         
         

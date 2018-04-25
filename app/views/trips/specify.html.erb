@@ -35,6 +35,7 @@
       </div>
       <button type="button" class="btn btn-primary" id="findRide" onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'>Find a ride</button>
     <% end %>
+    <center><p style='margin-top:5%;color:red'><%=@message%></p></center>
   </main>
 </body>
 
