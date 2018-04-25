@@ -56,7 +56,7 @@ end
 group :production do
   # Use Postgres as the database for active record
   gem 'pg'
-  gem 'yarn'
+  gem 'uglifier', :git => 'https://github.com/lautis/uglifier.git', :ref => '9abd18da4f5eb2fb4b5aab8023f08470221743c1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
