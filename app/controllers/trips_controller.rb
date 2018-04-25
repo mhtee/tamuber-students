@@ -73,6 +73,8 @@ class TripsController < ApplicationController
         @trip.cart_route = @route
        
         @trip.cart.inUse = true;
+        @trip.cart.save
+        
         @trip.save
         #put trip id in session in case user accidently closes tab
         session[:trip_id] = @trip.id
@@ -85,6 +87,8 @@ class TripsController < ApplicationController
         #first coordinate is the start point
         @start = @route.coordinates[0]
         @cartNum = Trip.find(session[:trip_id]).cart.id
+        
+        abort Trip.find(session[:trip_id]).cart.inspect
         
     end
 
