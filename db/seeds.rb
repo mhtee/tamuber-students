@@ -32,7 +32,7 @@ carts.each do |cart|
   Cart.create!(cart)
 end
 
-carts = [{:IP => 0, :inUse => false, :trip_id => -1, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :id => 3}]
+carts = [{:IP => 0, :inUse => false, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :id => 3}]
 
 carts.each do |cart|
   Cart.create!(cart)
