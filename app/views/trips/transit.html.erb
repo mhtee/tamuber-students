@@ -1,10 +1,10 @@
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<%= javascript_include_tag("transit") %>
 <body>
   <header>
     <h1>TAMUber Students</h1>
@@ -29,14 +29,16 @@
         </tr>
         <tr>
             <td><strong>ETA</strong></td>
-            <td>TBD</td>
+            <td id="eta">TBD</td>
         </tr>
     </table>
     <center>
-      <button type="button" class="btn btn-primary" onclick="alert('Trip ended')">End Trip</button>
+      <button id="endbtn" style="display:none" disabled="true" type="button" onclick="endTrip();">End Trip</button>
     </center>
     
-    <%= javascript_include_tag("transit") %>
   </main>
+  <script type="text/javascript">
+    initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
+  </script>
 </body>
 

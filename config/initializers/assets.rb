@@ -35,3 +35,6 @@ Rails.application.config.assets.precompile += %w( pickup.js )
 
 #Javascript for "transit" view
 Rails.application.config.assets.precompile += %w( transit.js )
+
+#Javascript for "end" view
+Rails.application.config.assets.precompile += %w( end.js )
