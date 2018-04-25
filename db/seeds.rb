@@ -24,7 +24,7 @@
 # end
 
 #'192.168.1.1:9090', '10.265.43.62:9090', '165.193.43.23:9090'
-carts = [ {:IP => "202\.168\.1\.1\:9090", :inUse => false, :seat_count => 2, :handicap_access => true, :id => 0},
+carts = [ {:IP => "192.168.1.1:9090", :inUse => false, :seat_count => 2, :handicap_access => true, :id => 0},
           {:IP => "10.265.43.62:9090", :inUse => false, :seat_count => 6, :handicap_access => false, :id => 1},
           {:IP => "165.193.43.23:9090", :inUse => false, :seat_count => 4, :handicap_access => false, :id => 2}]
           
@@ -32,7 +32,7 @@ carts.each do |cart|
   Cart.create!(cart)
 end
 
-carts = [{:IP => 0, :inUse => false, :trip_id => -1, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :cart_id => 1}]
+carts = [{:IP => 0, :inUse => false, :trip_id => -1, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :id => 3}]
 
 carts.each do |cart|
   Cart.create!(cart)

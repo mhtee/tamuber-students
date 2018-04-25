@@ -102,23 +102,25 @@ class TripsController < ApplicationController
         @route.save
         @trip.cart_route = @route
        
-        @trip.cart.inUse = true;
-        @trip.save
+        #@trip.cart.inUse = true;
+        #@trip.save
         #put trip id in session in case user accidently closes tab
         session[:trip_id] = @trip.id
         
         #Mark the cart as busy with a timestamp
-        currentCart = Cart.where(cart_id: params[:trip][:cart_id])
-        if currentCart.exists?
-            currentCart = currentCart.first
+        
+        currentCart = @trip.cart
+        #abort currentCart.inspect
+        if currentCart
             currentCart.inUse = true
             currentCart.last_busy_check = DateTime.current
             currentCart.save
+            redirect_to '/pickup'
         else
-            redirect_to '/new'
+            redirect_to '/trips/new'
         end
         
-        redirect_to '/pickup'
+        
     end
     
     def pickup
