@@ -16,6 +16,7 @@ function updateSelectedRoute(routes) {
 			$('#startPoint').attr('value', routes[$(this).attr('id')[$(this).attr('id').length - 1]].startPoint);
 			$('#endPoint').attr('value', routes[$(this).attr('id')[$(this).attr('id').length - 1]].endPoint);
 			$('#routeCartID').attr('value', routes[$(this).attr('id')[$(this).attr('id').length - 1]].cartID);
+			console.log(routes[$(this).attr('id')[$(this).attr('id').length - 1]].cartID); //FIXME
 			var coordsString = coordsToString(routes[$(this).attr('id')[$(this).attr('id').length - 1]].waypoints);
 			$('#wayPoints').attr('value', coordsString);
 			
