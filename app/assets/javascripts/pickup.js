@@ -13,21 +13,17 @@ function addMarker(coordinates) {
 	cartMarker.setPosition(mylatlng);
 }
 
-function trackCart() {
-	console.log("Getting waypoint array...");
-	var routeListener = new ROSLIB.Topic({
-		ros : ros,
-		name :'/waypoints_lla',
-		messageType : 'visualization_msgs/Marker'
-	});
-	routeListener.subscribe(function(message) {
-		console.log(message);
-		routeListener.unsubscribe();
-	});
-}
-
 function startTrip() {
 	window.location.href = "/transit";
+	var StartTrip = new ROSLIB.Service({
+		ros : ros,
+		name : 'TBD',		// TODO: add ros service for starting trip
+		serviceType : 'TBD'
+	});
+	var request = new ROSLIB.ServiceRequest();
+	endTrip.callService(request, function(result) {
+		window.location.href = "/transit";
+	});
 }
 
 window.onload = function() {
@@ -40,7 +36,6 @@ window.onload = function() {
 	ros.on('close', function() {
 		console.log("Connection to ROS closed");
 	});
-	trackCart();
 	setInterval(function() {
 		var GPSListener = new ROSLIB.Topic({
 			ros : ros,
@@ -52,5 +47,17 @@ window.onload = function() {
 			addMarker(message);
 		});
 	}, 5000);
+	var StartListener = new ROSLIB.Topic({
+	ros : ros,
+		name : 'TBD', // TODO: add ros topic
+		messageType : 'std_msgs/Bool'
+	});
+	StartListener.subscribe(function(message) {
+		if (message) {
+			document.getElementById("startbtn").style.display = "block";
+			document.getElementById("startbtn").disabled = false;
+			StartListener.unsubscribe();
+		};
+	});
 }
 

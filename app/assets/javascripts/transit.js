@@ -72,22 +72,6 @@ function addMarker(coordinates) {
 	cartMarker.setPosition(mylatlng);
 }
 
-function trackCart() {
-	console.log("Getting waypoint array...");
-	var routeListener = new ROSLIB.Topic({
-		ros : ros,
-		name :'/waypoints_lla',
-		messageType : 'visualization_msgs/Marker'
-	});
-	routeListener.subscribe(function(message) {
-		console.log("Initial: " + message);
-		routeListener.unsubscribe();
-		var parsedWaypts = (message.points);
-		console.log(parsedWaypts);
-		calculateAndDisplayRoute(parsedWaypts);
-	});
-}
-
 function endTrip() {
 		//window.location.href = "/end";
 	var endTrip = new ROSLIB.Service({
@@ -114,7 +98,6 @@ window.onload = function() {
 	ros.on('close', function() {
 		console.log("Connection to ROS closed");
 	});
-	trackCart();
 	setInterval(function() {
 		var GPSListener = new ROSLIB.Topic({
 			ros : ros,
