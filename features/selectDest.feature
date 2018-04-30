@@ -1,13 +1,14 @@
 Feature: Select route on a map
   As a user
-  So that I can see where I choose to be picked up and where I choose to be dropped off
-  I want to be able to chose my route on a map
+  So that I can select where to be picked up and where to be dropped off
+  I want to be able to chose my route
   
-  Scenario: User enters the select destination page
-    Given I am at the home page
-    When I click Get a ride
-    #Then I see a map
-    Then I see all routes displayed on the map
+  Scenario: User enters the select a route page
+    Given I am at the Cart Requirements page
+    Given there is at least one cart available
+    When I specify the number of seats I need 
+      And I click Find a ride
+    Then I see a table with the start and end points of some routes
     
 #   @ignore
 #   Scenario: User selects a route and a TAMUber is available

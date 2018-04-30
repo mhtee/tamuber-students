@@ -1,5 +1,5 @@
 function formCheck( cartIPs, cartIDs, form_id) {
-    console.log( form_id );
+    //console.log( form_id );
     if (document.getElementById("seat_count").value == '') {
 		alert("Please select seat count");
 	} else {

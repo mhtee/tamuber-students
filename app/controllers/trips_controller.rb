@@ -143,9 +143,16 @@ class TripsController < ApplicationController
         @cartNum = Trip.find(session[:trip_id]).cart.id
     end
     
+    def arrived
+        @route = Trip.find(session[:trip_id]).cart_route
+        #first coordinate is the start point
+        @end = @route.coordinates[@route.coordinates.length - 1]
+    end
+    
     def end
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
-        @start = @route.coordinates[0]
+        @end = @route.coordinates[@route.coordinates.length - 1]
     end
+    
 end

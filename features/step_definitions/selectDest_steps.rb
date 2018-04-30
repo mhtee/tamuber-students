@@ -1,22 +1,41 @@
-Given (/^I am at the select destination page$/) do
+# Before do
+#     load "#{Rails.root}/db/seeds.rb"
+# end
+
+Given (/^I am at the select a route page$/) do
   visit("/trips/new")
 end
+
+Given (/I am at the Cart Requirements page/) do
+    visit('/specify')
+end
   
-Given (/^a TAMUber is\s?(not)? available$/) do |avail|
-    if avail == " not"
-        @available = false
-    else
-        @available = true
+Given (/a TAMUber is not available/) do
+    carts = Cart.all 
+    carts.each do |cart|
+        cart.inUse = true;
+        cart.save
     end
 end
 
-When (/^I click (\w+)$/) do |clicked|
-    click_link(clicked)
+Given(/there is at least one cart available/) do
+    carts = Cart.all
+    carts[0].inUse = false
+    carts[0].save
+end
+
+When (/I click Get A Ride/) do
+    click_link('Get A Ride')
 end
 
 # When (/^I select route number (\d+)$/) do |routeNum|
 #     @routeNum = routeNum
 # end
+
+Then (/I see a table with the start and end points of some routes/) do
+    expect(page).to have_content('Start')
+    expect(page).to have_content('End')
+end
 
 Then(/^I see a map$/) do
     #expect(page).to have_selector("div", id: "mapid");
