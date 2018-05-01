@@ -1,11 +1,7 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag("transit") %>
 </head>
-<%= javascript_include_tag("transit") %>
-<body>
+<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>')">
   <header>
     <h1>TAMUber Students</h1>
   </header> 
@@ -14,31 +10,26 @@
     
     <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
     
-    <table>
+    <table class="no_headers">
         <tr>
-            <td><strong> Pickup location </strong></td>
+            <th>Pickup Location</th>
             <td><%= @route.startPoint %></td>
         </tr>
         <tr>
-            <td><strong> Destination </strong></td>
+            <th>Destination</th>
             <td><%= @route.endPoint %></td>
         </tr>
         <tr>
-            <td><strong> Cart Number </strong></td>
+            <th>Cart Number</th>
             <td><%= @cartNum %></td>
         </tr>
         <tr>
-            <td><strong>ETA</strong></td>
+            <th>ETA</th>
             <td id="eta">TBD</td>
         </tr>
     </table>
     <center>
       <button id="endbtn" style="display:none" disabled="true" type="button" onclick="endTrip();">End Trip</button>
     </center>
-    
   </main>
-  <script type="text/javascript">
-    initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
-  </script>
 </body>
-

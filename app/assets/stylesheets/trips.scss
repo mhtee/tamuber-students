@@ -74,25 +74,6 @@ main {
     text-align: center;
   }
 
-  select, button {
-    padding: 0.25em;
-    border: 0.06em solid #aaa;
-    font-size: 1em;
-    line-height: 1;
-    color: #333;
-    background: #eee;
-  }
-
-  select:hover, button:hover {
-    cursor: pointer;
-  }
-
-  select:focus, button:focus {
-    border-color: #999;
-    outline: none;
-    background: #ddd;
-  }
-
   option {
     min-height: auto;
   }
