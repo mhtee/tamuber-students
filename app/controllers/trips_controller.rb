@@ -169,6 +169,9 @@ class TripsController < ApplicationController
             @route = Trip.find(session[:trip_id]).cart_route
             #first coordinate is the start point
             @end = @route.coordinates[@route.coordinates.length - 1]
+            currentCart = @trip.cart
+            currentCart.last_busy_check = DateTime.current
+            currentCart.save
         else
             redirect_to '/specify'
         end
