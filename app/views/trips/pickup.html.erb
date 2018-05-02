@@ -1,15 +1,15 @@
 <head>
   <%= javascript_include_tag "pickup" %>
+  <%= javascript_include_tag "transit" %>
 </head>
-<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>')">
+<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>'); update({lat:<%= @end.lat %>, lng:<%= @end.lng %>}, [{lat:<%= @end.lat %>, lng:<%= @end.lng %>}, {lat:<%= @start.lat %>, lng:<%= @start.lng %>}], false)">
   <header>
     <h1>TAMUber Students</h1>
   </header>
   <main>
-    <h1>Go To Pickup Location</h1>
+    <h1>Go To The Pickup Location</h1>
 
     <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
-    <center><button type="button" class='btn btn-secondary btn-xs' onclick="calcRoute(<%= @start.lat %>, <%= @start.lng %>)">Toggle directions</button></center>
     <table class="no_headers">
       <tr>
         <th>Pickup location</th>
@@ -25,14 +25,14 @@
       </tr>
       <tr>
         <th>ETA</th>
-        <td>TBD</td>
+        <td id="eta">TBD</td>
       </tr>
     </table>
 
 
     <form>
      
-      <button id="startbtn" type="button" class='btn btn-primary' onclick="startTrip()">Start</button>
+      <button id="startbtn" type="button" style="visibility: hidden;" onclick="startTrip()">Start Trip</button>
     </form>
   </main>
     <script type="text/javascript">

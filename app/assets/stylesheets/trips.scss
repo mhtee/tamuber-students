@@ -44,9 +44,13 @@ main {
     margin: 0 auto;
     color: #333;
     text-align: left;
+
+    tr {
+      transition: background 300ms;
+    }
     
     tr:nth-child(odd) {
-      background: #eee;
+      background: hsl(0, 0%, 92.5%);
     }
 
     th {

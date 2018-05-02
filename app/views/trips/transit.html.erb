@@ -1,35 +1,33 @@
 <head>
   <%= javascript_include_tag("transit") %>
 </head>
-<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>')">
+<body onload="initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>', false); update({lat:<%= @start.lat %>, lng:<%= @start.lng %>}, [{lat:<%= @start.lat %>, lng:<%= @start.lng %>}, {lat:<%= @end.lat %>, lng:<%= @end.lng %>}])">
   <header>
     <h1>TAMUber Students</h1>
   </header> 
   <main>
-    <h1> Cart in transit </h1>
-    
-    <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
-    
-    <table class="no_headers">
-        <tr>
-            <th>Pickup Location</th>
-            <td><%= @route.startPoint %></td>
-        </tr>
-        <tr>
-            <th>Destination</th>
-            <td><%= @route.endPoint %></td>
-        </tr>
-        <tr>
-            <th>Cart Number</th>
-            <td><%= @cartNum %></td>
-        </tr>
-        <tr>
-            <th>ETA</th>
-            <td id="eta">TBD</td>
-        </tr>
-    </table>
-    <center>
-      <button id="endbtn" style="display:none" disabled="true" type="button" onclick="endTrip();">End Trip</button>
-    </center>
+  <h1>Cart In Transit</h1>
+  <div id="mapid" data-test-env="<%= Rails.env.test? %>"></div>
+  <table class="no_headers">
+    <tr>
+      <th>Pickup Location</th>
+      <td><%= @route.startPoint %></td>
+    </tr>
+    <tr>
+      <th>Destination</th>
+      <td><%= @route.endPoint %></td>
+    </tr>
+    <tr>
+      <th>Cart Number</th>
+      <td><%= @cartNum %></td>
+    </tr>
+    <tr>
+      <th>ETA</th>
+      <td id="eta">TBD</td>
+    </tr>
+  </table>
+  <center>
+    <button id="endbtn" type="button" style="visibility: hidden;" onclick="window.location.href='/end';">End Trip</button>
+  </center>
   </main>
 </body>

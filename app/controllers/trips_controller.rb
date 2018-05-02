@@ -133,6 +133,7 @@ class TripsController < ApplicationController
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
         @start = @route.coordinates[0]
+        @end = @route.coordinates.last
         @cartNum = Trip.find(session[:trip_id]).cart.id
     end
 
@@ -140,12 +141,14 @@ class TripsController < ApplicationController
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
         @start = @route.coordinates[0]
+        @end = @route.coordinates.last
         @cartNum = Trip.find(session[:trip_id]).cart.id
     end
     
     def end
         @route = Trip.find(session[:trip_id]).cart_route
         #first coordinate is the start point
+        @end = @route.coordinates.last
         @start = @route.coordinates[0]
     end
 end
