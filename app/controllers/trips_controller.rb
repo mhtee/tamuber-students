@@ -130,25 +130,37 @@ class TripsController < ApplicationController
     end
     
     def pickup
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @start = @route.coordinates[0]
-        @end = @route.coordinates.last
-        @cartNum = Trip.find(session[:trip_id]).cart.id
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @end = @route.coordinates.last
+            @start = @route.coordinates[0]
+            @cartNum = Trip.find(session[:trip_id]).cart.id
+        else 
+            redirect_to('/specify')
+        end
+        
     end
 
     def transit
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @start = @route.coordinates[0]
-        @end = @route.coordinates.last
-        @cartNum = Trip.find(session[:trip_id]).cart.id
+       if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @end = @route.coordinates.last
+            @start = @route.coordinates[0]
+        else 
+            redirect_to('/specify')
+        end
     end
     
     def end
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @end = @route.coordinates.last
-        @start = @route.coordinates[0]
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @end = @route.coordinates.last
+            @start = @route.coordinates[0]
+        else 
+            redirect_to('/specify')
+        end
     end
 end
