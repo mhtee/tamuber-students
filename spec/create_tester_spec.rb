@@ -5,7 +5,8 @@ describe CreateTester do
 	describe ".create" do
 		context "when creating route" do
 			it "creates correct route" do
-				expect(@trip).to eql(Trip.new)
+				@trip = Trip.new
+				expect(@trip).not_to eql(nil)
 			end
 		end
 	end
