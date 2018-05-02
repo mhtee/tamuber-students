@@ -8,7 +8,12 @@ class TripsController < ApplicationController
         cutoff = DateTime.current - 5.minutes
         Cart.all.each do |cart|
             if (cart.inUse)
-                if (cart.last_busy_check < cutoff)
+                if(cart.last_busy_check)
+                    if (cart.last_busy_check < cutoff)
+                        cart.inUse = false
+                        cart.save
+                    end
+                else
                     cart.inUse = false
                     cart.save
                 end
@@ -48,17 +53,23 @@ class TripsController < ApplicationController
             
             #filter routes by seat number and availability
             seatcount = params[:seat_count].to_i
-            carts = Cart.where('seat_count >= ?', seatcount).where(inUse: false).as_json
-            
-            #abort carts.inspect
+            carts = Cart.where('seat_count >= ?', seatcount).where('inUse == ?', false).as_json
             
             #filter by handicap access
             if (params[:handicap_access]) 
                 carts = carts.keep_if{ |h| h['handicap_access'] == true}
             end
             
+            
             #filter routes by available carts
-            routeDataHash = JSON.parse params[:routeData]
+            if(params[:routeData] != "") 
+                routeDataHash = JSON.parse params[:routeData]
+            else 
+                routeDataHash = Array.new
+            end
+            
+             
+            
             routesWithAvailCarts = routeDataHash.keep_if do |el|
                 cartAvail = false
                 carts.each do |cart|
@@ -98,6 +109,7 @@ class TripsController < ApplicationController
         @route.startPoint = params[:startPoint]
         @route.endPoint = params[:endPoint]
         
+        
         #put waypoints into the route
         coordArray = params[:wayPoints].split(';')
         coordArray.each do |coord| 
@@ -115,7 +127,7 @@ class TripsController < ApplicationController
         #Mark the cart as busy with a timestamp
         
         currentCart = @trip.cart
-        #abort currentCart.inspect
+        
         if currentCart.inUse == false
             currentCart.inUse = true
             currentCart.last_busy_check = DateTime.current
@@ -130,29 +142,45 @@ class TripsController < ApplicationController
     end
     
     def pickup
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @start = @route.coordinates[0]
-        @cartNum = Trip.find(session[:trip_id]).cart.id
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @start = @route.coordinates[0]
+            @cartNum = Trip.find(session[:trip_id]).cart.id
+        else
+            redirect_to '/specify'
+        end
     end
 
     def transit
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @start = @route.coordinates[0]
-        @cartNum = Trip.find(session[:trip_id]).cart.id
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @start = @route.coordinates[0]
+            @cartNum = Trip.find(session[:trip_id]).cart.id
+        else
+            redirect_to '/specify'
+        end
     end
     
     def arrived
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @end = @route.coordinates[@route.coordinates.length - 1]
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @end = @route.coordinates[@route.coordinates.length - 1]
+        else
+            redirect_to '/specify'
+        end
     end
     
     def end
-        @route = Trip.find(session[:trip_id]).cart_route
-        #first coordinate is the start point
-        @end = @route.coordinates[@route.coordinates.length - 1]
+        if(session[:trip_id])
+            @route = Trip.find(session[:trip_id]).cart_route
+            #first coordinate is the start point
+            @end = @route.coordinates[@route.coordinates.length - 1]
+        else
+            redirect_to '/specify'
+        end
     end
     
 end
