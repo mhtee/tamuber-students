@@ -105,7 +105,8 @@ function publish_routes() {
         }
     ];
         
-    var num_of_routes = Math.floor(Math.random() * 4);
+    //var num_of_routes = Math.floor(Math.random() * 4);
+    var num_of_routes = 3;
         
     var routes_to_return = [];
         
