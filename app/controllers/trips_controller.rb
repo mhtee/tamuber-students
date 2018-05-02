@@ -5,7 +5,8 @@ class TripsController < ApplicationController
     end
     
     def new
-        cutoff = DateTime.current - 5.minutes
+        #cutoff = DateTime.current - 5.minutes
+        cutoff = DateTime.current - 1.seconds
         Cart.all.each do |cart|
             if (cart.inUse)
                 if (cart.last_busy_check < cutoff)
