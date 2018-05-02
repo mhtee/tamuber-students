@@ -1,9 +1,10 @@
+
 Feature: Show pickup point on a map
   As a passenger
   So that I can see where I need to go to be picked up by my TAMUber
   I want to see where to meet my TAMUber
   
-  @javascript
+  not @javascript
   Scenario: User selects a route
     Given I am at the Cart Requirements page
         And there is at least one cart available

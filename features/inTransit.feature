@@ -3,7 +3,7 @@ Feature: View route information while in transit
   So that I can see my route information and progress
   I want to be able to see cart and route information while in transit
   
-  #@javascript
+  not @javascript
   Scenario: The user has been picked up
     Given I am at the Cart Requirements page
         And there is at least one cart available

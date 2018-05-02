@@ -42,6 +42,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'rspec-expectations'
+  #gem "capybara-webkit"
   gem 'cucumber-rails', :require => false
 end
 

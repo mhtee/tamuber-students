@@ -1,5 +1,10 @@
+require 'selenium-webdriver'
+driver = Selenium::WebDriver.for :firefox
+
+
 Before do
     load "#{Rails.root}/db/seeds.rb"
+    Capybara.javascript_driver = :webkit
 end
 
 # Given (/^I am at the select a route page$/) do
@@ -18,7 +23,8 @@ When (/I click Find a ride/) do
     #expect(page).to have_content('Find a ride')
     #find('a#findRide.btn.btn-primary').click
     #find('#findRide').click
-    click_button('Find a ride')
+    # click_button('Find a ride')
+    driver.find_element(:id, 'findRide').click
     #click_link('Find a ride')
     #expect(find('#findRide')).to be 5
     #expect(find('#findRide')['innerHTML']).to eq('Find a ride')

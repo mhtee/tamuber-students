@@ -1,13 +1,16 @@
-# Before do
-#     load "#{Rails.root}/db/seeds.rb"
-# end
+Before do
+    load "#{Rails.root}/db/seeds.rb"
+    Capybara.javascript_driver = :webkit
+end
 
 Given (/^I am at the select a route page$/) do
-  visit("/trips/new")
+#   visit("/trips/new")
+  driver.navigate.to "/trips/new"
 end
 
 Given (/I am at the Cart Requirements page/) do
-    visit('/specify')
+    # visit('/specify')
+    driver.navigate.to "/specify"
 end
   
 Given (/a TAMUber is not available/) do
@@ -31,7 +34,8 @@ end
 
 When (/^I click view on route (\d+)$/) do |routeNum|
     @routeNum = routeNum
-    find('#routebut_' + routeNum.to_s).click 
+    driver.find_element(:id, '#routebut_' + routeNum.to_s).click
+    # find('#routebut_' + routeNum.to_s).click 
     
 end
 
@@ -50,7 +54,8 @@ Then(/^ I should see the screen titled (\w+)/) do |title|
 end
 
 Then(/The route is highlighted/) do
-    expect(find('#route_' + @routeNum)['background']).to eq('#FFFF87')
+    # expect(find('#route_' + @routeNum)['background']).to eq('#FFFF87')
+    expect(driver.find_element(:id, '#route_' + @routeNum)['background']).to eq('#FFFF87')
 end
 
 # Then(/^I should see the go to pickup point page for that route$/) do

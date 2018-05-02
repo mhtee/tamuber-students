@@ -1,9 +1,10 @@
+
 Feature: Select route on a map
   As a user
   So that I can select where to be picked up and where to be dropped off
   I want to be able to chose my route
   
-  @javascript
+  not @javascript
   Scenario: User enters the select a route page
     Given I am at the Cart Requirements page
     Given there is at least one cart available
@@ -17,7 +18,7 @@ Feature: Select route on a map
     When I click Find a ride
     Then I should see a message telling me no TAMUbers are available 
     
-  @javascript
+  not @javascript
   Scenario: User clicks view on a route 
     Given I am at the Cart Requirements page
       And there is at least one cart available
