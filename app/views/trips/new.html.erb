@@ -46,7 +46,8 @@
         <%= text_field_tag 'startPoint'  %>
         <%= text_field_tag 'endPoint'  %>
       </div>
-      <%= form.button "Start Trip", :type => "button", :id => 'startTrip', :class => "btn btn-primary", :style => "display:none", :onclick => "formCheck('" + form.options[:html][:id] + "');" %>
+      <input type='submit' value="Start Trip", id='startTrip' class="btn btn-primary" style="display:none", onclick="formCheck('" + <%=form.options[:html][:id]%> + "');"></input>
+      
     <% end %>
   </main>
 </body>

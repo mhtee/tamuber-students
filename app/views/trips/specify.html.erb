@@ -15,7 +15,6 @@
     <p>Before we start, please specify your requirements for the cart.</p>
   
     <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
-    <!--<form action="/trips/new" id="route_specs" method="get">-->
       <%= hidden_field_tag "routeData" %>
       <div class="form-group">
         <label for="seat_count">Seats required</label>:
@@ -33,7 +32,7 @@
           </label>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" id="findRide" onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'>Find a ride</button>
+      <input type="submit" class="btn btn-primary" id="findRide" value='Find a ride' onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'></input>
     <% end %>
     <center><p style='margin-top:5%;color:red'><%=@message%></p></center>
   </main>

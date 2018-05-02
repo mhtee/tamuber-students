@@ -1,8 +1,23 @@
-<body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <%= javascript_include_tag "pickup" %>
+  
+</head>
   <header>
     <h1>TAMUber Students</h1>
   </header>
+  <body onload="initMapWithMarker(<%= @end.lat %>, <%= @end.lng %>, '<%= @route.endPoint %>')">
   <main>
-    <h1>You Have Arrived</h1>
+    <h1>You have arrived!</h1>
+    <div id="mapid" name='mapid'></div>
+     <center>
+     <button type="button" class="btn btn-primary" id="endRide"  onclick="location.href='/end'">Release cart</button>
+     <p style='margin-top:2%;color:red'> Warning: Please be sure you and your belongings are off of the cart before pressing this button!</p>
+     </center>
+   
   </main>
 </body>
+
+
