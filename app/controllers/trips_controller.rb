@@ -54,7 +54,7 @@ class TripsController < ApplicationController
             
             #filter routes by seat number and availability
             seatcount = params[:seat_count].to_i
-            carts = Cart.where('seat_count >= ?', seatcount).where('inUse == ?', false).as_json
+            carts = Cart.where('seat_count >= ?', seatcount).where(:inUse => false).as_json
             
             #filter by handicap access
             if (params[:handicap_access]) 
