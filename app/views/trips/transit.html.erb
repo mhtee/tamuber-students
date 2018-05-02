@@ -33,12 +33,23 @@
         </tr>
     </table>
     <center>
-      <button id="endbtn" style="display:none" disabled="true" type="button" onclick="endTrip();">End Trip</button>
+      <button id="endbtn" type="button" style="display:none" disabled="true" onclick="endTrip();">End Trip</button>
     </center>
     
   </main>
   <script type="text/javascript">
-    initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>') // this is your function in .js file
+  var cur_percentage = 0.01;
+    //initMapWithMarker(<%= @start.lat %>, <%= @start.lng %>, '<%= @route.startPoint %>'); // this is your function in .js file
+    initMap();
+    calculateAndDisplayRoute(<%= @route.coordinates.to_json(:only => [:lat, :lng]).html_safe  %>, "<%= @route.startPoint %>", "<%= @route.endPoint %>");
+    
+    cartMarker.setMap(map);
+    function cartUpdateSmart() {
+      updateCart(<%= @route.coordinates.to_json(:only => [:lat, :lng]).html_safe  %>);
+    }
+    setInterval(cartUpdateSmart, 1000);
+    
   </script>
+  
 </body>
 

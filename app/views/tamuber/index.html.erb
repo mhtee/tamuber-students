@@ -30,12 +30,12 @@
     ros.on('error', function(error) {
         console.log('Error connecting to websocket server: ', error);
         link = "/trips/cart_not_found"
-        document.getElementById("enter").href = link;
+        //document.getElementById("enter").href = link;
     });
    
     ros.on('close', function() {
         console.log('Connection to websocket server closed.');
         link = "/trips/cart_not_found"
-        document.getElementById("enter").href = link;
+       // document.getElementById("enter").href = link;
     });
 </script>

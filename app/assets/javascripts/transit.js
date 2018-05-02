@@ -2,10 +2,10 @@ Math.radians = (degrees) => degrees * Math.PI/180.0;
 
 function points_distance(start, end) {
   let R = 20902231;
-  let lat1 = Math.radians(start.x);
-  let lat2 = Math.radians(end.x);
-  let delta_lat = Math.radians(end.x-start.x);
-  let delta_lon = Math.radians(end.y-start.y);
+  let lat1 = Math.radians(start.lat);
+  let lat2 = Math.radians(end.lat);
+  let delta_lat = Math.radians(end.lat-start.lat);
+  let delta_lon = Math.radians(end.lng-start.lng);
   let a = Math.sin(delta_lat/2.0)**2.0 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(delta_lon/2.0)**2.0;
   let c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0-a));
   return R * c;
@@ -25,7 +25,7 @@ function route_distance(points) {
 var eta = 0;
 
 function calculate_eta(current, points) {
-  let total = route_distance(points);
+  /*let total = route_distance(points);
   console.log(`total: ${total.toFixed(0)} feet`);
   for (let i = 0; i < points.length; ++i) {
     points[i].i = i;
@@ -45,22 +45,28 @@ function calculate_eta(current, points) {
   }
   // console.log(`traveled: ${(total-remaining).toFixed(0)} feet (${(100.0-remaining/total*100.0).toFixed(0)}%)`);
   // console.log(`remaining: ${remaining.toFixed(0)} feet (${(remaining/total*100.0).toFixed(0)}%)`);
+  */
   let speed = 5.0;
   // console.log(`eta: ${(remaining/speed).toFixed(0)} seconds`);
+  var remaining = points_distance(current, points[points.length - 1]);
+  
   eta = (remaining/speed/60.0).toFixed(0);
-  $('#eta').html(`${(eta).toFixed(0)} minutes`);
-  setInterval(() => {
+  $('#eta').html(eta+' minutes');
+  /*setInterval(() => {
     if (eta >= 1) {
       eta -= 1;
       $('#eta').html(`${(eta).toFixed(0)} minutes`);
     }
-  }, 60000);
+  }, 60000);*/
 }
 
 var cartMarker = new google.maps.Marker({
-	map : map,
 	strokeColor : "blue",
-	name : "cart"
+	name : "cart",
+	icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 10
+    }
 });
 
 var ros = new ROSLIB.Ros({
@@ -68,9 +74,31 @@ var ros = new ROSLIB.Ros({
 });
 
 function addMarker(coordinates) {
-	var mylatlng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+	var mylatlng = new google.maps.LatLng(coordinates.lat, coordinates.lng);
 	cartMarker.setPosition(mylatlng);
 }
+
+//PREVIEW CODE \/ \/ \/
+
+function movePercentage(percent, coords) {
+  var index = Math.floor((coords.length-1) * percent);
+  var cur_spot = {lat: coords[index].lat, lng: coords[index].lng};
+  addMarker(cur_spot);
+  calculate_eta(cur_spot, coords)
+}
+
+function updateCart(coords) {
+  //increase percentage
+  if (cur_percentage >= 1) {
+    document.getElementById("endbtn").style.display = "block";
+		document.getElementById("endbtn").disabled = false;
+    return;
+  }
+  cur_percentage = cur_percentage + 0.10;
+  movePercentage(cur_percentage, coords)
+}
+
+//PREVIEW CODE /\ /\ /\
 
 function endTrip() {
 		//window.location.href = "/end";
@@ -80,10 +108,11 @@ function endTrip() {
 		serviceType : 'TBD'
 	});
 	var request = new ROSLIB.ServiceRequest();
-	endTrip.callService(request, function(result) {
+	/*endTrip.callService(request, function(result) {
 		ros.close();
 		window.location.href = "/end";
-	});
+	});*/
+	window.location.href = "/end";
 }
 
 window.onload = function() {

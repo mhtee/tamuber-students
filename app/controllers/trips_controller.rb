@@ -5,7 +5,8 @@ class TripsController < ApplicationController
     end
     
     def new
-        cutoff = DateTime.current - 5.minutes
+        #cutoff = DateTime.current - 5.minutes
+        cutoff = DateTime.current - 1.seconds
         Cart.all.each do |cart|
             if (cart.inUse)
                 if(cart.last_busy_check)
@@ -53,7 +54,7 @@ class TripsController < ApplicationController
             
             #filter routes by seat number and availability
             seatcount = params[:seat_count].to_i
-            carts = Cart.where('seat_count >= ?', seatcount).where('inUse == ?', false).as_json
+            carts = Cart.where('seat_count >= ?', seatcount).where(:inUse => false).as_json
             
             #filter by handicap access
             if (params[:handicap_access]) 
@@ -67,9 +68,6 @@ class TripsController < ApplicationController
             else 
                 routeDataHash = Array.new
             end
-            
-             
-            
             routesWithAvailCarts = routeDataHash.keep_if do |el|
                 cartAvail = false
                 carts.each do |cart|
@@ -80,6 +78,8 @@ class TripsController < ApplicationController
                 end
                 cartAvail 
             end
+            
+            
              
             #remove duplicate routes
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
@@ -87,6 +87,7 @@ class TripsController < ApplicationController
                 flash[:alert] = 'No carts available with those specifications'
                 redirect_to '/specify'
             end
+            
             @trip = Trip.new
             @trip.save
         else
@@ -168,6 +169,9 @@ class TripsController < ApplicationController
             @route = Trip.find(session[:trip_id]).cart_route
             #first coordinate is the start point
             @end = @route.coordinates[@route.coordinates.length - 1]
+            currentCart = @trip.cart
+            currentCart.last_busy_check = DateTime.current
+            currentCart.save
         else
             redirect_to '/specify'
         end
