@@ -67,9 +67,6 @@ class TripsController < ApplicationController
             else 
                 routeDataHash = Array.new
             end
-            
-             
-            
             routesWithAvailCarts = routeDataHash.keep_if do |el|
                 cartAvail = false
                 carts.each do |cart|
@@ -80,6 +77,8 @@ class TripsController < ApplicationController
                 end
                 cartAvail 
             end
+            
+            
              
             #remove duplicate routes
             @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
@@ -87,6 +86,7 @@ class TripsController < ApplicationController
                 flash[:alert] = 'No carts available with those specifications'
                 redirect_to '/specify'
             end
+            
             @trip = Trip.new
             @trip.save
         else
