@@ -1,0 +1,2 @@
+class CreateTester
+end

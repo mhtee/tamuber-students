@@ -15,7 +15,7 @@ class TripsController < ApplicationController
             end
         end
         
-        max_seats = 10
+        max_seats = 6
         if params.has_key?(:seat_count)
             min = params[:seat_count].to_i
             if (min < 1)
