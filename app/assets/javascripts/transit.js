@@ -178,11 +178,14 @@ function update(start, waypoints, foo=true) {
   let interval = 1000;
   setInterval(() => {
     let delta = {lat: end.lat-cartMarker.position.lat(), lng: end.lng-cartMarker.position.lng()};
-    if (Math.abs(delta.lat) > 0.00001) {
-      let distance = points_distance({lat: cartMarker.position.lat(), lng: cartMarker.position.lng()}, end);
+    let distance = points_distance({lat: cartMarker.position.lat(), lng: cartMarker.position.lng()}, end);
+    console.log(distance);
+    if (distance > speed) {
       let lat = delta.lat*speed/distance*interval/1000 + cartMarker.position.lat();
       let lng = delta.lng*speed/distance*interval/1000 + cartMarker.position.lng();
       cartMarker.setPosition(new google.maps.LatLng(lat, lng));
+    } else {
+      cartMarker.setPosition(new google.maps.LatLng(end.lat, end.lng));
     }
   }, interval);
 }
