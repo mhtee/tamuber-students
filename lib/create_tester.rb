@@ -1,2 +1,5 @@
-class CreateTester
+class CreateTester 
 end
+class Trip 
+end
+
