@@ -1,55 +1,64 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--Google Map to be removed soon-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!--<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- Manvitha changes for draw support-->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
+  <!-- Manvitha changes-->
+
+
   <%= javascript_include_tag "new" %>
-  
+
 </head>
-  <header>
-    <h1>TAMUber Students</h1>
-  </header>
-  <body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>
-  <main>
-    <h1>Select Route</h1>
-    <div id="mapid" name='mapid'></div>
+<% if false %>
+  <p>Pickup: <%= @source.name %> , Coordinates: <%= @source.latitude %> , <%= @source.longitude %>, Address: <%= @source.address %></p>
+  <p>Drop off: <%= @destination.name %> , Coordinates: <%= @destination.latitude %> , <%= @destination.longitude %> , Address: <%= @destination.address %></p>
+  <p>handicap access: <%= @needs_assist %></p>
+<% end %>
 
-    <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-      <table style='margin-bottom:10px'>
-        <tr>
-          <th>Start</th>
-          <th>End</th>
-          <th></th>
-        </tr>
-        <div style='overflow-y:auto;display:block'>
-          <% @routeData.each_with_index do |cart_route, i| %>
-              <tr id='route_<%= i %>' >
-                <td id='row1_<%=i%>'><%= cart_route['startPoint'] %></td>
-                <td id='row2_<%=i%>'><%= cart_route['endPoint'] %></td>
-                <td><button type='button' id='routebut_<%= i %>' onclick='calculateAndDisplayRoute(<%= cart_route["waypoints"].to_json.html_safe %>, document.getElementById("row1_<%=i%>").innerHTML, document.getElementById("row2_<%=i%>").innerHTML), <%=i%>'>View</button></td>
-              </tr>
-          <% end %>
-          <div style="display:none">
-            <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
-          </div>
-        </div>
-        <div style="display:none">
-          <%= form.text_field :cart_id, :id => 'trip_cart_id' %>
-        </div>
-      </div>
-    </table>
-    
-    
-      <div style="display:none;">
-        <%= form.text_field :trip_id, :value => @trip.id %>
-        <%= form.text_field :cart_id, :id => 'routeCartID'  %>
-        <%= text_field_tag 'wayPoints' %>
-        <%= text_field_tag 'startPoint'  %>
-        <%= text_field_tag 'endPoint'  %>
-      </div>
-      <input type='submit' value="Start Trip", id='startTrip' class="btn btn-primary" style="display:none", onclick="formCheck('" + <%=form.options[:html][:id]%> + "');"></input>
-      
-    <% end %>
-  </main>
+<body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);'>
+<main>
+  <h1>Selected Route</h1>
+  <div id="mapid" name='mapid'></div>
+  <div id="mapid1" name='mapid1'></div>
+
+  <!-- Manvitha changes-->
+  <div class='info-box'>
+    <div id='calculated-line'></div>
+  </div>
+
+  <!-- Manvitha changes-->
+  <table style='margin-bottom:10px'>
+    <tr>
+      <th colspan ="2">Trip Details</th>
+    </tr>
+    <tr>
+      <td>Estimated Time of Arrival:</td>
+      <td id='ETA'>Not Available</td>
+    </tr>
+    <tr>
+      <td>Estimated Trip Time:</td>
+      <td id ='ETT' >Not Available</td>
+    </tr>
+    <tr>
+      <td>Car Details:</td>
+      <td id ='CARD'>Not Available</td>
+    </tr>
+  </table>
+  <div class='info-box'>
+    <div id='calculated-line'></div>
+  </div>
+
+  <!-- Manvitha changes-->
+  <input type="submit" class="btn btn-primary" id="bookB" value='Book Trip' onclick='book();' style="width:150px;background-color:#500;margin-left:auto;margin-right:auto;display:block"></input>
+</main>
 </body>
-
-

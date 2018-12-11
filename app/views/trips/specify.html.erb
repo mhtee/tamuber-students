@@ -1,29 +1,41 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <%= javascript_include_tag "specify" %>
 </head>
 <body>
-  <header>
-    <h1>TAMUber Students</h1>
-  </header>
+  
   <main>
     <h1>Cart Requirements</h1>
-    
-    <p>Before we start, please specify your requirements for the cart.</p>
+    <% if flash[:notice].present? %>
+      <%= flash[:notice]%>
+    <% else %>
+      <p>Please select your pick up and destination.</p>
+    <% end %>
   
     <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
       <%= hidden_field_tag "routeData" %>
       <div class="form-group">
-        <label for="seat_count">Seats required</label>:
-        <select id="seat_count" class="form-control" name="seat_count">
-          <% (1..6).each do |num| %>
-            <option><%= num %></option>
+        <label for="source">Pickup</label>:
+        <select id="source" class="form-control" name="source">
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point.name %></option>
+          <% end %>
+        </select>
+        
+      <div class="form-group">
+        <label for="destination">Destination</label>:
+        <select id="destination" class="form-control" name="destination">
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point.name %></option>
           <% end %>
         </select>
       </div>
+      
       <div class="form-group">
         <div class="form-check">
           <label for="handicap_access" class="form-check-label">
@@ -32,10 +44,8 @@
           </label>
         </div>
       </div>
-      <input type="submit" class="btn btn-primary" id="findRide" value='Find a ride' onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'></input>
+      <input type="submit" class="btn btn-primary" id="findRide" value='Find a ride' style="width:250px" onclick='return formCheck("route_specs");'></input>
     <% end %>
     <center><p style='margin-top:5%;color:red'><%=@message%></p></center>
   </main>
 </body>
-
-

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TAMUber Students</title>
+    <% unless action_name == "index" %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4"></script>
+    <!-- Edit Manish start -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcAKtfKCZNpK5-NZqZk4B1MyAdTgn8Jq4"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    -->
   </head>
   <%= yield %>
 </html>

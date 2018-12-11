@@ -1,14 +1,30 @@
-function formCheck( cartIPs, cartIDs, form_id) {
+// function formCheck( cartIPs, cartIDs, form_id) {
+//     //console.log( form_id );
+//     if (document.getElementById("seat_count").value == '') {
+// 		alert("Please select seat count");
+// 	} else {
+// 	    // Query each cart for their available routes
+// 	    var routeData = getRoutes( cartIPs, cartIDs );
+	    
+// 	    // Add routeData into the form hidden field with jQuery
+// 	    $('#routeData').val( JSON.stringify(routeData) );
+	    
+// 	    // Submit the form
+//         document.getElementById(form_id).submit();
+// 	}
+// }
+
+function formCheck(form_id) {
     //console.log( form_id );
-    if (document.getElementById("seat_count").value == '') {
-		alert("Please select seat count");
+    if (document.getElementById("source").value == '' || 
+    document.getElementById("destination").value == '') {
+		alert("Please select both the pickup and dropoff locations ");
+		return false;
+	} else if (document.getElementById("source").value == 
+	document.getElementById("destination").value) {
+    	alert("Same pickup and dropoff selected. Please select again");
+    	return false;
 	} else {
-	    // Query each cart for their available routes
-	    var routeData = getRoutes( cartIPs, cartIDs );
-	    
-	    // Add routeData into the form hidden field with jQuery
-	    $('#routeData').val( JSON.stringify(routeData) );
-	    
 	    // Submit the form
         document.getElementById(form_id).submit();
 	}

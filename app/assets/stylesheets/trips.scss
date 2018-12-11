@@ -1,103 +1,310 @@
-// Place all the styles related to the Trips controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+/* universal */
 $accent: #500;
 
 body {
   display: flex;
   flex-direction: column;
+  //justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding-top: 60px;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
 }
 
-header {
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 12px;
+  font-size: 1.7em;
+  color: #fff;
+  // text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  // color: #777;
+  color: rgb(128,0,0);
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
   width: 100%;
-  background: $accent;
-
-  h1 {
-    max-width: 40rem;
-    padding: 0.5rem;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #fff;
-  }
+  margin-top: 45px;
+  @include box_sizing;
 }
 
-main > *:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
+/* sidebar */
 
-main {
-  h1 {
-    margin: 0.5rem;
-    font-size: 2em;
-    font-weight: bold;
-    color: $accent;
+aside {
+  section.user_info {
+    margin-top: 20px;
   }
-
-  table {
-    border-collapse: collapse;
-    margin: 0 auto;
-    color: #333;
-    text-align: left;
-    
-    tr:nth-child(odd) {
-      background: #eee;
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
     }
-
-    th {
-      color: #fff;
-      background: $accent;
-      
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
     }
-
-    th, td {
-      padding: 0.375em 1em;
-    }
-    
-    
-  }
-
-  .no_headers {
-    th {
+    h1 {
+      font-size: 1.4em;
       text-align: left;
-      color: #222;
-      background: none;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
     }
   }
+}
 
-  form {
-    text-align: center;
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
   }
+}
 
-  select, button {
-    padding: 0.25em;
-    border: 0.06em solid #aaa;
-    font-size: 1em;
-    line-height: 1;
-    color: #333;
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+.navbar-inverse {
+     background-color: $accent; //rgb(128,0,0);
+     border-color: #080808;
+}
+
+
+form {
+  //margin:0 auto;
+  //width:300px
+  text-align:center;
+}
+input {
+  margin-bottom:3px;
+  padding:10px;
+  width: 100%;
+  border:1px solid #CCC
+}
+button {
+  padding:10px;
+  width: 50%
+}
+label {
+  cursor:pointer
+}
+#form-switch {
+  display:none
+}
+#register-form {
+  display:none
+}
+#form-switch:checked~#register-form {
+  display:block
+}
+#form-switch:checked~#login-form {
+  display:none
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  color: #333;
+  text-align: left;
+  tr:nth-child(odd) {
     background: #eee;
   }
-
-  select:hover, button:hover {
-    cursor: pointer;
+  th {
+    color: #fff;
+    background: $accent;
+    
   }
-
-  select:focus, button:focus {
-    border-color: #999;
-    outline: none;
-    background: #ddd;
-  }
-
-  option {
-    min-height: auto;
+  th, td {
+    padding: 0.375em 1em;
   }
 }
 
 #mapid {
-  height: 20em;
+  height: 0em;
+}
+#mapid1{
+  height:440px;
+}
+
+.markerStart {
+  background-image: url('/images/greenMarker.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerEnd {
+  background-image: url('/images/redMarker.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerLive {
+  background-image: url('/images/cart2.png');
+  background-size: cover;
+  width: 30px;
+  height: 22px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
