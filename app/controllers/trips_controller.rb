@@ -5,101 +5,57 @@ class TripsController < ApplicationController
     end
     
     def new
-        #cutoff = DateTime.current - 5.minutes
-        cutoff = DateTime.current - 1.seconds
-        Cart.all.each do |cart|
-            if (cart.inUse)
-                if(cart.last_busy_check)
-                    if (cart.last_busy_check < cutoff)
-                        cart.inUse = false
-                        cart.save
-                    end
-                else
-                    cart.inUse = false
-                    cart.save
-                end
-            end
-        end
-        
-        max_seats = 6
-        if params.has_key?(:seat_count)
-            min = params[:seat_count].to_i
-            if (min < 1)
-                min = 1
-            end
-           seats = [min .. max_seats] 
-        else
-            seats = [1..max_seats]
-        end
-        
-        if params.has_key?(:handicap_access)
-            needs_assist = params[:handicap_access].to_s == "on"
-        else
-            needs_assist = false
-        end
-        
-        if needs_assist
-            @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats}).where(:carts => {:handicap_access => true})
-        else
-            @cartRoutes = CartRoute.joins(:cart).where(:carts => {:inUse => false}).where(:carts => {:seat_count => seats})
-        end
-        
-        @trip = Trip.new
-        @trip.save
-        routeDataStr = params[:routeData].to_s
-        start = routeDataStr.split('startPoint')
-        
-        #redirect to specify if we don't have route data, otherwise act normally
-        if (params[:routeData].class == 'string'.class)
-            
-            #filter routes by seat number and availability
-            seatcount = params[:seat_count].to_i
-            carts = Cart.where('seat_count >= ?', seatcount).where(:inUse => false).as_json
-            
-            #filter by handicap access
-            if (params[:handicap_access]) 
-                carts = carts.keep_if{ |h| h['handicap_access'] == true}
+        # print params
+        warn_string = ""
+        if params.has_key?(:source) and params.has_key?(:destination)
+            @src = params[:source] #.to_i
+            @dest = params[:destination] #.to_i
+            fault = false
+            if @src == ""
+                fault = true
+                warn_string = "Pickup not specified. Please select both pickup 
+                and dropoff point"
+            elsif @dest == ""
+                fault = true
+                warn_string = "Drop off not specified. Please select both pickup 
+                and dropoff point"
+            elsif @src == @dest
+                fault = true
+                warn_string = "pickup and drop off point are same. Please selec
+                t again"
             end
             
-            
-            #filter routes by available carts
-            if(params[:routeData] != "") 
-                routeDataHash = JSON.parse params[:routeData]
-            else 
-                routeDataHash = Array.new
-            end
-            routesWithAvailCarts = routeDataHash.keep_if do |el|
-                cartAvail = false
-                carts.each do |cart|
-                  if el['cartID'].to_i == cart['id']
-                      cartAvail = true
-                      break
-                  end 
-                end
-                cartAvail 
-            end
-            
-            
-             
-            #remove duplicate routes
-            @routeData = routesWithAvailCarts.uniq{ |s| s.values_at('startPoint', 'endPoint') }
-            if @routeData.length == 0
-                flash[:alert] = 'No carts available with those specifications'
+            if fault == true
+                flash[:notice] = warn_string
                 redirect_to '/specify'
             end
             
-            @trip = Trip.new
-            @trip.save
         else
+            if !params.has_key?(:source)
+                flash[:notice] = "Please select a pickup point"
+            elsif !params.has_key?(:destination)
+                flash[:notice] = "Please select a drop off point"
+            else
+                flash[:notice] = "Please select a pickup and drop off point"
+            end
             redirect_to '/specify'
         end
+        
+        if params.has_key?(:handicap_access)
+            @needs_assist = params[:handicap_access].to_s == "on"
+        else
+            @needs_assist = false
+        end
+        
+        # find source and destination dropoff
+        @source = Location.find_by name: @src
+        @destination = Location.find_by name: @dest
     end
     
     def specify
-        #Dummy ips for testing the ros functions to get route data
-        @cartIPs = Cart.all.select(:IP)
-        @cartIDs = Cart.all.select(:id)
-        @message = flash[:alert]
+        # @places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC",
+        # "EA", "EB", "EC", "ED"]
+        @places = Location.all
     end
     
     def create

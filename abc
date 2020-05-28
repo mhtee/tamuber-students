@@ -1,0 +1,1749 @@
+    1  sudo yum -y update
+    2  sudo su
+    3  rvm use 2.4.0
+    4  pwd
+    5  ls
+    6  git clone https://github.com/saasbook/hw-ruby-intro.git
+    7  ls -lrt
+    8  cd hw-ruby-intro/
+    9  ls -lrt
+   10  rspec
+   11  gem install bundler
+   12  cd -
+   13  pwd
+   14  cd /home/ec2-user/
+   15  ls
+   16  ls -lrt
+   17  cd environment/
+   18  ls
+   19  cd hw-ruby-intro/
+   20  ls
+   21  pwd
+   22  cd ..
+   23  ls -lrt
+   24  ls -lrta
+   25  cd hw-ruby-intro/
+   26  ls -lrt
+   27  ls -lrta
+   28  cd ..
+   29  ls -lrt
+   30  ls
+   31  rm -rf hw-ruby-intro/
+   32  ls -lrt
+   33  git clone https://github.com/manishpatel005/hw-ruby-intro.git
+   34  ls -lrt
+   35  rspec
+   36  sudo gem install bundler
+   37  ls
+   38  bundle
+   39  sudo bundle
+   40  sudo su
+   41  pwd
+   42  ls -lrt
+   43  cd hw-ruby-intro/
+   44  ls -lrt
+   45  rspec
+   46  ls -lrt
+   47  t this can also happen when the environment is open in another window; to resolve this, right click 
+   48  rspec spec/part1_spec.rb
+   49  gem which rspec
+   50  gem install rspec
+   51  ls -lrt
+   52  rspec spec/part1_spec.rb
+   53  bundle install
+   54  ruby --version
+   55  rvm install 2.4.0
+   56  rvm reinstall ruby-2.4.0
+   57  sudo rvm reinstall ruby-2.4.0
+   58  sudo su
+   59  rvm use 2.4.0
+   60  rvm
+   61  rvm use 2.4.0
+   62  rvmsudo gem install rspec rspec-rails rspec-rails-matchers
+   63  gem list
+   64  rspec part1_spec.rb[1:1]
+   65  rspec spec/part1_spec.rb[1:1]
+   66  rspec spec/part1_spec.rb[1:2]
+   67  rspec spec/part1_spec.rb[1:1]
+   68  rspec spec/part1_spec.rb[1:2]
+   69  rspec spec/part1_spec.rb[1:3]
+   70  /bin/bash --login
+   71  sudo su
+   72  rspec spec/part1_spec.rb[1:2]
+   73  rspec spec/part1_spec.rb[1:1]
+   74  rvm use 2.4.0
+   75  rspec spec/part1_spec.rb[1:1]
+   76  rspec spec/part1_spec.rb[1:2]
+   77  rspec spec/part1_spec.rb[1:3]
+   78  cd hw-ruby-intro/
+   79  rspec spec/part1_spec.rb[1:1]
+   80  rspec spec/part1_spec.rb[1:2]
+   81  rspec spec/part1_spec.rb[1:3]
+   82  rspec -e '#hello' spec/part2_spec.rb 
+   83  cd hw-ruby-intro/
+   84  ls
+   85  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   86  clear
+   87  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   88  reset
+   89  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   90  reset
+   91  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   92  reset
+   93  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   94  ls
+   95  cd lib/
+   96  ls
+   97  cd ..
+   98  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+   99  rspec spec/part2_spec.rb 
+  100  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+  101  cd hw-ruby-intro/
+  102  rspec -e '#starts_with_consonant?' spec/part2_spec.rb 
+  103  sudo su
+  104  rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb
+  105  cd lib/
+  106  rspec -e '#binary_multiple_of_4?' ../spec/part2_spec.rb
+  107  cd ..
+  108  rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb
+  109  rspec -e 'binary_multiple_of_4' spec/part2_spec.rb
+  110  rspec  spec/part2_spec.rb
+  111  rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb
+  112  irb
+  113  rvm use 2.4.0
+  114  bundle
+  115  rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb
+  116  rspec  spec/part2_spec.rb
+  117  rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb
+  118  cd spec/
+  119  rspec part1_spec.rb 
+  120  rspec part2_spec.rb 
+  121  rspec part2_spec.rb[2,1]
+  122  rspec part1_spec.rb 
+  123  rspec spec/part1_spec.rb:6
+  124  cd ..
+  125  rspec spec/part1_spec.rb:6
+  126  rspec spec/part1_spec.rb
+  127  rspec spec/part1_spec.rb:6
+  128  rspec spec/part1_spec.rb
+  129  rspec spec/part1_spec.rb:24
+  130  rspec spec/part1_spec.rb:43
+  131  rspec -e '#starts_with_consonant?' spec/part2_spec.rb
+  132  rspec spec/part2_spec.rb:18
+  133  cd hw-ruby-intro/
+  134  rspec spec/part2_spec.rb:18
+  135  rspec spec/part2_spec.rb:42
+  136  cd lib/
+  137  irb
+  138  cd ..
+  139  irb
+  140  rspec -e '#price_as_string' spec/part3_spec.rb
+  141  rspec
+  142  rspec -e '#price_as_string' spec/part3_spec.rb
+  143  rspec spec/part3_spec.rb
+  144  rspec
+  145  rspec > Patel_Manish_HW1.txt
+  146  vim Patel_Manish_HW1.txt 
+  147  cd hw-ruby-intro/spec/
+  148  rspec
+  149  cd ..
+  150  rspec
+  151  rspec spec/part1_spec.rb 
+  152  cd spec/
+  153  rspec spec/part1_spec.rb 
+  154  rspec part1_spec.rb 
+  155  cd ..
+  156  rspec spec/part1_spec.rb 
+  157  vim Patel_Manish_HW1.txt 
+  158  ls
+  159  cd ..
+  160  ls -lrta
+  161  git add hw-ruby-intro/
+  162  git init
+  163  ls -lrta
+  164  git add hw-ruby-intro/
+  165  git status
+  166  git push origin master
+  167  git checkout -b aws_repo
+  168  git add hw-ruby-intro/
+  169  git status
+  170  git commit -m "HW1 done"
+  171  git push origin master
+  172  git push https://github.com/saasbook/hw-ruby-intro.git 
+  173  git push --set-upstream https://github.com/saasbook/hw-ruby-intro.git aws_repo
+  174  git push --set-upstream https://github.com/manishpatel005/hw-ruby-intro.git aws_repo
+  175  pwd
+  176  cd ..
+  177  ls -lrt
+  178  cd environment/
+  179  ls
+  180  mv hw-ruby-intro/lib/ruby_intro.rb .
+  181  mv hw-ruby-intro/lib/* .
+  182  l
+  183  ls
+  184  rm -r hw-ruby-intro/
+  185  ls
+  186  ll
+  187  ls -lrta
+  188  sudo rm .git
+  189  sudo rm -r .git
+  190  ls
+  191  gitclone https://github.com/manishpatel005/hw-ruby-intro.git
+  192  git clone https://github.com/manishpatel005/hw-ruby-intro.git
+  193  ls 
+  194  cd hw-ruby-intro/lib/
+  195  ls
+  196  rm *
+  197  cp ../../ruby_intro.* .
+  198  ls
+  199  cd ..
+  200  ls
+  201  rspec
+  202  rspec >> log.txt
+  203  ls
+  204  vim log.txt 
+  205  git status
+  206  git add *
+  207  git commit -m "assignment1 completed"
+  208  git push
+  209  ls
+  210  w
+  211  cd hw-ruby-intro/
+  212  ls
+  213  cd ..
+  214  ls -lr
+  215  ls -lrt
+  216  git clone https://github.com/saasbook/rottenpotatoes-rails-intro.git
+  217  ls -lrt
+  218  cd rottenpotatoes-rails-intro/
+  219  ls
+  220  sudo su
+  221  bundle exec rake db:setup
+  222  nvm i v8
+  223  npm install -g heroku
+  224  heroku
+  225  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+  226  ls -lrt
+  227  ls
+  228  locate heroku
+  229  heroku
+  230  cd rottenpotatoes-rails-intro/
+  231  ls
+  232  vim config/database.yml 
+  233  gem 'sqlite3'
+  234  rails server -p $PORT -b $IP
+  235  gem sqlite3
+  236  gem 'sqlite3'
+  237  vim rottenpotatoes-rails-intro/Gemfile
+  238  sudo su
+  239  heroku login
+  240  heroku
+  241  sudo su
+  242  heroku
+  243  nnvm i 8
+  244  nvm i 8
+  245  npm install -g heroku
+  246  heroku
+  247  heroku login
+  248  git init
+  249  git add .
+  250  git commit -m "Heroku"
+  251  heroku create
+  252  git push heroku master
+  253  git init
+  254  git add .
+  255  git commit -m "Heroku"
+  256  git config --global user.name manishpatel005
+  257  heroku create
+  258  ks -lrt
+  259  ls -lrt
+  260  git push heroku master
+  261  heroku run rake db:migrate
+  262  heroku run rake db:seed
+  263  heroku open
+  264  ls
+  265  ps -ef|grep ra
+  266  ps -ef|grep ruby
+  267  ps -ef|grep rails
+  268  netstat -apn|grep 3000
+  269  rails server -p $PORT -b $IP
+  270  rvm --version
+  271  sudo su
+  272  rails server 
+  273  rails server - p $PORT  -b $IP
+  274  echo $PORT
+  275  echo $IP
+  276  heroku ps
+  277  heroku ps
+  278  killall heroku
+  279  cd rottenpotatoes-rails-intro/
+  280  sudo su
+  281  bundle exec rake db:setup
+  282  rails server -p $PORT -b $IP
+  283  bundle exec rake db:setup
+  284  rails server -p $PORT -b $IP
+  285  grep -r my_app
+  286  grep -r myapp
+  287  grep -r myapp *
+  288  rake db:create
+  289  rake db:migrate
+  290  postgresql service status
+  291   service postgresql status
+  292  ls -lrta
+  293  rm -rf .git
+  294  cd ..
+  295  ls -lrt
+  296  ls -lrta
+  297  rm -rf rottenpotatoes-rails-intro/
+  298  sudo rm -rf rottenpotatoes-rails-intro/
+  299  git clone https://github.com/saasbook/rottenpotatoes-rails-intro.git
+  300  cd rottenpotatoes-rails-intro/
+  301  ls
+  302  sudo su
+  303  sudo su
+  304  nvm i v8
+  305  npm install -g heroku
+  306  heroku
+  307  sudo su
+  308  heroku 
+  309  bundle exec rake db:setup
+  310  service postgresql start
+  311  sudo service postgresql start
+  312  bundle exec rake db:setup
+  313  bundle install
+  314  bundle install
+  315  sudo su
+  316  bundle exec rake db:setup
+  317  clear
+  318  sudo su
+  319  git clone https://github.com/saasbook/rottenpotatoes-rails-intro.git
+  320  ls
+  321  git clone https://github.com/saasbook/rottenpotatoes-rails-intro.git
+  322  ls
+  323  cd ..
+  324  ls
+  325  git clone https://github.com/saasbook/rottenpotatoes-rails-intro.git
+  326  ls
+  327  cd rottenpotatoes-rails-intro/
+  328  ls
+  329  sudo su
+  330  bundle exec rake db:setup
+  331  rails server -p $PORT -b $IP
+  332  nvm i v8
+  333  cd ..
+  334  nvm i v8
+  335  cd -
+  336  heroku
+  337  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+  338  sudo service postgresql initdb
+  339  sudo service postgresql start
+  340  sudo service postgresql initdb
+  341  sudo vim /var/lib/pgsql9/data/postgresql.conf
+  342  vim sudo vim /var/lib/pgsql9/data/pg_hba.conf
+  343  sudo vim /var/lib/pgsql9/data/pg_hba.conf
+  344  sudo service postgresql stop
+  345  sudo service postgresql start
+  346  sudo su - postgres # login as postgres user
+  347  psql postgres
+  348  sudo su
+  349  heroku login
+  350  git init
+  351  git add .
+  352  git commit -m "Heroku installed"
+  353  heroku create
+  354  git push heroku master
+  355  heroku run rake db:migrate
+  356  heroku run rake db:seed
+  357  heroku open
+  358  ls
+  359  cd ..
+  360  ls
+  361  git push origin master
+  362  git add .
+  363  git commit -m "Heroku"
+  364  sudo su
+  365  rake -T db:seed
+  366  ps -ef
+  367  ps -ef | grep heroku
+  368  heroku
+  369  ps -ef | grep rails
+  370  heroku login
+  371  cd rottenpotatoes-rails-intro/
+  372  ls
+  373  grep -r "title"
+  374  locate heroku
+  375  sudo apt install locate
+  376  cd ..
+  377  locate
+  378  cd rottenpotatoes-rails-intro/
+  379  gem install heroku
+  380  netstat -apn|grep rails
+  381  sudo su
+  382  echo $IP
+  383  echo $PORT
+  384  rails server -b $IP -p $PORT
+  385  killall rails
+  386  killall ruby
+  387  service postgresql status
+  388  service postgresql start
+  389  sudo service postgresql start
+  390  service postgresql status
+  391  rails server -b $IP -p $PORT
+  392  rvm use 2.4.0
+  393  rails server -b $IP -p $PORT
+  394  bundle exec rake db:setup
+  395  rails server -b $IP -p $PORT
+  396  bundle exec rake db:setup
+  397  rails server -b $IP -p $PORT
+  398  bundle exec rake db:setup
+  399  rails server -b $IP -p $PORT
+  400  grep -r "movies_path" *
+  401  rails server -b $IP -p $PORT
+  402  git commit -am "Part 1 complete. Yayyy.."
+  403  git add .
+  404  git commit -am "Part 1 complete. Yayyy.."
+  405  git push 
+  406  git init
+  407  ls -lrt
+  408  ls -lrta
+  409  git undo
+  410  git push heroku master
+  411  cd ..
+  412  git push origin master
+  413  git add .
+  414  git push
+  415  ls -lrta
+  416  git add rottenpotatoes-rails-intro/
+  417  git push
+  418  git push origin master
+  419  git commit -m "First commit in second homework"
+  420  sudo git commit -m "First commit in second homework"
+  421  sudo git push origin master
+  422  sudo git push 
+  423  sudo git push master
+  424  sudo git push origin
+  425  bundle exec rake db:setup
+  426  cd rottenpotatoes-rails-intro/
+  427  rails server -b $IP -p $PORT
+  428  service postgresql status
+  429  service postgresql start
+  430  sudo service postgresql start
+  431  bundle exec rake db:setup
+  432  rails server -b $IP -p $PORT
+  433  git commit -am "part 2 complete"
+  434  git push heroku master
+  435  rails server -b $IP -p $PORT
+  436  git commit -am "part 3 complete"
+  437  git push heroku master
+  438  rails server -b $IP -p $PORT
+  439  git commit -am "part 3 complete"
+  440  git push heroku master
+  441  pwd
+  442  ls
+  443  cd app/
+  444  ls
+  445  cd ..
+  446  ls
+  447  git remote -v
+  448  ls
+  449  cd ..
+  450  ls -lrt
+  451  vim .git/logs/
+  452  vim .git/logs/HEAD 
+  453  ls -lrt
+  454  rm .git
+  455  rm -rf .git
+  456  sudo rm -rf .git
+  457  ls
+  458  git init
+  459  git add rottenpotatoes-rails-intro/
+  460  ls
+  461  git remote -v
+  462  git commit -m "Second homework completed"
+  463  pwd
+  464  ls
+  465  git remote add origin https://github.com/manishpatel005/rottenpotatoes-rails-intro.git
+  466  git push 
+  467  git remote -v
+  468  git push origin master
+  469  cd rottenpotatoes-rails-intro/
+  470  ls -lrt
+  471  pwd
+  472  ls
+  473  cd ..
+  474  ls
+  475  git add rottenpotatoes-rails-intro/
+  476  git commit -m "Second homework completed"
+  477  rm -rf .git
+  478  git init
+  479  git add rottenpotatoes-rails-intro/
+  480  git commit -m "Second homework completed"
+  481  git remote add origin https://github.com/manishpatel005/rottenpotatoes-rails-intro.git
+  482  git push origin -u master
+  483  cd rottenpotatoes-rails-intro/
+  484  git remote -v
+  485  cd rottenpotatoes-rails-intro/
+  486  ls
+  487  rails server -b $IP -p $PORT
+  488  bundle exec rake db:setup
+  489  rails server -b $IP -p $PORT
+  490  sudo service postgresql start
+  491  bundle exec rake db:setup
+  492  rails server -b $IP -p $PORT
+  493  rake db:seed
+  494  rails server -b $IP -p $PORT
+  495  heroku
+  496  nvm i v8 
+  497  npm install -g heroku
+  498  heroku login
+  499  heroku run rake db:seed
+  500  ls -lrt
+  501  git clone https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+  502  ls -lrt
+  503  cd hw-acceptance-unit-test-cycle/
+  504  ls
+  505  cat README.md 
+  506  ls
+  507  cd rottenpotatoes/
+  508  bundle install --without production
+  509  bundle exec rake db:migrate
+  510  bundle exec rake db:migrate RAILS_ENV=test
+  511  rails generate cucumber:install capybara
+  512  rails generate cucumber_rails_training_wheels:install
+  513  rails generate rspec:install
+  514  cd hw-acceptance-unit-test-cycle/
+  515  ls
+  516  cd rottenpotatoes/
+  517  ls
+  518  cd features/support/
+  519  ls
+  520  vim rspec.rb
+  521  rspec
+  522  cucumber
+  523  rails server -b $IP -p $PORT
+  524  rails generate
+  525  rake db:create
+  526  rails server -b $IP -p $PORT
+  527  ls
+  528  cd hw-acceptance-unit-test-cycle/
+  529  ls
+  530  cd rottenpotatoes/
+  531  ls
+  532  grep -r 'add_column' *
+  533  ls
+  534  grep -r "add_c"
+  535  grep -r "add_c" *
+  536  ls
+  537  cd db/
+  538  ls
+  539  vim migrate
+  540  cd migrate/
+  541  ls
+  542  vim 20111119180638_create_movies.rb
+  543  cd ../..
+  544  rake db:migrate RAILS_ENV=test
+  545  rails server -b $IP -p $PORT
+  546  ls
+  547  grep -r ".html" *
+  548  rails server -b $IP -p $PORT
+  549  bundle install --without production
+  550  bundle exec rake db:setup
+  551  rails server -b $IP -p $PORT
+  552  ls -lrt
+  553  rails server -b $IP -p $PORT
+  554  rake db:migrate RAILS_ENV=test
+  555  rails server -b $IP -p $PORT
+  556  cd ..
+  557  ls
+  558  cd ..
+  559  select * from movies
+  560  mysql
+  561  mysql -u root -p
+  562  mysql -u root
+  563  service postgresql start
+  564  sudo service postgresql start
+  565  rails server -b $IP -p $PORT
+  566  ls
+  567  git add hw-acceptance-unit-test-cycle 
+  568  git add hw-acceptance-unit-test-cycle/
+  569  git commit -m "Part 1 completed"
+  570  git push
+  571  git push origin master
+  572  cd rottenpotatoes-rails-intro/
+  573  ls
+  574  ls -lrth
+  575  ls -lrta
+  576  git push
+  577  ls -lrt
+  578  top
+  579  ls -lrt
+  580  cd ..
+  581  ls -lrt
+  582  cd hw-acceptance-unit-test-cycle/
+  583  ls -lrt
+  584  ls -lrta
+  585  git push
+  586  ls
+  587  cd rottenpotatoes/
+  588  ls
+  589  cd ..
+  590  ls -lrt
+  591  cd ..
+  592  ls
+  593  rm -rf hw-acceptance-unit-test-cycle/
+  594  git clone https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+  595  ls
+  596  cd hw-acceptance-unit-test-cycle/
+  597  ls
+  598  cd rottenpotatoes/
+  599  ls -lrt
+  600  bundle install --without production
+  601  bundle exec rake db:migrate
+  602  bundle exec rake db:migrate RAILS_ENV=test
+  603  rails generate cucumber:install capybara
+  604  rails generate cucumber_rails_training_wheels:install
+  605  rails generate rspec:install
+  606  vim features/support/rspec.rb
+  607  rspec
+  608  cucumber 
+  609  rake db:migrate RAILS_ENV=test
+  610  rails server -b $IP -p $PORT
+  611  cd ..
+  612  ls -lrt
+  613  cd ..
+  614  ls -lrt
+  615  git add hw-acceptance-unit-test-cycle/
+  616  git commit -m "part 1 completed"
+  617  git status
+  618  git add hw-acceptance-unit-test-cycle/.
+  619  git commit -m "part 1 completed"
+  620  git status
+  621  git add hw-acceptance-unit-test-cycle/rottenpotatoes/
+  622  git add hw-acceptance-unit-test-cycle/
+  623  git commit -m "part 1 completed"
+  624  git push
+  625  git init
+  626  git add hw-acceptance-unit-test-cycle/
+  627  git commit -m "part 1 completed"
+  628  git status
+  629  git push
+  630  ls -lrt
+  631  git push hw-acceptance-unit-test-cycle/
+  632  git fetch hw-acceptance-unit-test-cycle/
+  633  git push hw-acceptance-unit-test-cycle/
+  634  git add hw-acceptance-unit-test-cycle/
+  635  git status
+  636  git push origin master --force
+  637  git add hw-acceptance-unit-test-cycle/
+  638  git push origin master --force
+  639  git add hw-acceptance-unit-test-cycle/
+  640  git commit -m "part 1 completed"
+  641  git push origin master --force
+  642  cd hw-acceptance-unit-test-cycle/
+  643  ls
+  644  cd rottenpotatoes/
+  645  ls
+  646  ls -lrt
+  647  vim db/migrate/20111119180638_create_movies.rb 
+  648  git fetch
+  649  git push
+  650  git add .
+  651  git staus
+  652  git status
+  653  git commit -m "part 1 completed"
+  654  git push
+  655  grep -r *_spec.rb
+  656  vim spec/rails_helper.rb 
+  657  vim spec/spec_helper.rb 
+  658  ls
+  659  bundle install --without production
+  660  rspec
+  661  cucumber 
+  662  vim coverage/index.html 
+  663  rails server -p $PORT -b $IP
+  664  git add .
+  665  git status
+  666  git commit -m "part 2 completed"
+  667  git push
+  668  ls -lrt
+  669  bundle exec rake db:setup
+  670  rails server -p $PORT -b $IP
+  671  grep -r "edit_movie_path" *
+  672  bundle install --without production
+  673  bundle exec rake db:setup
+  674  bundle exec rake db:migrate
+  675  bundle exec rake db:migrate RAILS_ENV=test
+  676  rails server -p $PORT -b $IP
+  677  grep -r "resources" *
+  678  rails server -p $PORT -b $IP
+  679  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+  680  ls
+  681  rails server -p $PORT -b $IP
+  682  git rm public/index.html
+  683  rails server -p $PORT -b $IP
+  684  grep -r "To see all available options," *
+  685  grep -r "To see all available" *
+  686  grep -r "index" *
+  687  vim log/test.log 
+  688  rake 
+  689  rails server -p $PORT -b $IP
+  690  rails server
+  691  rails server -p $PORT -b $IP
+  692  bundle install --without production
+  693  rails server -p $PORT -b $IP
+  694  rake db:migrate RAILS_ENV=test
+  695  rails server -p $PORT -b $IP
+  696  rake run db:migrate
+  697  bunlde exec rake db:migrate
+  698  bundle exec rake db:migrate
+  699  rails server -p $PORT -b $IP
+  700  rake db:migrate RAILS_ENV=test
+  701  rails server -p $PORT -b $IP
+  702  bundle exec rake db:migrate
+  703  rails server -p $PORT -b $IP
+  704  rails server
+  705  rails server -p $PORT -b $IP
+  706  rake db:migrate RAILS_ENV=test
+  707  rails server -p $PORT -b $IP
+  708  bundle exec rake db:migrate
+  709  rails server
+  710  rails server -p $PORT -b $IP
+  711  rake db:migrate
+  712  rails server -p $PORT -b $IP
+  713  rails generate migration AddDirectorToMovies director:string
+  714  rails server -p $PORT -b $IP
+  715  rake db:migrate RAILS_ENV=test
+  716  rails server -p $PORT -b $IP
+  717  bundle exec rake
+  718  rails server -p $PORT -b $IP
+  719    app/views/movies/edit.html.haml:5:in `_app_views_movies_edit_html_haml___146492624381114131_70062610451080'
+  720  rake db:migrate RAILS_ENV=test
+  721  rails server -p $PORT -b $IP
+  722  bundle install --without production
+  723  rails server -p $PORT -b $IP
+  724  rake routes
+  725  rake --tasks
+  726  rails server -p $PORT -b $IP
+  727  rake routes
+  728  rails server -p $PORT -b $IP
+  729  rake db:test prepare
+  730  rake db:test:prepare
+  731  rails server -p $PORT -b $IP
+  732  rails console
+  733  rake db:migrate:status
+  734  rake db:drop
+  735  rake db:setup
+  736  rake db:migrate
+  737  rake db:test:prepare
+  738  rails console
+  739  rails server -p $PORT -b $IP
+  740  rspec
+  741  cucumber
+  742  ls
+  743  git add .
+  744  git status
+  745  git commit -m "Site working part 2 completed but testing left"
+  746  git push
+  747  cucumber
+  748  rails server -p $PORT -b $IP
+  749  cucumber
+  750  ls
+  751  rake --help
+  752  rake -a
+  753  rake db:remove
+  754  rake db:rm
+  755  rake db:delete
+  756  rake db:reset
+  757  rake db:migrate
+  758  rails server -p $PORT -b $IP
+  759  cucumber
+  760  rspec
+  761  clear
+  762  rspec
+  763  clear
+  764  rspec
+  765  clear
+  766  rspec
+  767  clear
+  768  rspec
+  769  rails server -p $PORT -b $IP
+  770  rspec
+  771  bundle install --without production
+  772  rspec
+  773  bundle install --without production
+  774  gem install factory_bot_rails
+  775  rspec
+  776  bundle install --without production
+  777  rspec
+  778  clear
+  779  rspec
+  780  clear
+  781  rspec
+  782  clear
+  783  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+  784  ls
+  785  clear
+  786  rspec
+  787  cucumber
+  788  clear
+  789  cucumber
+  790  rspec
+  791  bundle install --without production
+  792  rspec
+  793  bundle install --without production
+  794  rspec
+  795  git add .
+  796  git commit -m "rspec and cucumber additional test cases covered "
+  797  git push
+  798  heroku
+  799  nvm iv8
+  800  nvm i v8
+  801  npm install -g heroku
+  802  heroku
+  803  vim config/database.yml 
+  804  vim Gemfile
+  805  service postgresql start
+  806  sudo su
+  807  vim Gemfile
+  808  vimdiff Gemfile ../../rottenpotatoes-rails-intro/Gemfile
+  809  vim ../../rottenpotatoes-rails-intro/Gemfile
+  810  vim Gemfile
+  811  sudo su
+  812  heroku login
+  813  git add .
+  814  git commit -m "acceptance testing hw3"
+  815  git push heroku master
+  816  git status
+  817  git remote -v
+  818  rm .git
+  819  ls -lrta
+  820  heroku
+  821  git remote -v
+  822  ls -lrta
+  823  git init
+  824  git add .
+  825  git commit -m "acceptance testing hw3"
+  826  git remote -v
+  827  git push heroku master
+  828  git remote add guarded-badlands-20720
+  829  git remote add https://guarded-badlands-20720
+  830  heroku 
+  831  heroku git:remote -a guarded-badlands-20720
+  832  ls
+  833  git add .
+  834  git commit -m "acceptance testing hw3"
+  835  git status
+  836  git remote -v
+  837  git add .
+  838  git status
+  839  git push heroku master
+  840  git init
+  841  git remote -v
+  842  git add .
+  843  git commit -m "acceptance testing hw3"
+  844  git status
+  845  git push heroku master
+  846  git pull
+  847  heroku git:remote -a guarded-badlands-20720
+  848  git pull
+  849  git remote -v
+  850  heroku login
+  851  rails server
+  852  git add .
+  853  git status
+  854  vim .git/index 
+  855  vim .git/description 
+  856  echo $IP
+  857  git add.
+  858  git add .
+  859  git commit -m "acceptance testing hw3"
+  860  git push heroku master -f
+  861  heroku run rake db:migrate
+  862  ls
+  863  bundle install --without production
+  864  rails server -p $PORT -b $IP
+  865  run rake db:seed
+  866  rake db:seed
+  867  bundle install --without production
+  868  rake db:seed
+  869  rake db:migrate
+  870  rake db:drop
+  871  rake db:migrate
+  872  rake db:drop
+  873  rake db:seed
+  874  rake db:drop
+  875  bundle exec rake db:setup
+  876  rails server -p $PORT -b $IP
+  877  sudo su
+  878  heroku login
+  879  rm -rf git/
+  880  git init
+  881  git add .
+  882  git commit -m "HW3 completed"
+  883  git status
+  884  git remote -v
+  885  git push heroku master
+  886  heroku run rake db:migrate
+  887  heroku service postgresql start
+  888  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+  889  heroku run rake db:seed
+  890  heroku open
+  891  heroku logs
+  892  cd ../..
+  893  ls -lrt
+  894  cd rottenpotatoes-rails-intro/
+  895  ls
+  896  heroku login
+  897  ls -lrta
+  898  git push heroku master
+  899  git add .
+  900  git commit -m "restoring"
+  901  git push heroku master
+  902  git push heroku master -f
+  903  cd ..
+  904  ls
+  905  cd hw-acceptance-unit-test-cycle/
+  906  ls -lrt
+  907  cd rottenpotatoes/
+  908  ls -lrt
+  909  rm Gemfile.lock 
+  910  rm -rf git/
+  911  vim config/database.yml 
+  912  rails server -p $PORT -b $IP
+  913  service postgresql start
+  914  sudo service postgresql start
+  915  rails server -p $PORT -b $IP
+  916  heroku login
+  917  git init
+  918  git add .
+  919  git commit -m "HW3 completed along with rspec and cucumber test cases"
+  920  git config --global user.name "manish.patel.mnnit@gmail.com"
+  921  git commit -m "HW3 completed along with rspec and cucumber test cases"
+  922  heroku create
+  923  git push heroku master
+  924  ls
+  925  heroku git remote -a warm-river-12345
+  926  heroku git:remote -a warm-river-12345
+  927  git push heroku master
+  928  heroku open
+  929  heroku logs
+  930  heroku logs --tail
+  931  heroku logs -n 200
+  932  heroku logs -n 500
+  933  rails
+  934  ls
+  935  cd rottenpotatoes-rails-intro/
+  936  ls
+  937  ls
+  938  cp -r ../../rottenpotatoes-rails-intro/bin/ .
+  939  ls -lrt
+  940  cd bin/
+  941  ls
+  942  git add .
+  943  git commit -m "bin added"
+  944  git push heroku master
+  945  heroku open
+  946  heroku logs --tail
+  947  pwd
+  948  cd log/
+  949  ls
+  950  vim development.log 
+  951  heroku login
+  952  cd ../../rottenpotatoes/
+  953  heroku logs --tail
+  954  cd ../../rottenpotatoes-rails-intro/
+  955  heroku logs --tail
+  956  cd -
+  957  heroku logs --tail
+  958  git add .
+  959  git commit -m "gemfile updated"
+  960  git push heroku master
+  961  bundle install
+  962  sudo bundle install
+  963  sudo su
+  964  git add .
+  965  git commit -m "gemfile updated"
+  966  git push heroku master
+  967  ls -lrta
+  968  git add .
+  969  git status
+  970  rails server -p $PORT -b $IP
+  971  git add Gemfile.lock 
+  972  git commit -m "gemfile.lock updated"
+  973  git status
+  974  git add Gemfile.lock 
+  975  git push heroku master
+  976  heroku logs --tail
+  977  bundle exec rake db:migrate
+  978  git add .
+  979  git commit -m "migration applied"
+  980  git push heroku master
+  981  heroku logs --tail
+  982  clear
+  983  heroku logs
+  984  heroku run rake db:migrate
+  985  bundle show pg
+  986  heroku bundle show pg
+  987  heroku show pg
+  988  bundle update
+  989  bundle show pg
+  990  heroku logs --tail
+  991  bundle exec rake db:setup
+  992  ls -lrt
+  993  rails server -p $PORT -b $IP
+  994  bundle install
+  995  rake rails:update:bin
+  996  git add .
+  997  git status
+  998  git commit -m 'HW3 completed'
+  999  git push heroku master
+ 1000  heroku open
+ 1001  ls -lrt
+ 1002  cd ..
+ 1003  ls -lrt
+ 1004  cd ..
+ 1005  ls -lrt
+ 1006  rm -rf hw-acceptance-unit-test-cycle/
+ 1007  git clone https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1008  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1009  ls
+ 1010  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+ 1011  bundle install --without production
+ 1012  sudo su
+ 1013  bundle install --without production
+ 1014  sudo su
+ 1015  bundle exec rake db:setup
+ 1016  rake rails:update:bin
+ 1017  bundle install
+ 1018  sudo su
+ 1019  heroku login
+ 1020  git init
+ 1021  git add .
+ 1022  git commit -m "HW3 completed"
+ 1023  heroku create
+ 1024  git push heroku master
+ 1025  heroku run rake db:migrate
+ 1026   heroku run rake db:seed
+ 1027  heroku open
+ 1028  git add .
+ 1029  git status
+ 1030  git commit -am "gem added"
+ 1031  git push heroku master
+ 1032  bundle install
+ 1033  git add .
+ 1034  git commit -am "gem added"
+ 1035  git commit -am "gem lock added"
+ 1036  git push heroku master
+ 1037  heroku open
+ 1038  heroku run rake db:migrate
+ 1039  heroku run rake db:seed
+ 1040  rspec
+ 1041  vim spec/rails_helper.rb 
+ 1042  vim features/support/env.rb 
+ 1043  exit
+ 1044  ls
+ 1045  cd hw-acceptance-unit-test-cycle/
+ 1046  ls
+ 1047  cd rottenpotatoes/
+ 1048  heroku
+ 1049  rspec
+ 1050  bundle install --without production
+ 1051  rspec
+ 1052  bundle install --without production
+ 1053  rspec
+ 1054  cucumber
+ 1055  ls
+ 1056  git add .
+ 1057  rails server -p $PORT -b $IP
+ 1058  sudo service postgresql start
+ 1059  rails server -p $PORT -b $IP
+ 1060  rake db:migrate RAILS_ENV=test
+ 1061  rails server -p $PORT -b $IP
+ 1062  rake db:migrate RAILS_ENV=development
+ 1063  rake db:drop 
+ 1064  rake db:seed
+ 1065  bundle install
+ 1066  sudo bundle install
+ 1067  sudo su
+ 1068  rake db:seed
+ 1069  rake db:migrate
+ 1070  rake db:drop 
+ 1071  rake db:create:all
+ 1072  rake db:drop 
+ 1073  bundle exec rake db:setup
+ 1074  rails server -p $PORT -b $IP
+ 1075  rake db:migrate
+ 1076  rails server -p $PORT -b $IP
+ 1077  rake db:migrate RAILS_ENV=test
+ 1078  rails server -p $PORT -b $IP
+ 1079  ls
+ 1080  c
+ 1081  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1082  ls
+ 1083  rails server -p $PORT -b $IP
+ 1084  rake db:drop
+ 1085  bundle exec rake db:setup
+ 1086  rake db:migrate
+ 1087  rails server -p $PORT -b $IP
+ 1088  cucumber
+ 1089  git add .
+ 1090  git commit -m "92% rspec covered"
+ 1091  git push
+ 1092  cd ../..
+ 1093  ls
+ 1094  git add hw-acceptance-unit-test-cycle/
+ 1095  git commit -m "92% rspec covered"
+ 1096  git push
+ 1097  rm -rf .git
+ 1098  git remote -a https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1099  git remote  https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1100  git remote
+ 1101  git remote -
+ 1102  git remote -h
+ 1103  git remote add  https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1104  git remote set  https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1105  git remote add origin https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1106  ls
+ 1107  git
+ 1108  git remote add https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1109  git remote add https://github.com/manishpatel005/hw-acceptance-unit-test-cycle
+ 1110  git init
+ 1111  git remote add https://github.com/manishpatel005/hw-acceptance-unit-test-cycle
+ 1112  git remote add https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1113  git remote add origin https://github.com/manishpatel005/hw-acceptance-unit-test-cycle.git
+ 1114  ls -lrt
+ 1115  git add hw-acceptance-unit-test-cycle/
+ 1116  git status
+ 1117  git add hw-acceptance-unit-test-cycle/
+ 1118  git commit -am  "rspec 92%"
+ 1119  git push
+ 1120  git push origin master
+ 1121  git fetch
+ 1122  ls -lrt
+ 1123  date
+ 1124  git push
+ 1125  git push origin master
+ 1126  pwd
+ 1127  cd ..
+ 1128  ls
+ 1129  cd ..
+ 1130  ls
+ 1131  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1132  lls
+ 1133  ls
+ 1134  rspec
+ 1135  rspec > rspec.log
+ 1136  cucumber > cucumber.log
+ 1137  vim cucumber.log 
+ 1138  vim rspec.log
+ 1139  ls -lrt
+ 1140  git remote -v
+ 1141  cd ../..
+ 1142  ls -lrt
+ 1143  git remote -v
+ 1144  git add hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1145  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1146  ls -lrt
+ 1147  zip solution.zip rspec.log cucumber.log coverage/
+ 1148  ls -lrt
+ 1149  vim solution.zip 
+ 1150  cd ../..
+ 1151  git add hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1152  git commit -m "log file added"
+ 1153  git push
+ 1154  git push origin master
+ 1155  cp -r hw-acceptance-unit-test-cycle/ hw-acceptance-unit-test-cycle_bk
+ 1156  ls -lrt
+ 1157  git pull origin master
+ 1158  git add hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1159  git commit -m "log file added"
+ 1160  git push origin master
+ 1161  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1162  ls -lrta
+ 1163  cd -
+ 1164  git remove
+ 1165  cucumber
+ 1166  cd hw-acceptance-unit-test-cycle/rottenpotatoes/
+ 1167  cucumber
+ 1168  ls
+ 1169  git clone https://github.com/manishpatel005/typo.git
+ 1170  cd typo/
+ 1171  ls
+ 1172  rvm install 1.9.3
+ 1173  df -h
+ 1174  ls -lrt
+ 1175  rm -rf hw-ruby-intro/
+ 1176  rm -rf rottenpotatoes-rails-intro/
+ 1177  rm -rf rottenpotatoes-rails-intro
+ 1178  sudo su
+ 1179  ls
+ 1180  cd typo/
+ 1181  ls
+ 1182  sudo yum install libxml2-devel libxslt-devel
+ 1183  sudo chmod o+t -R /tmp
+ 1184  nvm i v8
+ 1185  npm install -g heroku
+ 1186  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+ 1187  sudo su
+ 1188  rake db:setup
+ 1189  rake db:migrate
+ 1190  rails server -p $PORT -b $IP
+ 1191  heroku create --stack cedar-14
+ 1192  git init
+ 1193  git add .
+ 1194  git commit -m 'typo installed'
+ 1195  git push heroku master
+ 1196  heroku rake db:migrate
+ 1197  heroku db:migrate
+ 1198  heroku run rake db:migrate
+ 1199  heroku db:setup
+ 1200  git push heroku origin
+ 1201  heroku create
+ 1202  git push heroku master
+ 1203  rvm use 1.9.3
+ 1204  sudo su
+ 1205  rails server -p $PORT -b $IP
+ 1206  heroku create --stack cedar-14
+ 1207  git init
+ 1208  git add .
+ 1209  git commit -m "typo"
+ 1210  git push heroku master
+ 1211  rm -rf .git
+ 1212  git init
+ 1213  git add .
+ 1214  git commit -m "typo"
+ 1215  git push heroku master
+ 1216  ls -lrta
+ 1217  chowm ec2-user -R *
+ 1218  chown ec2-user -R *
+ 1219  sudo chown ec2-user -R *
+ 1220  ls -lrta
+ 1221  git push heroku master
+ 1222  git push heroku origin
+ 1223  rm -rf .git
+ 1224  git init
+ 1225  git add .
+ 1226  git commit -m "typo"
+ 1227  heroku login
+ 1228  rm -rf .git
+ 1229  git init
+ 1230  git add .
+ 1231  git commit -m "typo"
+ 1232  git push heroku master
+ 1233  git push heroku origin
+ 1234  rvm use 1.9.3
+ 1235  ls
+ 1236  rm Gemfile.lock 
+ 1237  vim Gemfile 
+ 1238  vim config/database.yml
+ 1239  sudo su
+ 1240   rake db:setup
+ 1241   rake db:migrate
+ 1242  rails server -p $PORT -b $IP
+ 1243  rm Gemfile.lock 
+ 1244  sudo su
+ 1245  rake db:setup
+ 1246  rake db:remove
+ 1247  rake db:delete
+ 1248  rake db:reset
+ 1249  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+ 1250  rake db:drop
+ 1251  herkou logout
+ 1252  heroku logout
+ 1253  rake db:drop
+ 1254  cd ..
+ 1255  ls -lrt
+ 1256  rm -rf typo
+ 1257  ls
+ 1258  git clone https://github.com/manishpatel005/typo.git
+ 1259  sudo yum install libxml2-devel libxslt-devel
+ 1260  sudo chmod o+t -R /tmp
+ 1261  nvm i v8
+ 1262  npm install -g heroku
+ 1263  sudo su
+ 1264  cd typo/
+ 1265  vim Gemfile
+ 1266  vim config/database.yml
+ 1267  sudo su
+ 1268  sudo vim /var/lib/pgsql9/data/postgresql.conf
+ 1269  rake db:setup
+ 1270  rake db:migrate
+ 1271  rails server -p $PORT -b $IP
+ 1272  heroku login
+ 1273  git init
+ 1274  git add .
+ 1275  git commit -m "typo"
+ 1276  heroku create --stack cedar-14
+ 1277  git push heroku master
+ 1278  heroku rake db:migrate
+ 1279  heroku open
+ 1280  bundle exec rake cucumber
+ 1281  bundle exec rake spec
+ 1282  ls -lrt
+ 1283  vim features/support/paths.rb 
+ 1284  vim features/create_categories.feature
+ 1285  bundle exec rake spec
+ 1286  vim app/controllers/categories_controller.rb 
+ 1287  vim app/controllers/admin/categories_controller.rb
+ 1288  vim features/support/paths.rb
+ 1289  vim spec/controllers/categories_controller_spec.rb
+ 1290  rspec
+ 1291  cucumber
+ 1292  bundle exec rake cucumber
+ 1293  rails server -p $PORT -b $IP
+ 1294  vim app/controllers/admin/categories_controller.rb 
+ 1295  vim features/create_categories.feature 
+ 1296  vim features/support/paths.rb
+ 1297  vim spec/controllers/categories_controller_spec.rb
+ 1298  rails server -p $PORT -b $IP
+ 1299  vim spec/controllers/categories_controller_spec.rb
+ 1300  cucumber
+ 1301  rspec
+ 1302  rails server -p $PORT -b $IP
+ 1303  vim spec/controllers/categories_controller_spec.rb
+ 1304  vim spec/controllers/admin/categories_controller_spec.rb 
+ 1305  rails server -p $PORT -b $IP
+ 1306  vim app/controllers/admin/settings_controller.rb
+ 1307  rails server -p $PORT -b $IP
+ 1308  rspec
+ 1309  rake db:seed
+ 1310  service postgresql status
+ 1311  rake db:test:prepare
+ 1312  rspec
+ 1313  rails server -p $PORT -b $IP
+ 1314  git add .
+ 1315  git commit -m "changed"
+ 1316  git push heroku master
+ 1317  cd ..
+ 1318  git add typo/
+ 1319  git commit -m "HW4 completed"
+ 1320  git push origin master
+ 1321  cd typo/
+ 1322  git push
+ 1323  git add .
+ 1324  git commit -m "HW4 Completed"
+ 1325  git push
+ 1326  ls
+ 1327  git clone https://github.com/BhatNikhil/tamuber-students.git
+ 1328  df -h
+ 1329  ls -lrth
+ 1330  df -h
+ 1331  cd /dev/
+ 1332  ls
+ 1333  cd 
+ 1334  df -h
+ 1335  cd /tmp/
+ 1336  ls -lrt
+ 1337  cd 
+ 1338  ls
+ 1339  cd environment/
+ 1340  ls
+ 1341  cd tamuber-students/
+ 1342  ls -lrt
+ 1343  git checkout -b new_branch_name
+ 1344  git checkout master
+ 1345  git branch -d new_branch_name
+ 1346  git branch
+ 1347  git pull
+ 1348  git checkout -b develop
+ 1349  git checkout  -b test_deploy
+ 1350  sudo su
+ 1351  rake db:setup
+ 1352  sudo su
+ 1353  vim Gemfile
+ 1354  grep -r "ruby" *
+ 1355  rake db:setup
+ 1356  rake db:migrate
+ 1357  rails server -p $PORT -b $IP
+ 1358  curl http://169.254.169.254/latest/meta-data/instance-id
+ 1359  curl http://169.254.169.254/latest/meta-data/public-ipv4
+ 1360  grep -r "local" *
+ 1361  grep -r "localhost" *
+ 1362  grep -r "127.0.0.1" *
+ 1363  echo $IP
+ 1364  grep -r "$IP" *
+ 1365  grep -r "IP" *
+ 1366  curl http://169.254.169.254/latest/meta-data/public-ipv4
+ 1367  rails server -p $PORT -b 18.222.128.19
+ 1368  rails server -p $PORT -b $IP
+ 1369  rm Gemfile.lock 
+ 1370  sudo su
+ 1371  rails server -p $PORT -b $IP
+ 1372  cd log/development.log 
+ 1373  vim log/development.log 
+ 1374  chmod 0664 /home/ec2-user/environment/tamuber-students/log/development.log
+ 1375  sudo chmod 0664 /home/ec2-user/environment/tamuber-students/log/development.log
+ 1376  rails server -p $PORT -b $IP
+ 1377  cd /home/ec2-user/environment/tamuber-students/log/development.log
+ 1378  vim /home/ec2-user/environment/tamuber-students/log/development.log 
+ 1379  cd /home/ec2-user/environment/tamuber-students/log/
+ 1380  ls -lrt
+ 1381  man chown 
+ 1382  chown ec2-user development.log 
+ 1383  sudo chown ec2-user development.log 
+ 1384  ls -lrt
+ 1385  cd -
+ 1386  rails server -p $PORT -b $IP
+ 1387  ls -lrt
+ 1388  heroku
+ 1389  rails server -p $PORT -b $IP
+ 1390  vim Gemfile
+ 1391  sudo su
+ 1392  bundle binstubs rack
+ 1393  bin/rackup 
+ 1394  bundle binstubs rack
+ 1395  bundle binstubs rack --force
+ 1396  rails server -p $PORT -b $IP
+ 1397  vim Gemfile
+ 1398  rm Gemfile.lock
+ 1399  ls -lrt
+ 1400  bundle install --without production
+ 1401  sudo bundle install --without production
+ 1402  sudo su
+ 1403  bundle install --without production
+ 1404  bundle exec rake db:setup
+ 1405  rails server -p $PORT -b $IP
+ 1406  cd ../rottenpotatoes-rails-intro/
+ 1407  ls
+ 1408  cd rottenpotatoes-rails-intro/
+ 1409  ls
+ 1410  cd rottenpotatoes-rails-intro/
+ 1411  rails server -p $PORT -b $IP
+ 1412  bundle exec rake db:setup
+ 1413  bundle exec rake db:drop
+ 1414  service postgresql start
+ 1415  sudo service postgresql start
+ 1416  bundle exec rake db:setup
+ 1417  rails server -p $PORT -b $IP
+ 1418  ls -lrt
+ 1419  chown ec2-user -R *
+ 1420  sudo chown ec2-user -R *
+ 1421  ls -lrt
+ 1422  rails server -p $PORT -b $IP
+ 1423  sudo chmod 777 -R *
+ 1424  ls -lrt
+ 1425  rails server -p $PORT -b $IP
+ 1426  cd ../..
+ 1427  ls -lrt
+ 1428  rm -rf rottenpotatoes-rails-intro/
+ 1429  sudo rm -rf rottenpotatoes-rails-intro/
+ 1430  ls -lrt
+ 1431  cd tamuber-students/
+ 1432  ls
+ 1433  bundle show puma
+ 1434  bundle exec puma
+ 1435  vim config.ru 
+ 1436  rails server -p $PORT -b $IP
+ 1437  nvm i v8 
+ 1438  npm install -g heroku
+ 1439  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+ 1440  vim config/database.yml 
+ 1441  sudo su
+ 1442  heroku login
+ 1443  git init
+ 1444  git add .
+ 1445  git commit -m "test"
+ 1446  heroku  create
+ 1447  git push heroku master
+ 1448  heroku run rake db:migrate
+ 1449  heroku run rake db:seed
+ 1450  heroku open
+ 1451  ls
+ 1452  ls -lrt
+ 1453  cd tamuber-students/
+ 1454  ls -lrt
+ 1455  heroku
+ 1456  ls -lrt
+ 1457  ls
+ 1458  git fetch 
+ 1459  git pull
+ 1460  git pull origin feature/src-dest
+ 1461  git checkout 
+ 1462  git checkout  feature/src-dest
+ 1463  ls -lrt
+ 1464  git reset --hard
+ 1465  git checkout develop
+ 1466  gitpull orgin develop
+ 1467  git pull origin develop
+ 1468  ls -lrt
+ 1469  sudo su
+ 1470  nvm i v8
+ 1471  heroku
+ 1472  git push heroku master
+ 1473  git checkout -b test_deploy
+ 1474  git checkout  test_deploy
+ 1475  git reset
+ 1476  git checkout  test_deploy
+ 1477  git reset --hard
+ 1478  git checkout  test_deploy
+ 1479  heroku open
+ 1480  git push heroku master
+ 1481  git push heroku test_deploy:master
+ 1482  git fetch
+ 1483  git checkout 
+ 1484  git pull origin deployment/heroku-prakhar
+ 1485  git diff
+ 1486  git push heroku test_deploy:master
+ 1487  git branch
+ 1488  git fetch
+ 1489  git pull origin deployment/heroku-prakhar
+ 1490  git reset --hard
+ 1491  git pull origin deployment/heroku-prakhar
+ 1492  rm Gemfile.lock 
+ 1493  git pull origin deployment/heroku-prakhar
+ 1494  git status
+ 1495  git diff
+ 1496  git reset --hard
+ 1497  git satus
+ 1498  git status
+ 1499  git pull origin deployment/heroku-prakhar
+ 1500  git rm Gemfile.lock 
+ 1501  git status
+ 1502  git fetch
+ 1503  git checkout deployment/heroku-prakhar
+ 1504  git reset --hard
+ 1505  git checkout deployment/heroku-prakhar
+ 1506  ls
+ 1507  git log
+ 1508  heroku login
+ 1509  git push heroku deployment/heroku-master:master
+ 1510  git push heroku deployment/heroku-prakhar:master
+ 1511  git status
+ 1512  git pull
+ 1513  git push heroku deployment/heroku-prakhar:master
+ 1514  git checkout deployment/heroku-prakhar
+ 1515  git push heroku heroku-prakhar:master
+ 1516  git reset --hard
+ 1517  git checkout deployment/heroku-prakhar
+ 1518  git pull
+ 1519  git push heroku deployment/heroku-prakhar:master
+ 1520  git init
+ 1521  git add *
+ 1522  git commit -m "srcdest added"
+ 1523  git push heroku deployment/heroku-prakhar:master
+ 1524  git push heroku master
+ 1525  heroku
+ 1526  git remote -v
+ 1527  heroku create
+ 1528  git push heroku master
+ 1529  git push heroku deployment/heroku-prakhar:master
+ 1530  heroku login
+ 1531  git push heroku deployment/heroku-prakhar:master
+ 1532  git push heroku master
+ 1533  git pull heroku
+ 1534  git pull heroku master
+ 1535  git push heroku master
+ 1536  git push heroku deployment/heroku-prakhar:master
+ 1537  git reset --hard
+ 1538  ld
+ 1539  ls
+ 1540  git reset
+ 1541  git checkout deployment/heroku-prakhar
+ 1542  ls -lrt
+ 1543  git rm
+ 1544  git rm *
+ 1545  git rm -r *
+ 1546  git remove
+ 1547  man git
+ 1548  git init
+ 1549  heroku login
+ 1550  git add .
+ 1551  git commit -m "cha"
+ 1552  heroku create
+ 1553  git push heroku master
+ 1554  heroku logout
+ 1555  heroku login
+ 1556  git init
+ 1557  git add .
+ 1558  git commit -m "cha"
+ 1559  git push heroku master
+ 1560  git remote -v
+ 1561  heroku git remote -a intense-shelf-66193
+ 1562  heroku git:remote -a intense-shelf-66193
+ 1563  git push heroku master
+ 1564  heroku run rake db:migrate
+ 1565  heroku run rake db:seed
+ 1566  heroku open 
+ 1567  git push heroku deployment/heroku-prakhar:master
+ 1568  heroku run rake db:migrate
+ 1569  heroku open 
+ 1570  ls
+ 1571  git add .
+ 1572  git commit -m "login added"
+ 1573  git push heroku deployment/heroku-prakhar:master
+ 1574  heroku open
+ 1575  heroku logs
+ 1576  git add .
+ 1577  git commit -m "bcrypt"
+ 1578  git push heroku deployment/heroku-prakhar:master
+ 1579  sudo su
+ 1580  git push heroku deployment/heroku-prakhar:master
+ 1581  git add .
+ 1582  git commit -m "bcrypt added"
+ 1583  git push heroku deployment/heroku-prakhar:master
+ 1584  heroku open
+ 1585  git add .
+ 1586  git commit -m "login route ref added"
+ 1587  git push heroku deployment/heroku-prakhar:master
+ 1588  heroku open
+ 1589  heroku logs
+ 1590  git add .
+ 1591  git commit -m "change added"
+ 1592  git push heroku deployment/heroku-prakhar:master
+ 1593  heroku open
+ 1594  heroku logss
+ 1595  git add .
+ 1596  git commit -m "css added"
+ 1597  git push heroku deployment/heroku-prakhar:master
+ 1598  heroku open
+ 1599  heroku logs
+ 1600  git add .
+ 1601  git commit -m "config initializer assets modified"
+ 1602  git push heroku deployment/heroku-prakhar:master
+ 1603  heroku open
+ 1604  heroku reload
+ 1605  heroku restart
+ 1606  heroku logs
+ 1607  heroku open
+ 1608  heroku logs
+ 1609  sudo su
+ 1610  git add .
+ 1611  git commit -m "stylesheet modified"
+ 1612  git push heroku deployment/heroku-prakhar:master
+ 1613  heroku open
+ 1614  heroku logs
+ 1615  bundle exec rake assets:precompile
+ 1616  git add .
+ 1617  git commit -m "styles modified"
+ 1618  git push heroku deployment/heroku-prakhar:master
+ 1619  heroku open
+ 1620  bundle exec rake assets:precompile
+ 1621  git add .
+ 1622  git push heroku deployment/heroku-prakhar:master
+ 1623  git commit -m "styles modified"
+ 1624  git push heroku deployment/heroku-prakhar:master
+ 1625  heroku open
+ 1626  bundle exec rake assets:precompile
+ 1627  git add .
+ 1628  git commit -m "styles modified"
+ 1629  git push heroku deployment/heroku-prakhar:master
+ 1630  heroku open
+ 1631  bundle exec rake assets:precompile
+ 1632  sudo su
+ 1633  bundle exec rake assets:precompile
+ 1634  git add .
+ 1635  git commit -m "styles modified"
+ 1636  git push heroku deployment/heroku-prakhar:master
+ 1637  heroku open
+ 1638  git status
+ 1639  git add -A
+ 1640  git commit -m "half changes"
+ 1641  ls
+ 1642  git status
+ 1643  git  checkout -b feature/login
+ 1644  ls
+ 1645  vim app/views/layouts/application.html.erb 
+ 1646  ls
+ 1647  git push origin feature/login
+ 1648  git push heroku feature/login:master
+ 1649  heroku create
+ 1650  git push heroku feature/login:master
+ 1651  heroku git remote -a mighty-bastion-32077
+ 1652  git push heroku feature/login:master
+ 1653  git remote -v
+ 1654  git remote rm heroku
+ 1655  git remote -v
+ 1656  heroku create
+ 1657  git remote -a  https://git.heroku.com/immense-mesa-20165.git
+ 1658  git remote add https://git.heroku.com/immense-mesa-20165.git
+ 1659  git push heroku feature/login:master
+ 1660  heroku open
+ 1661  git checkout develop
+ 1662  ls
+ 1663  tail -f heroku logs
+ 1664  heroku logs
+ 1665  git checkout features/login
+ 1666  git branch
+ 1667  git checkout feature/login
+ 1668  heroku logs
+ 1669  git add .
+ 1670  git commit -m "signup added" 
+ 1671  git push heroku feature/login:master
+ 1672  heroku open
+ 1673  heroku logs
+ 1674  q
+ 1675  heroku run rake db:migrate
+ 1676  rake db:migrate
+ 1677  heroku run rake db:migrate
+ 1678  git add .
+ 1679  git commit -m "signup added" 
+ 1680  git push heroku feature/login:master
+ 1681  heroku logs
+ 1682  rails generate migration CreateUsers
+ 1683  git add .
+ 1684  heroku run rake db:migrate
+ 1685  heroku run rake db:seed
+ 1686  git add .
+ 1687  git commit -m "signup added" 
+ 1688  git push heroku feature/login:master
+ 1689  heroku open
+ 1690  heroku logs
+ 1691  heroku run rake db:setup
+ 1692  heroku run rake db:drop
+ 1693   rake db:setup
+ 1694  rails db:migrate
+ 1695  heroku run rake db:migrate
+ 1696  heroku run rake db:seed
+ 1697  heroku run rake db:setup
+ 1698  heroku run rake db:seed
+ 1699  git add .
+ 1700  git commit -m "users added"
+ 1701  git push heroku feature/login:master
+ 1702  heroku open
+ 1703  history >a
+ 1704  vim a
+ 1705  bundle exec rake assets:precompile
+ 1706  git add .
+ 1707  git commit -m "signup add" *
+ 1708  git commit -m "signup add"
+ 1709  git push heroku feature/login:master
+ 1710  heroku open
+ 1711  heroku logs
+ 1712  git add .
+ 1713  git  commit -m "signup" 
+ 1714  git push heroku feature/login:master
+ 1715  heroku logs
+ 1716  git add .
+ 1717  git  commit -m "signup" 
+ 1718  git push heroku feature/login:master
+ 1719  heroku open
+ 1720  git add .
+ 1721  git  commit -m "signup" 
+ 1722  git push heroku feature/login:master
+ 1723  heroku open
+ 1724  heroku logs
+ 1725  cd tamuber-students/
+ 1726  ls
+ 1727  rake routes
+ 1728  git add *
+ 1729  git commit -m "changed route"
+ 1730  herku
+ 1731  heroku
+ 1732  npm install -g heroku
+ 1733  heroku push origin master
+ 1734  heroku
+ 1735  nvm i v8 
+ 1736* npm install -g herokuher
+ 1737  heroku push origin master
+ 1738  heroku login
+ 1739  git push heroku master
+ 1740  heroku login
+ 1741  git push heroku master
+ 1742  git pull
+ 1743  git add *
+ 1744  git commit -m "changed route"
+ 1745  git add *
+ 1746  git commit -m "changed route"
+ 1747  git status
+ 1748  git push heroku master
+ 1749  history >abc

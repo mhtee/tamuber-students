@@ -1,4 +1,5 @@
 # Be sure to restart your server when you modify this file.
+#bundle exec rake assets:precompile
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
@@ -19,7 +20,7 @@ Rails.application.config.assets.precompile += %w( jquery-3.3.1.js )
 Rails.application.config.assets.precompile += %w( roslib.js )
 
 # Map display script for first page of site
-Rails.application.config.assets.precompile += %w( map.js )
+Rails.application.config.assets.precompile += %w( map_simplified.js )
 
 # Javascript for "new" view
 Rails.application.config.assets.precompile += %w( new.js )
@@ -35,6 +36,9 @@ Rails.application.config.assets.precompile += %w( pickup.js )
 
 #Javascript for "transit" view
 Rails.application.config.assets.precompile += %w( transit.js )
-
+# Edit Manish start
+#Javascript for "login and signup" view
+Rails.application.config.assets.precompile += %w( sessions.css users.css )
+# Edit Manish end
 #Javascript for "end" view
 Rails.application.config.assets.precompile += %w( end.js )
